@@ -1,0 +1,10 @@
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\bin\Debug\IWMS.Solutions.Server.AuthenicationProvider.dll.config
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\bin\Debug\IWMS.Solutions.Server.AuthenicationProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\bin\Debug\IWMS.Solutions.Server.AuthenicationProvider.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\obj\Debug\IWMS.Solutions.Server.AuthenicationProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\obj\Debug\IWMS.Solutions.Server.AuthenicationProvider.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthProvider\bin\Debug\IWMS.Solutions.Server.AuthProvider.dll.config
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthProvider\bin\Debug\IWMS.Solutions.Server.AuthProvider.dll
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthProvider\bin\Debug\IWMS.Solutions.Server.AuthProvider.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthProvider\obj\Debug\IWMS.Solutions.Server.AuthProvider.dll
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthProvider\obj\Debug\IWMS.Solutions.Server.AuthProvider.pdb

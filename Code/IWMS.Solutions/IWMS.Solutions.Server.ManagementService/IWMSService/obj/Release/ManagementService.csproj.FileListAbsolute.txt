@@ -1,0 +1,16 @@
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\ManagementService.dll.config
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\ManagementService.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\ManagementService.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\IWMS.Solutions.Server.WardReader.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\Newtonsoft.Json.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\System.Net.Http.Formatting.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\System.Web.Http.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\System.Web.Http.WebHost.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\IWMS.Solutions.Server.WardReader.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\Newtonsoft.Json.xml
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\System.Net.Http.Formatting.xml
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\System.Web.Http.xml
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\bin\System.Web.Http.WebHost.xml
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\obj\Release\ManagementService.csprojResolveAssemblyReference.cache
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\obj\Release\ManagementService.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\ManagementService\obj\Release\ManagementService.pdb

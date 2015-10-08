@@ -1,0 +1,10 @@
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.TestConsole\bin\Debug\IWMS.Solutions.TestConsole.exe.config
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.TestConsole\bin\Debug\IWMS.Solutions.TestConsole.exe
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.TestConsole\bin\Debug\IWMS.Solutions.TestConsole.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.TestConsole\obj\Debug\IWMS.Solutions.Server.TestConsole.csprojResolveAssemblyReference.cache
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.TestConsole\obj\Debug\IWMS.Solutions.TestConsole.exe
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.TestConsole\obj\Debug\IWMS.Solutions.TestConsole.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.TestConsole\bin\Debug\IWMS.Solutions.Server.AuthProvider.dll
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.TestConsole\bin\Debug\IWMS.Solutions.Server.WardDataProvider.dll
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.TestConsole\bin\Debug\IWMS.Solutions.Server.AuthProvider.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.TestConsole\bin\Debug\IWMS.Solutions.Server.WardDataProvider.pdb

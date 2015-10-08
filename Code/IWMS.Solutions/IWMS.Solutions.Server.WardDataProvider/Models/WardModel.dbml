@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IWMS" Class="DataAccessDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=INCSNAIRS6L1C;Initial Catalog=IWMS;Integrated Security=True" SettingsObjectName="IWMS.Solutions.Server.WardDataProvider.Properties.Settings" SettingsPropertyName="IWMSConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Zone" Member="Zones">
+    <Type Name="Zone">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Zone_Ward" Member="Wards" ThisKey="Id" OtherKey="ZoneId" Type="Ward" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ward" Member="Wards">
+    <Type Name="Ward">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ZoneId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LeftCordinate" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RightCordinate" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TopCordinate" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BottomCordinate" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Ward_Cordinate" Member="Cordinates" ThisKey="Id" OtherKey="WardId" Type="Cordinate" />
+      <Association Name="Ward_Locality" Member="Localities" ThisKey="Id" OtherKey="WardId" Type="Locality" />
+      <Association Name="Zone_Ward" Member="Zone" ThisKey="ZoneId" OtherKey="Id" Type="Zone" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cordinate" Member="Cordinates">
+    <Type Name="Cordinate">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="WardId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Latitude" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Longitude" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Rank" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Ward_Cordinate" Member="Ward" ThisKey="WardId" OtherKey="Id" Type="Ward" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Locality" Member="Localities">
+    <Type Name="Locality">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="WardId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Ward_Locality" Member="Ward" ThisKey="WardId" OtherKey="Id" Type="Ward" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_screen"
+    tools:context="com.iwms.cleartrash.VerificationCodeActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:text="Sit back and relax while we verify your mobile number!"
+        android:background="@android:color/transparent"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textSize="20dp" />
+
+    <Chronometer
+        android:id="@+id/vcTimer"
+        android:textSize="40dp"
+        android:background="@android:color/transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chronometer"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="90dp" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manual Verification"
+        android:id="@+id/manualSwitchVC"
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="CODE"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone"
+        android:id="@+id/textView"
+        android:background="#FFFFFF"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/manualSwitchVC"
+        android:layout_toStartOf="@+id/vcTimer"
+        android:layout_alignEnd="@+id/manualSwitchVC" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verify"
+        android:id="@+id/button"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="-4dp"
+        android:visibility="gone"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/manualSwitchVC" />
+</RelativeLayout>

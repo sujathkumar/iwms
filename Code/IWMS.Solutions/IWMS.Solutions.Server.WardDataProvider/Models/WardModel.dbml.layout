@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataAccess">
+  <DataContextMoniker Name="/DataAccessDataContext" />
+  <nestedChildShapes>
+    <classShape Id="64a52a9e-9507-491c-bb8a-4b3b4370aa1b" absoluteBounds="1.125, 1.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataAccessDataContext/Zone" />
+      <nestedChildShapes>
+        <elementListCompartment Id="79755e36-61a9-41fb-86b0-01c63af0dbfe" absoluteBounds="1.1400000000000001, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="02fdac08-c095-4fb1-9bf3-4bb845aa0c7d" absoluteBounds="1.25, 3.125, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DataAccessDataContext/Ward" />
+      <nestedChildShapes>
+        <elementListCompartment Id="244d7906-be04-498d-a674-f330e5ca8f04" absoluteBounds="1.2650000000000001, 3.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.1875 : 2.5112939453125); (2.1875 : 3.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataAccessDataContext/Zone/Zone_Ward" />
+      <nodes>
+        <classShapeMoniker Id="64a52a9e-9507-491c-bb8a-4b3b4370aa1b" />
+        <classShapeMoniker Id="02fdac08-c095-4fb1-9bf3-4bb845aa0c7d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="308121cb-fe4d-4c2e-ae8f-b16e0143f430" absoluteBounds="4.75, 3.125, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataAccessDataContext/Cordinate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a8a213dd-296e-451a-9ef5-0d928c6ac4d0" absoluteBounds="4.765, 3.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.25 : 4.01044840494792); (4.75 : 4.01044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataAccessDataContext/Ward/Ward_Cordinate" />
+      <nodes>
+        <classShapeMoniker Id="02fdac08-c095-4fb1-9bf3-4bb845aa0c7d" />
+        <classShapeMoniker Id="308121cb-fe4d-4c2e-ae8f-b16e0143f430" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="868f0f21-3524-43a3-be9d-83af8e67e0e2" absoluteBounds="4.875, 5.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataAccessDataContext/Locality" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d8626a50-298f-4398-81e5-70ac0a180086" absoluteBounds="4.89, 5.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.25 : 5.21559895833333); (6.84375 : 5.21559895833333); (6.84375 : 5.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataAccessDataContext/Ward/Ward_Locality" />
+      <nodes>
+        <classShapeMoniker Id="02fdac08-c095-4fb1-9bf3-4bb845aa0c7d" />
+        <classShapeMoniker Id="868f0f21-3524-43a3-be9d-83af8e67e0e2" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

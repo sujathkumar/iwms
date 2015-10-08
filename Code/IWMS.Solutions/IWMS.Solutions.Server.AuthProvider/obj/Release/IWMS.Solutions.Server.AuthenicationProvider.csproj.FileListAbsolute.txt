@@ -1,0 +1,8 @@
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\bin\Release\IWMS.Solutions.Server.AuthenicationProvider.dll.config
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\bin\Release\IWMS.Solutions.Server.AuthenicationProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\bin\Release\IWMS.Solutions.Server.AuthenicationProvider.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\obj\Release\IWMS.Solutions.Server.AuthenicationProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\obj\Release\IWMS.Solutions.Server.AuthenicationProvider.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\obj\Release\IWMS.Solutions.Server.AuthenicationProvider.csprojResolveAssemblyReference.cache
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\bin\Release\IWMS.Solutions.Server.AuthenicationProvider.XmlSerializers.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.AuthenicationProvider\obj\Release\IWMS.Solutions.Server.AuthenicationProvider.XmlSerializers.dll
