@@ -54,6 +54,10 @@
       <Project>{6c6aa232-5b93-4173-a18f-ae8bb99faf43}</Project>
       <Name>IWMS.Solutions.Server.AuthProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IWMS.Solutions.Server.BinServiceProvider\IWMS.Solutions.Server.BinServiceProvider.csproj">
+      <Project>{5bfee508-02c8-487a-90d6-b1898c9de895}</Project>
+      <Name>IWMS.Solutions.Server.BinServiceProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IWMS.Solutions.Server.WardDataProvider\IWMS.Solutions.Server.WardDataProvider.csproj">
       <Project>{f96b63d8-225f-4640-b08b-494dce5d90e0}</Project>
       <Name>IWMS.Solutions.Server.WardDataProvider</Name>

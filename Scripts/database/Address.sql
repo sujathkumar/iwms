@@ -1,7 +1,7 @@
 USE [IWMS]
 GO
 
-/****** Object:  Table [dbo].[Address]    Script Date: 10/3/2015 10:35:29 AM ******/
+/****** Object:  Table [dbo].[Address]    Script Date: 10/11/2015 10:39:37 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,12 +10,20 @@ GO
 
 CREATE TABLE [dbo].[Address](
 	[Id] [uniqueidentifier] NOT NULL,
-	[Address] [ntext] NOT NULL,
+	[HouseNo] [nvarchar](50) NOT NULL,
+	[HouseName] [nvarchar](50) NULL,
+	[ApartmentName] [nvarchar](50) NULL,
+	[Street] [nvarchar](50) NOT NULL,
+	[Locality] [nvarchar](50) NOT NULL,
+	[WardId] [uniqueidentifier] NOT NULL,
+	[Registered] [bit] NOT NULL,
+	[PINCODE] [int] NOT NULL,
+	[UserId] [uniqueidentifier] NOT NULL,
  CONSTRAINT [PK_Address] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
 

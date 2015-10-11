@@ -30,7 +30,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
@@ -82,7 +81,7 @@
         <activity
             android:name=".ManualVerificationCodeActivity"
             android:label="@string/title_activity_manual_verification_code"
-            android:noHistory="true">
+            android:noHistory="true" >
         </activity>
 
         <receiver
@@ -92,12 +91,23 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <!-- for Gingerbread GSF backward compat -->
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
                 <category android:name="com.iwms.cleartrash" />
             </intent-filter>
         </receiver>
 
         <service android:name=".GCMNotificationIntentService" />
 
+        <activity android:name=".HHG1Activity" >
+        </activity>
+        <activity android:name=".HHG6Activity" >
+        </activity>
+        <activity android:name=".HHG2Activity" >
+        </activity>
+        <activity android:name=".HHG3Activity" >
+        </activity>
+        <activity android:name=".HHG4Activity" >
+        </activity>
     </application>
 
 </manifest>

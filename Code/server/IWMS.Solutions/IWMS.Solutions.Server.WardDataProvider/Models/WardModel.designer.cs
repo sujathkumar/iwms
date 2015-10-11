@@ -119,8 +119,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 		
 		private string _Name;
 		
-		private EntitySet<Ward> _Wards;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -135,7 +133,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 		
 		public Zone()
 		{
-			this._Wards = new EntitySet<Ward>(new Action<Ward>(this.attach_Wards), new Action<Ward>(this.detach_Wards));
 			OnCreated();
 		}
 		
@@ -199,19 +196,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Zone_Ward", Storage="_Wards", ThisKey="Id", OtherKey="ZoneId")]
-		public EntitySet<Ward> Wards
-		{
-			get
-			{
-				return this._Wards;
-			}
-			set
-			{
-				this._Wards.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -230,18 +214,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Wards(Ward entity)
-		{
-			this.SendPropertyChanging();
-			entity.Zone = this;
-		}
-		
-		private void detach_Wards(Ward entity)
-		{
-			this.SendPropertyChanging();
-			entity.Zone = null;
 		}
 	}
 	
@@ -267,12 +239,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 		
 		private string _BottomCordinate;
 		
-		private EntitySet<Cordinate> _Cordinates;
-		
-		private EntitySet<Locality> _Localities;
-		
-		private EntityRef<Zone> _Zone;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -297,9 +263,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 		
 		public Ward()
 		{
-			this._Cordinates = new EntitySet<Cordinate>(new Action<Cordinate>(this.attach_Cordinates), new Action<Cordinate>(this.detach_Cordinates));
-			this._Localities = new EntitySet<Locality>(new Action<Locality>(this.attach_Localities), new Action<Locality>(this.detach_Localities));
-			this._Zone = default(EntityRef<Zone>);
 			OnCreated();
 		}
 		
@@ -374,10 +337,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 			{
 				if ((this._ZoneId != value))
 				{
-					if (this._Zone.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnZoneIdChanging(value);
 					this.SendPropertyChanging();
 					this._ZoneId = value;
@@ -467,66 +426,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ward_Cordinate", Storage="_Cordinates", ThisKey="Id", OtherKey="WardId")]
-		public EntitySet<Cordinate> Cordinates
-		{
-			get
-			{
-				return this._Cordinates;
-			}
-			set
-			{
-				this._Cordinates.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ward_Locality", Storage="_Localities", ThisKey="Id", OtherKey="WardId")]
-		public EntitySet<Locality> Localities
-		{
-			get
-			{
-				return this._Localities;
-			}
-			set
-			{
-				this._Localities.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Zone_Ward", Storage="_Zone", ThisKey="ZoneId", OtherKey="Id", IsForeignKey=true)]
-		public Zone Zone
-		{
-			get
-			{
-				return this._Zone.Entity;
-			}
-			set
-			{
-				Zone previousValue = this._Zone.Entity;
-				if (((previousValue != value) 
-							|| (this._Zone.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Zone.Entity = null;
-						previousValue.Wards.Remove(this);
-					}
-					this._Zone.Entity = value;
-					if ((value != null))
-					{
-						value.Wards.Add(this);
-						this._ZoneId = value.Id;
-					}
-					else
-					{
-						this._ZoneId = default(System.Guid);
-					}
-					this.SendPropertyChanged("Zone");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -546,30 +445,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_Cordinates(Cordinate entity)
-		{
-			this.SendPropertyChanging();
-			entity.Ward = this;
-		}
-		
-		private void detach_Cordinates(Cordinate entity)
-		{
-			this.SendPropertyChanging();
-			entity.Ward = null;
-		}
-		
-		private void attach_Localities(Locality entity)
-		{
-			this.SendPropertyChanging();
-			entity.Ward = this;
-		}
-		
-		private void detach_Localities(Locality entity)
-		{
-			this.SendPropertyChanging();
-			entity.Ward = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Cordinate")]
@@ -587,8 +462,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 		private string _Longitude;
 		
 		private int _Rank;
-		
-		private EntityRef<Ward> _Ward;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -608,7 +481,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 		
 		public Cordinate()
 		{
-			this._Ward = default(EntityRef<Ward>);
 			OnCreated();
 		}
 		
@@ -643,10 +515,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 			{
 				if ((this._WardId != value))
 				{
-					if (this._Ward.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnWardIdChanging(value);
 					this.SendPropertyChanging();
 					this._WardId = value;
@@ -716,40 +584,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ward_Cordinate", Storage="_Ward", ThisKey="WardId", OtherKey="Id", IsForeignKey=true)]
-		public Ward Ward
-		{
-			get
-			{
-				return this._Ward.Entity;
-			}
-			set
-			{
-				Ward previousValue = this._Ward.Entity;
-				if (((previousValue != value) 
-							|| (this._Ward.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Ward.Entity = null;
-						previousValue.Cordinates.Remove(this);
-					}
-					this._Ward.Entity = value;
-					if ((value != null))
-					{
-						value.Cordinates.Add(this);
-						this._WardId = value.Id;
-					}
-					else
-					{
-						this._WardId = default(System.Guid);
-					}
-					this.SendPropertyChanged("Ward");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -783,8 +617,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 		
 		private System.Guid _WardId;
 		
-		private EntityRef<Ward> _Ward;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -799,7 +631,6 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 		
 		public Locality()
 		{
-			this._Ward = default(EntityRef<Ward>);
 			OnCreated();
 		}
 		
@@ -854,49 +685,11 @@ namespace IWMS.Solutions.Server.WardDataProvider.Models
 			{
 				if ((this._WardId != value))
 				{
-					if (this._Ward.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnWardIdChanging(value);
 					this.SendPropertyChanging();
 					this._WardId = value;
 					this.SendPropertyChanged("WardId");
 					this.OnWardIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Ward_Locality", Storage="_Ward", ThisKey="WardId", OtherKey="Id", IsForeignKey=true)]
-		public Ward Ward
-		{
-			get
-			{
-				return this._Ward.Entity;
-			}
-			set
-			{
-				Ward previousValue = this._Ward.Entity;
-				if (((previousValue != value) 
-							|| (this._Ward.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Ward.Entity = null;
-						previousValue.Localities.Remove(this);
-					}
-					this._Ward.Entity = value;
-					if ((value != null))
-					{
-						value.Localities.Add(this);
-						this._WardId = value.Id;
-					}
-					else
-					{
-						this._WardId = default(System.Guid);
-					}
-					this.SendPropertyChanged("Ward");
 				}
 			}
 		}

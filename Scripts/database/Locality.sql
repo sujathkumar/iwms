@@ -1,7 +1,7 @@
 USE [IWMS]
 GO
 
-/****** Object:  Table [dbo].[Locality]    Script Date: 10/3/2015 10:36:07 AM ******/
+/****** Object:  Table [dbo].[Locality]    Script Date: 10/11/2015 10:40:45 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -18,13 +18,6 @@ CREATE TABLE [dbo].[Locality](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-GO
-
-ALTER TABLE [dbo].[Locality]  WITH CHECK ADD  CONSTRAINT [FK_Locality_Ward] FOREIGN KEY([WardId])
-REFERENCES [dbo].[Ward] ([Id])
-GO
-
-ALTER TABLE [dbo].[Locality] CHECK CONSTRAINT [FK_Locality_Ward]
 GO
 
 

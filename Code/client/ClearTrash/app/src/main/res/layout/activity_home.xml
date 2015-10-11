@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:text="Select your Service"
+        android:background="@android:color/transparent"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/hhGarbageButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="House Hold Garbage"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/roundedstylebutton"
+         />
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/bulkGarbageButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="Bulk Garbage"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="190dp"
+        android:background="@drawable/roundedstylebutton"
+        />
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/spotGarbageButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="Spot Garbage"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/roundedstylebutton"
+        />
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/registerVolunteerButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="Be a Volunteer"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="190dp"
+        android:background="@drawable/roundedstylebutton"
+        />
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/knowSegregationButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="Know more about Segregation"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/roundedstylebutton"
+        />
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/checkmyPointsButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="My Points"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="190dp"
+        android:background="@drawable/roundedstylebutton"
+        />
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/registerComplaintButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="Register a Complaint"
+        android:layout_marginTop="270dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/roundedstylebutton"
+        />
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/promotionsButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="Promotions"
+        android:layout_marginTop="270dp"
+        android:layout_marginLeft="190dp"
+        android:background="@drawable/roundedstylebutton"
+        />
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/donateUsedItemsButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="Donate Used Items"
+        android:layout_marginTop="340dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/roundedstylebutton"
+        />
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/practiseWasteSegregationButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="Practise Waste Segregation"
+        android:layout_marginTop="340dp"
+        android:layout_marginLeft="190dp"
+        android:background="@drawable/roundedstylebutton"
+        />
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/referFriendButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="Refer a Friend"
+        android:layout_marginTop="410dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/roundedstylebutton"
+        />
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:id="@+id/suggestionsButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#FFFFFF"
+        android:text="Suggestions"
+        android:layout_marginTop="410dp"
+        android:layout_marginLeft="190dp"
+        android:background="@drawable/roundedstylebutton"
+        />
+
+</RelativeLayout>

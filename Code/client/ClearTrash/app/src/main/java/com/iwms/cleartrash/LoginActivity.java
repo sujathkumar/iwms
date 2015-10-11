@@ -292,6 +292,7 @@ public class LoginActivity extends Activity  {
                          if(vc.contains("201"))
                          {
                              WriteToCache(genKey);
+                             Helper.Key = genKey;
                              Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                              startActivity(intent);
                          }

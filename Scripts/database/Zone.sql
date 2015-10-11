@@ -1,7 +1,7 @@
 USE [IWMS]
 GO
 
-/****** Object:  Table [dbo].[Zone]    Script Date: 10/3/2015 10:36:27 AM ******/
+/****** Object:  Table [dbo].[Zone]    Script Date: 10/11/2015 10:41:29 PM ******/
 SET ANSI_NULLS ON
 GO
 

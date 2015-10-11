@@ -1,0 +1,5 @@
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.BinServiceProvider\bin\Debug\IWMS.Solutions.Server.BinServiceProvider.dll
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.BinServiceProvider\bin\Debug\IWMS.Solutions.Server.BinServiceProvider.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.BinServiceProvider\obj\Debug\IWMS.Solutions.Server.BinServiceProvider.dll
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.BinServiceProvider\obj\Debug\IWMS.Solutions.Server.BinServiceProvider.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.BinServiceProvider\bin\Debug\IWMS.Solutions.Server.BinServiceProvider.dll.config

@@ -34,3 +34,5 @@ C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Soluti
 C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\IWMSService\bin\IWMS.Solutions.Server.WardDataProvider.dll
 C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\IWMSService\bin\IWMS.Solutions.Server.AuthProvider.pdb
 C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\IWMSService\bin\IWMS.Solutions.Server.WardDataProvider.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\IWMSService\bin\IWMS.Solutions.Server.BinServiceProvider.dll
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\IWMSService\bin\IWMS.Solutions.Server.BinServiceProvider.pdb

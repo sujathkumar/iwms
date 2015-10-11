@@ -6,7 +6,6 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.provider.Settings;
@@ -14,11 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.android.gms.iid.InstanceID;
-
-import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class HomeActivity extends Activity {
 
@@ -27,7 +24,7 @@ public class HomeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         turnGPSOn();
 
@@ -36,8 +33,64 @@ public class HomeActivity extends Activity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String signInUrl = "http://" + Helper.Server  + "/ManagementService/api/household/authenticate%7C" + Helper.Key;
+                RequestTask task = (RequestTask) new RequestTask().execute(signInUrl);
+                String statusCode = "";
+
+                try {
+                    statusCode = task.get();
+                    if (statusCode.contains("205") || statusCode.contains("206")) {
+                        InsertAddress();
+                    }
+                    else if (statusCode.contains("207") || statusCode.contains("208"))
+                    {
+                        Intent intent = new Intent(HomeActivity.this, HHG6Activity.class);
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Error, Please Try Again!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                catch (InterruptedException e)
+                {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                catch (ExecutionException e)
+                {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
+    }
+
+    public void InsertAddress()
+    {
+        // Build the alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK);
+        builder.setTitle("Household Garbage Service");
+        builder.setMessage("Please enter your Home Address");
+        builder.setNegativeButton("Use Current Location", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Show location settings when the user acknowledges the alert dialog
+                // Show location settings when the user acknowledges the alert dialog
+                Intent intent = new Intent(HomeActivity.this, HHG1Activity.class);
+                startActivity(intent);
+            }
+        });
+        builder.setPositiveButton("Enter Manually", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Show location settings when the user acknowledges the alert dialog
+                Intent intent = new Intent(HomeActivity.this, HHG2Activity.class);
+                startActivity(intent);
+            }
+        });
+        Dialog alertDialog = builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
     }
 
     public void turnGPSOn()
@@ -47,7 +100,7 @@ public class HomeActivity extends Activity {
         if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
         {
             // Build the alert dialog
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK);
             builder.setTitle("Location Services Not Active");
             builder.setMessage("Please enable Location Services and GPS");
             builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

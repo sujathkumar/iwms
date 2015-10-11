@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using IWMS.Solutions.Server.WardDataProvider.Models;
 using Auth = IWMS.Solutions.Server.AuthProvider;
 using WardData = IWMS.Solutions.Server.WardDataProvider;
+using BinService = IWMS.Solutions.Server.BinServiceProvider;
 
 
 namespace IWMS.Solutions.Server.TestConsole
@@ -49,52 +50,71 @@ namespace IWMS.Solutions.Server.TestConsole
                 //    RetrieveLocalities();
                 //}
 
+                //Console.WriteLine("*********************************************************");
+                //Console.WriteLine("Select Options\n");
+                //Console.WriteLine("*********************************************************");
+                //Console.WriteLine("1. Get Locations 2. Authenticate 3. Signup 4. Confirm Signup 5. Sigin 6. Confirm Signin 7. Register key 8. Delete User 9. Delete All Users");
+                //string selection = Console.ReadLine();
+                //if (selection == "1")
+                //{
+                //    RetrieveCities();
+                //}
+                //else if (selection == "2")
+                //{
+                //    AuthenticateUser();
+                //}
+                //else if (selection == "3")
+                //{
+                //    SignupUser();
+                //}
+                //else if (selection == "4")
+                //{
+                //    ConfirmUserSignup();
+                //}
+                //else if (selection == "5")
+                //{
+                //    SigninUser();
+                //}
+                //else if (selection == "6")
+                //{
+                //    ConfirmUserSignin();
+                //}
+                //else if (selection == "7")
+                //{
+                //    RegisterUserKey();
+                //}
+                //else if(selection == "8")
+                //{
+                //    DeleteUser();
+                //}
+                //else if(selection == "9")
+                //{
+                //    DeleteAllUsers();
+                //}
+
                 Console.WriteLine("*********************************************************");
                 Console.WriteLine("Select Options\n");
                 Console.WriteLine("*********************************************************");
-                Console.WriteLine("1. Get Locations 2. Authenticate 3. Signup 4. Confirm Signup 5. Sigin 6. Confirm Signin 7. Register key 8. Delete User 9. Delete All Users");
+                Console.WriteLine("1. Retrieve House Hold User Information");
                 string selection = Console.ReadLine();
-                if (selection == "1")
+                if( selection == "")
                 {
-                    RetrieveCities();
-                }
-                else if (selection == "2")
-                {
-                    AuthenticateUser();
-                }
-                else if (selection == "3")
-                {
-                    SignupUser();
-                }
-                else if (selection == "4")
-                {
-                    ConfirmUserSignup();
-                }
-                else if (selection == "5")
-                {
-                    SigninUser();
-                }
-                else if (selection == "6")
-                {
-                    ConfirmUserSignin();
-                }
-                else if (selection == "7")
-                {
-                    RegisterUserKey();
-                }
-                else if(selection == "8")
-                {
-                    DeleteUser();
-                }
-                else if(selection == "9")
-                {
-                    DeleteAllUsers();
+                    RetrieveHHUserInfo();
                 }
                 else
                 {
                     Environment.Exit(0);
                 }
             }
+        }
+
+        private static void RetrieveHHUserInfo()
+        {
+            Console.WriteLine("Input Key");
+            string key = Console.ReadLine();
+
+            BinService.Provider provider = new BinService.Provider();
+            provider.RetrieveHHUserInfo(key);
         }
         
         /// <summary>

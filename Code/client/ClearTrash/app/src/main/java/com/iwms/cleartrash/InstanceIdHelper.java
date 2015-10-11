@@ -46,7 +46,7 @@ public class InstanceIdHelper {
                 try {
                      String token = InstanceID.getInstance(mContext)
                             .getToken(authorizedEntity, scope, extras);
-                    Helper.GCMToken = token.replace(":","colon");
+                    Helper.GCMToken = token.replace(":","c_olon");
                 }
                 catch (final IOException e) {
                 }

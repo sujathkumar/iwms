@@ -1,0 +1,173 @@
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dip">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:text="Your Current Location"
+            android:background="@android:color/transparent"
+            android:padding="30dp"
+            android:textColor="#b9000000"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_span="2" />
+    </TableRow>
+
+    <!--  House No -->
+    <TableRow>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="130dip"
+            android:textColor="#b9000000"
+            android:textSize="20dp"
+            android:text="House No"/>
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="240dip"
+            android:id="@+id/houseNoEditText"/>
+    </TableRow>
+
+    <!--  House Name -->
+    <TableRow>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="130dip"
+            android:textColor="#b9000000"
+            android:textSize="20dp"
+            android:text="House Name"/>
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="240dip"
+            android:id="@+id/houseNameEditText"/>
+    </TableRow>
+
+    <!--  Apartment Name -->
+    <TableRow>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="130dip"
+            android:textColor="#b9000000"
+            android:textSize="20dp"
+            android:text="Apt Name"/>
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="240dip"
+            android:id="@+id/aptNameEditText"/>
+    </TableRow>
+
+    <!--  Street No -->
+    <TableRow>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="130dip"
+            android:textColor="#b9000000"
+            android:textSize="20dp"
+            android:text="Street"/>
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="240dip"
+            android:id="@+id/streetEditText"/>
+    </TableRow>
+
+    <!--  Locality -->
+    <TableRow>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="130dip"
+            android:textColor="#b9000000"
+            android:textSize="20dp"
+            android:text="Locality"/>
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="240dip"
+            android:id="@+id/localityEditText"/>
+    </TableRow>
+
+    <!--  Ward -->
+    <TableRow>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="130dip"
+            android:textColor="#b9000000"
+            android:textSize="20dp"
+            android:text="Ward"            />
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="240dip"
+            android:enabled="false"
+            android:id="@+id/wardEditText"/>
+    </TableRow>
+
+    <!--  City -->
+    <TableRow>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="130dip"
+            android:textColor="#b9000000"
+            android:textSize="20dp"
+            android:text="City"/>
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="240dip"
+            android:enabled="false"
+            android:id="@+id/cityEditText"/>
+    </TableRow>
+
+    <!--  Pin code -->
+    <TableRow>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="130dip"
+            android:textColor="#b9000000"
+            android:textSize="20dp"
+            android:text="Pincode"/>
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="240dip"
+            android:enabled="false"
+            android:id="@+id/pincodeEditText" />
+    </TableRow>
+
+<TableRow>
+    <!-- Save button -->
+</TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button android:id="@+id/saveButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:textColor="#FFFFFF"
+            android:text="Save"
+            android:layout_column="1"
+            android:background="@drawable/roundedstylebutton"/>
+    </TableRow>
+
+</TableLayout>

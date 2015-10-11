@@ -45,8 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidGCMPushNotification.cs" />
-    <Compile Include="Classes\CityPoint.cs" />
-    <Compile Include="DataAccess.designer.cs">
+    <Compile Include="Models\CityPoint.cs" />
+    <Compile Include="Models\DataAccess.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataAccess.dbml</DependentUpon>
@@ -56,12 +56,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Provider.cs" />
+    <Compile Include="Classes\Provider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="DataAccess.dbml">
+    <None Include="Models\DataAccess.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataAccess.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
@@ -75,7 +75,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataAccess.dbml.layout">
+    <None Include="Models\DataAccess.dbml.layout">
       <DependentUpon>DataAccess.dbml</DependentUpon>
     </None>
   </ItemGroup>

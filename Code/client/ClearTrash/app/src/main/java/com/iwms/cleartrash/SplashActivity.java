@@ -33,6 +33,7 @@ public class SplashActivity extends Activity {
                     String statusCode = VerifyKey(key);
                     Intent intent = null;
                     if (statusCode.contains("201")) {
+                        Helper.Key = key;
                         intent = new Intent(SplashActivity.this, HomeActivity.class);
                     } else {
                         intent = new Intent(SplashActivity.this, LoginActivity.class);

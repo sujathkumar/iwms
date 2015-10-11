@@ -62,6 +62,7 @@ public class ManualVerificationCodeActivity extends Activity {
 
                         //Write to Cache
                         WriteToCache(key);
+                        Helper.Key = key;
                         Intent intent = new Intent(ManualVerificationCodeActivity.this, HomeActivity.class);
                         startActivity(intent);
                     }
@@ -86,6 +87,7 @@ public class ManualVerificationCodeActivity extends Activity {
 
                             if (statusCode.contains("203")) {
                                 WriteToCache(genKey);
+                                Helper.Key = genKey;
                                 Intent intent = new Intent(ManualVerificationCodeActivity.this, HomeActivity.class);
                                 startActivity(intent);
                             } else {

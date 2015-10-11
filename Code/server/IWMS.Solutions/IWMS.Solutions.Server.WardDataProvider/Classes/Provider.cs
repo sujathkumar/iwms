@@ -128,7 +128,8 @@ namespace IWMS.Solutions.Server.WardDataProvider
                 IList<Ward> wards = new List<Ward>();
                 foreach (var cordinate in nearCordinates)
                 {
-                    wards.Add(cordinate.Ward);
+                    var cordinateWard = longWards.Where(@w => @w.Id == cordinate.WardId).First();
+                    wards.Add(cordinateWard);
                 }
 
                 Dictionary<string, int> wardDic = new Dictionary<string, int>();
@@ -256,7 +257,7 @@ namespace IWMS.Solutions.Server.WardDataProvider
             SubmitData();
         }
 
-        private static Guid InsertWardMetadata(Guid zoneId, int wardNumber, string wardName, CordinatePoint top, CordinatePoint left, CordinatePoint bottom, CordinatePoint right, DataAccessDataContext context)
+        private Guid InsertWardMetadata(Guid zoneId, int wardNumber, string wardName, CordinatePoint top, CordinatePoint left, CordinatePoint bottom, CordinatePoint right, DataAccessDataContext context)
         {
             Guid wardId = Guid.NewGuid();
 
@@ -626,9 +627,9 @@ namespace IWMS.Solutions.Server.WardDataProvider
         /// <summary>
         /// Submit Database Changes
         /// </summary>
-        private static void SubmitData()
+        private void SubmitData()
         {
-            SubmitData();
+            context.SubmitChanges();
         }
     }
 }
