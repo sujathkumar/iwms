@@ -51,7 +51,7 @@ public class HHG1Activity extends Activity {
         longitude = location.getLongitude();
 
         String latStr = String.valueOf(latitude).replace('.','_').substring(0,8);
-        final String longStr = String.valueOf(longitude).replace('.','_').substring(0,8);
+        String longStr = String.valueOf(longitude).replace('.','_').substring(0,8);
 
         GetAddressFromLocation(latitude, longitude, getApplicationContext(), new GeocoderHandler());
 

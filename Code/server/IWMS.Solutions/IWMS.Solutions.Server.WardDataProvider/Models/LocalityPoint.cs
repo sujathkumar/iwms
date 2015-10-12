@@ -12,17 +12,7 @@ namespace IWMS.Solutions.Server.WardDataProvider
         public int WardNumber { get; set; }
         public int SubWardNumber { get; set; }
 
-        public string DisplayName
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public string DisplayName { get; set; }
 
         public string Tag
         {
