@@ -96,6 +96,31 @@ namespace IWMS.Solutions.Server.BinServiceProvider
         }
 
         /// <summary>
+        /// RetrieveAddress
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string RetrieveAddress(string key)
+        {
+            try
+            {
+                string cityNumber = key.Substring(0, 2);
+                var city = context.Cities.Where(@w => @w.Number == cityNumber).First();
+                var auth = context.Auths.Where(@w => @w.Key == key).First();
+                var user = context.Users.Where(@w => @w.Id == auth.UserId).First();
+                var address = context.Addresses.Where(@w => @w.UserId == auth.UserId).First();
+
+                return  user.Name + "s_lash" + address.HouseNo + "s_lash" + address.HouseName + "s_lash" +
+                    address.ApartmentName + "s_lash" + address.Street + "s_lash" +
+                    address.Locality + "s_lash" + city.Name + "s_lash" + address.PINCODE;
+            }
+            catch (Exception ex)
+            {
+                return "100";
+            }
+        }
+
+        /// <summary>
         /// InsertAddress
         /// </summary>
         /// <param name="key"></param>

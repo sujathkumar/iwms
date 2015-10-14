@@ -7,23 +7,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.CompoundButton;
-import android.widget.PopupWindow;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
-
-import javax.net.ssl.HandshakeCompletedListener;
 
 public class VerificationCodeActivity extends Activity {
 
@@ -32,7 +24,7 @@ public class VerificationCodeActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verificationcode);
+        setContentView(R.layout.activity_verification_code);
 
         final Chronometer focus = (Chronometer) findViewById(R.id.vcTimer);
         focus.start();
@@ -111,7 +103,7 @@ public class VerificationCodeActivity extends Activity {
 
                 //Write to Cache
                 WriteToCache(key);
-                Helper.Key = key;
+                Helper.Key = key.replace('"',' ').trim();
                 Intent intent = new Intent(VerificationCodeActivity.this, HomeActivity.class);
                 startActivity(intent);
             } else {
@@ -148,7 +140,7 @@ public class VerificationCodeActivity extends Activity {
 
                     if (statusCode.contains("203")) {
                         WriteToCache(genKey);
-                        Helper.Key = genKey;
+                        Helper.Key = genKey.replace('"',' ').trim();
                         Intent intent = new Intent(VerificationCodeActivity.this, HomeActivity.class);
                         startActivity(intent);
                     } else {

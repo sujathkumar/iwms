@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#FFFFFF"
+    tools:context="com.iwms.cleartrash.HHGDisplayAddressActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:text="Your House Address: "
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_height="200dip"
+        android:layout_width="wrap_content"
+        android:id="@+id/houseAddressEditText"
+        android:padding="20dip"
+        android:gravity="bottom"
+        android:background="#dedee6"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/garbageTagTextView" />
+
+    <RadioButton android:id="@+id/currentButton"
+        android:layout_width="160dip"
+        android:layout_height="wrap_content"
+        android:text="Use Current Location"
+        android:enabled="false"
+        android:checked="false"
+        android:layout_below="@+id/houseAddressEditText"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/dryGarbageButton" />
+
+    <RadioButton android:id="@+id/manualButton"
+        android:layout_width="160dip"
+        android:layout_height="wrap_content"
+        android:text="Enter Manually"
+        android:layout_alignTop="@+id/currentButton"
+        android:layout_alignEnd="@+id/houseAddressEditText"
+        android:enabled="false"
+        android:layout_above="@+id/textView7" />
+
+    <Button android:id="@+id/editButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:text="Edit"
+        android:layout_alignBottom="@+id/houseAddressEditText"
+        android:layout_alignStart="@+id/wasteGarbageButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please select the type of garbage:"
+        android:background="@android:color/transparent"
+        android:textColor="#000000"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:id="@+id/textView7"
+        android:layout_below="@+id/currentButton"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp" />
+
+    <RadioButton android:id="@+id/wetGarbageButton"
+        android:layout_width="100dip"
+        android:layout_height="wrap_content"
+        android:text="WET"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView7"
+        android:layout_alignParentLeft="true" />
+
+    <RadioButton android:id="@+id/dryGarbageButton"
+        android:layout_width="100dip"
+        android:layout_height="wrap_content"
+        android:text="DRY"
+        android:layout_below="@+id/textView7"
+        android:layout_centerHorizontal="true" />
+
+    <RadioButton android:id="@+id/wasteGarbageButton"
+        android:layout_width="100dip"
+        android:layout_height="wrap_content"
+        android:text="E-Waste"
+        android:layout_below="@+id/textView7"
+        android:layout_alignEnd="@+id/manualButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="Your Garbage TAG ID:"
+        android:background="@android:color/transparent"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:id="@+id/garbageTagTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/wetGarbageButton" />
+</RelativeLayout>

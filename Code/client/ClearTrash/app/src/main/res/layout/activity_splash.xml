@@ -24,7 +24,7 @@
         android:id="@+id/editText1"
         android:text="Nothing is waste until wasted!"
         android:background="@android:color/transparent"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="440dp"
         android:padding="30dp"
         android:textColor="#b9000000"
         android:layout_alignParentTop="true"

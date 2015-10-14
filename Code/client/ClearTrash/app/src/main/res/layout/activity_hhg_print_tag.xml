@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#FFFFFF"
+    tools:context="com.iwms.cleartrash.HHGPrintTagActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:text="Thank You!!!"
+        android:background="@android:color/transparent"
+        android:padding="20dp"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:padding="6dp"
+        android:text="Your Garbage Tag ID is:"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView5" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000000"
+        android:textSize="26dp"
+        android:padding="6dp"
+        android:text=" "
+        android:id="@+id/garbageIdTextView"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:padding="6dp"
+        android:text="- Your Kit will reach you in 2 - 3 days."
+        android:id="@+id/textView4"
+        android:layout_above="@+id/textView6"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:padding="6dp"
+        android:text="- Please put WET waste in RED color bag and DRY waste in BLUE color bag."
+        android:id="@+id/textView6"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:width="10dp"
+        android:text="Know more about Waste Segregation"
+        android:background="@drawable/roundedstylebutton"
+        android:textColor="#FFFFFF"
+        android:layout_width="127dp"
+        android:layout_column="5"
+        android:id="@+id/knowSegregationButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/textView6"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/schedulePickupButton"
+        android:text="Request a Garbage Pickup"
+        android:background="@drawable/roundedstylebutton"
+        android:textColor="#FFFFFF"
+        android:layout_column="5"
+        android:layout_marginTop="39dp"
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/textView6" />
+
+</RelativeLayout>

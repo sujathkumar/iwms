@@ -50,6 +50,11 @@ namespace ManagementService.Controllers
                     string data = values[1];
                     return provider.RetrieveGarbageTag(data).ToString();
                 }
+                else if (method == "raddress")
+                {
+                    string data = values[1];
+                    return provider.RetrieveAddress(data).ToString();
+                }
                 else
                 {
                     throw new HttpResponseException(HttpStatusCode.NotFound);

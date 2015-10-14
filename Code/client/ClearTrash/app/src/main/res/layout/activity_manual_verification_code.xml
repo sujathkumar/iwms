@@ -36,6 +36,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="36dp"
+        android:textColor="#FFFFFF"
         android:paddingTop="4dp"
         android:background="@drawable/roundedbutton"/>
 </RelativeLayout>

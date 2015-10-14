@@ -13,13 +13,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
 public class HomeActivity extends Activity {
 
-    Button b1;
+    ImageButton b1;
+    ScrollView scrollView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +32,7 @@ public class HomeActivity extends Activity {
 
         turnGPSOn();
 
-        b1 = (Button)findViewById(R.id.hhGarbageButton);
+        b1 = (ImageButton)findViewById(R.id.hhGarbageButton);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +49,7 @@ public class HomeActivity extends Activity {
                     }
                     else if (statusCode.contains("207") || statusCode.contains("208"))
                     {
-                        Intent intent = new Intent(HomeActivity.this, HHG6Activity.class);
+                        Intent intent = new Intent(HomeActivity.this, HHGDisplayAddressActivity.class);
                         startActivity(intent);
                     }
                     else
@@ -77,14 +81,14 @@ public class HomeActivity extends Activity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Show location settings when the user acknowledges the alert dialog
                 // Show location settings when the user acknowledges the alert dialog
-                Intent intent = new Intent(HomeActivity.this, HHG1Activity.class);
+                Intent intent = new Intent(HomeActivity.this, HHGCurrentLocationActivity.class);
                 startActivity(intent);
             }
         });
         builder.setPositiveButton("Enter Manually", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Show location settings when the user acknowledges the alert dialog
-                Intent intent = new Intent(HomeActivity.this, HHG2Activity.class);
+                Intent intent = new Intent(HomeActivity.this, HHGManualLocationActivity.class);
                 startActivity(intent);
             }
         });

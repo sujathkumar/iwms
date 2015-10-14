@@ -34,7 +34,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon_clear_trash"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
@@ -98,15 +98,27 @@
 
         <service android:name=".GCMNotificationIntentService" />
 
-        <activity android:name=".HHG1Activity" >
+        <activity android:name=".HHGCurrentLocationActivity" >
         </activity>
-        <activity android:name=".HHG6Activity" >
+        <activity android:name=".HHGDisplayAddressActivity" >
         </activity>
-        <activity android:name=".HHG2Activity" >
+        <activity android:name=".HHGManualLocationActivity" >
         </activity>
-        <activity android:name=".HHG3Activity" >
+        <activity android:name=".HHGAcceptanceDecisionActivity" >
         </activity>
-        <activity android:name=".HHG4Activity" >
+        <activity android:name=".HHGPrintTagActivity" >
+        </activity>
+        <activity android:name=".WetGarbageActivity" >
+        </activity>
+        <activity android:name=".DryGarbageActivity" >
+        </activity>
+        <activity android:name=".WasteGarbageActivity" >
+        </activity>
+        <activity android:name=".OrderWetBagsActivity" >
+        </activity>
+        <activity android:name=".OrderDryBagsActivity" >
+        </activity>
+        <activity android:name=".OrderWasteBagsActivity" >
         </activity>
     </application>
 
