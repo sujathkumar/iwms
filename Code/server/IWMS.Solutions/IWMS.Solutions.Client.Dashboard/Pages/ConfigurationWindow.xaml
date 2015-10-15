@@ -1,0 +1,15 @@
+﻿<Window x:Class="IWMS.Solutions.Client.Dashboard.ConfigurationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Enter your Mobile Number" Height="77" Width="362" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <StackPanel Margin="0,0,2,2" Orientation="Vertical" Background="#FF16499A">
+        <TextBlock Text="   Configuring your details... Enter your Mobile Number! " Foreground="White" FontSize="14"></TextBlock>
+        <StackPanel Margin="10,10,2,2" Orientation="Horizontal">
+            <TextBox x:Name="txtMobile" Width="260">
+            </TextBox>
+            <Label>                
+            </Label>
+            <Button Background="White" Height="25" Content="Ok" Width="60" Click="btnOk_Click" />
+        </StackPanel>
+    </StackPanel>
+</Window>

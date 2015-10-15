@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWMSService", "IWMS.Solutio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWMS.Solutions.Server.BinServiceProvider", "IWMS.Solutions.Server.BinServiceProvider\IWMS.Solutions.Server.BinServiceProvider.csproj", "{5BFEE508-02C8-487A-90D6-B1898C9DE895}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWMS.Solutions.Server.CollectorServiceProvider", "IWMS.Solutions.Server.CollectorServiceProvider\IWMS.Solutions.Server.CollectorServiceProvider.csproj", "{B7517221-B1CC-4410-8BA1-B05EE1EEE775}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWMS.Solutions.Client.Dashboard", "IWMS.Solutions.Client.Dashboard\IWMS.Solutions.Client.Dashboard.csproj", "{65839F31-D1AD-429B-BB0F-FBD48AA35C32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{5BFEE508-02C8-487A-90D6-B1898C9DE895}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BFEE508-02C8-487A-90D6-B1898C9DE895}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BFEE508-02C8-487A-90D6-B1898C9DE895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7517221-B1CC-4410-8BA1-B05EE1EEE775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7517221-B1CC-4410-8BA1-B05EE1EEE775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7517221-B1CC-4410-8BA1-B05EE1EEE775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7517221-B1CC-4410-8BA1-B05EE1EEE775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65839F31-D1AD-429B-BB0F-FBD48AA35C32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65839F31-D1AD-429B-BB0F-FBD48AA35C32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65839F31-D1AD-429B-BB0F-FBD48AA35C32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65839F31-D1AD-429B-BB0F-FBD48AA35C32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

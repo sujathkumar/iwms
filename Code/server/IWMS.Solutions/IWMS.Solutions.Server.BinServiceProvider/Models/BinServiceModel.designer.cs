@@ -160,6 +160,54 @@ namespace IWMS.Solutions.Server.BinServiceProvider.Models
 				return this.GetTable<WardTag>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Collector> Collectors
+		{
+			get
+			{
+				return this.GetTable<Collector>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CollectorFrequency> CollectorFrequencies
+		{
+			get
+			{
+				return this.GetTable<CollectorFrequency>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CollectorGarbageType> CollectorGarbageTypes
+		{
+			get
+			{
+				return this.GetTable<CollectorGarbageType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CollectorSlot> CollectorSlots
+		{
+			get
+			{
+				return this.GetTable<CollectorSlot>();
+			}
+		}
+		
+		public System.Data.Linq.Table<GarbageType> GarbageTypes
+		{
+			get
+			{
+				return this.GetTable<GarbageType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UserRequest> UserRequests
+		{
+			get
+			{
+				return this.GetTable<UserRequest>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
@@ -1604,6 +1652,582 @@ namespace IWMS.Solutions.Server.BinServiceProvider.Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Collector")]
+	public partial class Collector
+	{
+		
+		private System.Guid _Id;
+		
+		private string _Name;
+		
+		private string _Address;
+		
+		private System.Guid _WardId;
+		
+		private string _Mobile;
+		
+		private System.Guid _FrequencyId;
+		
+		public Collector()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this._Address = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WardId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid WardId
+		{
+			get
+			{
+				return this._WardId;
+			}
+			set
+			{
+				if ((this._WardId != value))
+				{
+					this._WardId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mobile", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Mobile
+		{
+			get
+			{
+				return this._Mobile;
+			}
+			set
+			{
+				if ((this._Mobile != value))
+				{
+					this._Mobile = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FrequencyId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid FrequencyId
+		{
+			get
+			{
+				return this._FrequencyId;
+			}
+			set
+			{
+				if ((this._FrequencyId != value))
+				{
+					this._FrequencyId = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CollectorFrequency")]
+	public partial class CollectorFrequency
+	{
+		
+		private System.Guid _Id;
+		
+		private int _PickupFrequency;
+		
+		private int _FrequencyType;
+		
+		private int _Capacity;
+		
+		private System.DateTime _LastUpdateDate;
+		
+		public CollectorFrequency()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PickupFrequency", DbType="Int NOT NULL")]
+		public int PickupFrequency
+		{
+			get
+			{
+				return this._PickupFrequency;
+			}
+			set
+			{
+				if ((this._PickupFrequency != value))
+				{
+					this._PickupFrequency = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FrequencyType", DbType="Int NOT NULL")]
+		public int FrequencyType
+		{
+			get
+			{
+				return this._FrequencyType;
+			}
+			set
+			{
+				if ((this._FrequencyType != value))
+				{
+					this._FrequencyType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Capacity", DbType="Int NOT NULL")]
+		public int Capacity
+		{
+			get
+			{
+				return this._Capacity;
+			}
+			set
+			{
+				if ((this._Capacity != value))
+				{
+					this._Capacity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime LastUpdateDate
+		{
+			get
+			{
+				return this._LastUpdateDate;
+			}
+			set
+			{
+				if ((this._LastUpdateDate != value))
+				{
+					this._LastUpdateDate = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CollectorGarbageType")]
+	public partial class CollectorGarbageType
+	{
+		
+		private System.Guid _Id;
+		
+		private System.Guid _GarbageTypeId;
+		
+		private System.Guid _CollectorId;
+		
+		public CollectorGarbageType()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GarbageTypeId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid GarbageTypeId
+		{
+			get
+			{
+				return this._GarbageTypeId;
+			}
+			set
+			{
+				if ((this._GarbageTypeId != value))
+				{
+					this._GarbageTypeId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CollectorId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid CollectorId
+		{
+			get
+			{
+				return this._CollectorId;
+			}
+			set
+			{
+				if ((this._CollectorId != value))
+				{
+					this._CollectorId = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CollectorSlot")]
+	public partial class CollectorSlot
+	{
+		
+		private System.Guid _Id;
+		
+		private System.DateTime _SlotFrom;
+		
+		private System.DateTime _SlotTo;
+		
+		private System.Guid _FrequencyId;
+		
+		public CollectorSlot()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SlotFrom", DbType="DateTime NOT NULL")]
+		public System.DateTime SlotFrom
+		{
+			get
+			{
+				return this._SlotFrom;
+			}
+			set
+			{
+				if ((this._SlotFrom != value))
+				{
+					this._SlotFrom = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SlotTo", DbType="DateTime NOT NULL")]
+		public System.DateTime SlotTo
+		{
+			get
+			{
+				return this._SlotTo;
+			}
+			set
+			{
+				if ((this._SlotTo != value))
+				{
+					this._SlotTo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FrequencyId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid FrequencyId
+		{
+			get
+			{
+				return this._FrequencyId;
+			}
+			set
+			{
+				if ((this._FrequencyId != value))
+				{
+					this._FrequencyId = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.GarbageType")]
+	public partial class GarbageType
+	{
+		
+		private System.Guid _Id;
+		
+		private short _Number;
+		
+		private string _Type;
+		
+		public GarbageType()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Number", DbType="SmallInt NOT NULL")]
+		public short Number
+		{
+			get
+			{
+				return this._Number;
+			}
+			set
+			{
+				if ((this._Number != value))
+				{
+					this._Number = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this._Type = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserRequest")]
+	public partial class UserRequest
+	{
+		
+		private System.Guid _Id;
+		
+		private string _RequestNumber;
+		
+		private System.Guid _GarbageTypeId;
+		
+		private System.DateTime _RequestTime;
+		
+		private System.DateTime _ScheduleTime;
+		
+		private System.Guid _GarbageId;
+		
+		private System.Guid _CollectorId;
+		
+		private System.Guid _UserId;
+		
+		public UserRequest()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestNumber", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string RequestNumber
+		{
+			get
+			{
+				return this._RequestNumber;
+			}
+			set
+			{
+				if ((this._RequestNumber != value))
+				{
+					this._RequestNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GarbageTypeId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid GarbageTypeId
+		{
+			get
+			{
+				return this._GarbageTypeId;
+			}
+			set
+			{
+				if ((this._GarbageTypeId != value))
+				{
+					this._GarbageTypeId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTime", DbType="DateTime NOT NULL")]
+		public System.DateTime RequestTime
+		{
+			get
+			{
+				return this._RequestTime;
+			}
+			set
+			{
+				if ((this._RequestTime != value))
+				{
+					this._RequestTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ScheduleTime", DbType="DateTime NOT NULL")]
+		public System.DateTime ScheduleTime
+		{
+			get
+			{
+				return this._ScheduleTime;
+			}
+			set
+			{
+				if ((this._ScheduleTime != value))
+				{
+					this._ScheduleTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GarbageId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid GarbageId
+		{
+			get
+			{
+				return this._GarbageId;
+			}
+			set
+			{
+				if ((this._GarbageId != value))
+				{
+					this._GarbageId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CollectorId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid CollectorId
+		{
+			get
+			{
+				return this._CollectorId;
+			}
+			set
+			{
+				if ((this._CollectorId != value))
+				{
+					this._CollectorId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this._UserId = value;
+				}
 			}
 		}
 	}

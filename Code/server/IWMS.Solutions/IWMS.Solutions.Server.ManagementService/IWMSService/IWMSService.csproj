@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CollectorController.cs" />
     <Compile Include="Controllers\HouseholdController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\LoginController.cs" />

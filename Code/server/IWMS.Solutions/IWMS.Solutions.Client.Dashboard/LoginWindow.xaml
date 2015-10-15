@@ -1,0 +1,52 @@
+﻿<Window x:Class="IWMS.Solutions.Client.Dashboard.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wpfsl="http://schemas.softarcs.com/wpfsmartlibrary"
+        Title="Login" Height="350" Width="525" WindowStartupLocation="CenterScreen" WindowStyle="None">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/WPFSmartLibraryLight35;component/ResourceDictionaries/CommonRD.xaml" />
+                <ResourceDictionary Source="LoginDialog.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="#FF16499A">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Button x:Name="btnCollector" Click="btnCollector_Click" Margin="10" Height="Auto" Width="Auto" Grid.Row="0" Grid.Column="0" Background="White">
+            <Image Source="C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Client.Dashboard\Images\collector.jpg"></Image>
+        </Button>
+        <TextBlock Text="Collector's Dashboard" TextWrapping="Wrap" TextAlignment="Center" FontSize="16" Foreground="White" Grid.Row="1" Grid.Column="0" Background="#FF16499A" />
+
+        <Button x:Name="btnRecycler" Click="btnRecycler_Click" Focusable="False" Margin="10" Height="Auto" Width="Auto" Grid.Row="0" Grid.Column="1" Background="White">
+            <Image Source="C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Client.Dashboard\Images\recycler.jpg"></Image>
+        </Button>
+        <TextBlock Text="Recycler's Dashboard" TextWrapping="Wrap" TextAlignment="Center" FontSize="16" Foreground="White" Grid.Row="1" Grid.Column="1" Background="#FF16499A" />
+
+        <Button x:Name="btnBBMP" Click="btnBBMP_Click" Margin="10" Height="Auto" Width="Auto" Grid.Row="0" Grid.Column="2" Background="White">
+            <Image Source="C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Client.Dashboard\Images\bbmp.png"></Image>
+        </Button>
+        <TextBlock Text="BBMP's Dashboard" TextWrapping="Wrap" TextAlignment="Center" FontSize="16" Foreground="White" Grid.Row="1" Grid.Column="2" Background="#FF16499A" />
+
+        <wpfsl:SmartLoginOverlay x:Name="SmartLoginOverlayControl"
+										 FullSpan="On" Background="#FF16499A"
+										 UserName="{Binding UserName}"
+										 Password="{Binding Password}"
+										 AccessPassword="{Binding UserPassword}"
+										 UserImageSource="{Binding UserImageSource}"
+										 AdditionalUserInfo="{Binding MobileNumber}"
+										 AdditionalSystemInfo="Locked" />
+    </Grid>
+</Window>
