@@ -1,0 +1,6 @@
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\bin\Debug\IWMS.Solutions.Server.HealthService.exe.config
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\bin\Debug\IWMS.Solutions.Server.HealthService.exe
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\bin\Debug\IWMS.Solutions.Server.HealthService.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\obj\Debug\IWMS.Solutions.Server.HealthService.csprojResolveAssemblyReference.cache
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\obj\Debug\IWMS.Solutions.Server.HealthService.exe
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\obj\Debug\IWMS.Solutions.Server.HealthService.pdb

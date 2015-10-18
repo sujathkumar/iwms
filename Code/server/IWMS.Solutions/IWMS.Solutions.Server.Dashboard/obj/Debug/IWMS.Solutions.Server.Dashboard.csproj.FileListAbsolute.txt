@@ -1,0 +1,13 @@
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\bin\Debug\IWMS.Solutions.Server.Dashboard.exe.config
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\bin\Debug\IWMS.Solutions.Server.Dashboard.exe
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\bin\Debug\IWMS.Solutions.Server.Dashboard.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\obj\Debug\IWMS.Solutions.Server.Dashboard.Shell.resources
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\obj\Debug\IWMS.Solutions.Server.Dashboard.Properties.Resources.resources
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\obj\Debug\IWMS.Solutions.Server.Dashboard.csproj.GenerateResource.Cache
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\obj\Debug\IWMS.Solutions.Server.Dashboard.exe
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\obj\Debug\IWMS.Solutions.Server.Dashboard.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\obj\Debug\IWMS.Solutions.Server.Dashboard.exe.licenses
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\obj\Debug\IWMS.Solutions.Server.Dashboard.CreateCollector.resources
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\bin\Debug\IWMS.Solutions.Server.CollectorServiceProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\bin\Debug\IWMS.Solutions.Server.CollectorServiceProvider.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.Dashboard\obj\Debug\IWMS.Solutions.Server.Dashboard.csprojResolveAssemblyReference.cache

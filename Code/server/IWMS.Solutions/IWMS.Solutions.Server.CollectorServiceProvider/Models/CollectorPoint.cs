@@ -8,6 +8,8 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider.Models
 {
     public class CollectorPoint
     {
+        public Guid Id { get; set; }
+
         public string Name { get; set; }
 
         public string Address { get; set; }

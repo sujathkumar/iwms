@@ -16,8 +16,16 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider.Models
 
         public DateTime LastUpdateDate { get; set; }
 
-        public DateTime SlotFrom { get; set; }
+        public string SlotFrom1 { get; set; }
 
-        public DateTime SlotTo { get; set; }
+        public string SlotTo1 { get; set; }
+
+        public string SlotFrom2 { get; set; }
+
+        public string SlotTo2 { get; set; }
+
+        public string SlotFrom3 { get; set; }
+
+        public string SlotTo3 { get; set; }
     }
 }
