@@ -25,8 +25,8 @@ namespace ManagementService
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{latitude}/{longitude}",
-                defaults: new { latitude = RouteParameter.Optional, longitude = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{key1}/{key2}",
+                defaults: new { key1 = RouteParameter.Optional, key2 = RouteParameter.Optional }
             );           
         }
     }

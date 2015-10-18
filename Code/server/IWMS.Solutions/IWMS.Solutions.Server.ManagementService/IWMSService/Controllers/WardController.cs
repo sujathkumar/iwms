@@ -19,10 +19,10 @@ namespace ManagementService.Controllers
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
         /// <returns></returns>
-        public string GetWard(string latitude, string longitude)
+        public string GetWard(string key1, string key2)
         {
             WardData.Provider rdr = new WardData.Provider();
-            string ward = rdr.RetrieveWard(latitude.Replace('_', '.'), longitude.Replace('_', '.'));
+            string ward = rdr.RetrieveWard(key1.Replace('_', '.'), key2.Replace('_', '.'));
 
             if (string.IsNullOrEmpty(ward))
             {

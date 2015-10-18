@@ -47,12 +47,10 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
         /// <param name="mobile"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public CollectorPoint RetrieveCollector(string mobile, string password)
+        public string RetrieveCollector(string mobile, string password)
         {
             var collector = context.Collectors.Where(@w => @w.Mobile == mobile && @w.Password == password).First();
-            var ward = context.Wards.Where(@w => @w.Id == collector.WardId).First();
-
-            return new CollectorPoint { Name = collector.Name, Address = collector.Address, Mobile = collector.Mobile, Ward = ward.Name };
+            return collector.Id.ToString();
         }
 
         /// <summary>
@@ -74,7 +72,7 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
                 LastUpdateDate = frequency.LastUpdateDate,
             };
 
-            if(slots.Count()==1)
+            if (slots.Count() == 1)
             {
                 frequencyPoint.SlotFrom1 = slots.ElementAt(0).SlotFrom;
                 frequencyPoint.SlotTo1 = slots.ElementAt(0).SlotTo;
@@ -107,24 +105,33 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
         /// </summary>
         /// <param name="collectorId"></param>
         /// <returns></returns>
-        public RequestPoint RetrieveRequest(Guid collectorId)
+        public IList<RequestPoint> RetrieveRequest(Guid collectorId)
         {
-            var requests = context.UserRequests.Where(@w => @w.CollectorId == collectorId).First();
-            var garbage = context.Garbages.Where(@w => @w.Id == requests.GarbageId).First();
-            var garbageType = context.GarbageTypes.Where(@w => @w.Id == requests.GarbageTypeId).First();
-            var user = context.Users.Where(@w => @w.Id == requests.UserId).First();
-            var address = context.Addresses.Where(@w => @w.UserId == requests.UserId).First();
+            IList<RequestPoint> requestPointList = new List<RequestPoint>();
+            var requests = context.UserRequests.Where(@w => @w.CollectorId == collectorId);
 
-            return new RequestPoint
+            foreach (var request in requests)
             {
-                RequestNumber = requests.RequestNumber,
-                RequestTime = requests.RequestTime,
-                ScheduleTime = requests.ScheduleTime,
-                Tag = garbage.Tag,
-                GarbageType = garbageType.Type,
-                UserName = user.Name,
-                UserAddress = address.HouseNo + ", " + address.HouseName + ", " + address.ApartmentName + ", " + address.Street + ", " + address.Locality
-            };
+                var garbage = context.Garbages.Where(@w => @w.Id == request.GarbageId).First();
+                var garbageType = context.GarbageTypes.Where(@w => @w.Id == request.GarbageTypeId).First();
+                var user = context.Users.Where(@w => @w.Id == request.UserId).First();
+                var address = context.Addresses.Where(@w => @w.UserId == request.UserId).First();
+
+                RequestPoint requestPoint = new RequestPoint
+                {
+                    RequestNumber = request.RequestNumber,
+                    RequestTime = request.RequestTime,
+                    ScheduleTime = request.ScheduleTime,
+                    Tag = garbage.Tag,
+                    GarbageType = garbageType.Type,
+                    UserName = user.Name,
+                    UserAddress = address.HouseNo + ", " + address.HouseName + ", " + address.ApartmentName + ", " + address.Street + ", " + address.Locality
+                };
+
+                requestPointList.Add(requestPoint);
+            }
+
+            return requestPointList;
         }
 
         /// <summary>
@@ -142,7 +149,7 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
             }
 
             return garbageTypeList;
-        } 
+        }
 
         /// <summary>
         /// RetrieveCredentials
@@ -268,11 +275,38 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
             SubmitData();
         }
 
+        /// <summary>
+        /// UpdateLastCollectionTime
+        /// </summary>
+        /// <param name="date"></param>
+        public void UpdateLastCollectionTime()
+        {
+            var frequencies = context.CollectorFrequencies;
+
+            foreach (var frequency in frequencies)
+            {
+                double frequencyType = Convert.ToDouble(frequency.FrequencyType);
+                DateTime lastUpdateDate = frequency.LastUpdateDate;
+
+                if(DateTime.Compare(lastUpdateDate.AddDays(frequencyType), DateTime.Now) <= 0 &&
+                    lastUpdateDate.ToShortDateString() != DateTime.Now.AddDays(-1).ToShortDateString())
+                {
+                    frequency.LastUpdateDate = DateTime.Now.AddDays(-1);
+                }
+            }
+
+            SubmitData();
+        }
+
+        /// <summary>
+        /// RetrieveWards
+        /// </summary>
+        /// <returns></returns>
         public IList<string> RetrieveWards()
         {
             IList<string> wardList = new List<string>();
 
-            var wards = context.Wards.OrderBy(@orderby=>@orderby.Name.Trim());
+            var wards = context.Wards.OrderBy(@orderby => @orderby.Name.Trim());
 
             foreach (var ward in wards)
             {

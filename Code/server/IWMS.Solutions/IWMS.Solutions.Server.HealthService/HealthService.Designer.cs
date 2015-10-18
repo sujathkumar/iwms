@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.ServiceName = "IWMS Health Service";
+            this.eventLogHealthService = new System.Diagnostics.EventLog();
+            ((System.ComponentModel.ISupportInitialize)(this.eventLogHealthService)).BeginInit();
+            // 
+            // HealthService
+            // 
+            this.ServiceName = "IWMSHealthService";
+            ((System.ComponentModel.ISupportInitialize)(this.eventLogHealthService)).EndInit();
+
         }
 
         #endregion
+
+        private System.Diagnostics.EventLog eventLogHealthService;
     }
 }

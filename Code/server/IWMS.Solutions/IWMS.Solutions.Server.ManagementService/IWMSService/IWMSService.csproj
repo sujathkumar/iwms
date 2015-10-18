@@ -112,6 +112,10 @@
       <Project>{5bfee508-02c8-487a-90d6-b1898c9de895}</Project>
       <Name>IWMS.Solutions.Server.BinServiceProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\IWMS.Solutions.Server.CollectorServiceProvider\IWMS.Solutions.Server.CollectorServiceProvider.csproj">
+      <Project>{b7517221-b1cc-4410-8ba1-b05ee1eee775}</Project>
+      <Name>IWMS.Solutions.Server.CollectorServiceProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\IWMS.Solutions.Server.WardDataProvider\IWMS.Solutions.Server.WardDataProvider.csproj">
       <Project>{f96b63d8-225f-4640-b08b-494dce5d90e0}</Project>
       <Name>IWMS.Solutions.Server.WardDataProvider</Name>
