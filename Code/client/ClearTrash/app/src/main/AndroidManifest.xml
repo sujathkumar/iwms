@@ -120,6 +120,8 @@
         </activity>
         <activity android:name=".OrderWasteBagsActivity" >
         </activity>
+        <activity android:name=".PromotionsActivity" >
+        </activity>
     </application>
 
 </manifest>

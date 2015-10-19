@@ -27,7 +27,12 @@ namespace ManagementService.Controllers
                     string password = values[2];
                     return provider.RetrieveCollector(mobile, password).ToString();
                 }
-
+                else if(method == "sp")
+                {
+                    string data = values[1];
+                    string garbageType = values[2];
+                    return provider.SchedulePickup(data, garbageType);
+                }
             }
 
             return "Error, Not Found!";

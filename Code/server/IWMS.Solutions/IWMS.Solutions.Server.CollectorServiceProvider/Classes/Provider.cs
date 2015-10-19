@@ -276,6 +276,122 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
         }
 
         /// <summary>
+        /// SchedulePickup
+        /// </summary>
+        public string SchedulePickup(string key, string garbageType)
+        {
+            var auth = context.Auths.Where(@w => @w.Key == key).First();
+            var address = context.Addresses.Where(@w => @w.UserId == auth.UserId).First();
+            var bin = context.Bins.Where(@w => @w.UserId == auth.UserId).First();
+            var garbage = context.Garbages.Where(@w => @w.BinId == bin.Id).First();
+            var collector = context.Collectors.Where(@w => @w.WardId == address.WardId).First();
+            var frequency = context.CollectorFrequencies.Where(@w => @w.Id == collector.FrequencyId).First();
+            var garbageCollectorType = context.GarbageTypes.Where(@w => @w.Type == garbageType).First();
+            var request = context.UserRequests.OrderBy(@orderby => @orderby.RequestNumber);
+            Guid requestId = Guid.NewGuid();
+            int requestNumber = 1;
+            DateTime scheduleDateTime = DateTime.Now;
+
+            int pickupFrequency = frequency.PickupFrequency;
+            int frequencyType = frequency.FrequencyType;
+            DateTime lastUpdatedTime = frequency.LastUpdateDate;
+
+            if (frequencyType > 1)
+            {
+                scheduleDateTime = lastUpdatedTime.AddDays(frequencyType);
+            }
+            else
+            {
+                if (pickupFrequency == 1)
+                {
+                    var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).First();
+
+                    if (DateTime.Now.Hour < Convert.ToInt32(slots.SlotFrom))
+                    {
+                        scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.SlotFrom), 0, 0);
+                    }
+                    else
+                    {
+                        DateTime date = DateTime.Now.AddDays(1);
+                        scheduleDateTime = new DateTime(date.Year, date.Month, date.Day, Convert.ToInt32(slots.SlotFrom), 0, 0);
+                    }
+                }
+                else if (pickupFrequency == 2)
+                {
+                    var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).ToList();
+
+                    if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(0).SlotFrom))
+                    {
+                        scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(0).SlotFrom), 0, 0);
+                    }
+                    else
+                    {
+                        if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(1).SlotFrom))
+                        {
+                            scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(1).SlotFrom), 0, 0);
+                        }
+                        else
+                        {
+                            DateTime date = DateTime.Now.AddDays(1);
+                            scheduleDateTime = new DateTime(date.Year, date.Month, date.Day, Convert.ToInt32(slots.ElementAt(0).SlotFrom), 0, 0);
+                        }
+                    }
+                }
+                else if (pickupFrequency == 3)
+                {
+                    var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).ToList();
+
+                    if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(0).SlotFrom))
+                    {
+                        scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(0).SlotFrom), 0, 0);
+                    }
+                    else
+                    {
+                        if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(1).SlotFrom))
+                        {
+                            scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(1).SlotFrom), 0, 0);
+                        }
+                        else
+                        {
+                            if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(2).SlotFrom))
+                            {
+                                scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(2).SlotFrom), 0, 0);
+                            }
+                            else
+                            {
+                                DateTime date = DateTime.Now.AddDays(1);
+                                scheduleDateTime = new DateTime(date.Year, date.Month, date.Day, Convert.ToInt32(slots.ElementAt(0).SlotFrom), 0, 0);
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (request != null && request.Count() > 0)
+            {
+                requestNumber = Convert.ToInt32(request.First().RequestNumber) + 1;
+            }
+
+            UserRequest userRequest = new UserRequest
+            {
+                CollectorId = collector.Id,
+                GarbageId = garbage.Id,
+                GarbageTypeId = garbageCollectorType.Id,
+                Id = requestId,
+                RequestNumber = requestNumber.ToString(),
+                RequestTime = DateTime.Now,
+                ScheduleTime = scheduleDateTime,
+                UserAddress = address.HouseNo + ", " + address.HouseName + ", " + address.ApartmentName + ", " + address.Street + ", " + address.Locality,
+                UserId = auth.UserId
+            };
+
+            context.UserRequests.InsertOnSubmit(userRequest);
+            SubmitData();
+
+            return scheduleDateTime.ToString("dd-MMM-yyyy") + " " + scheduleDateTime.ToLongTimeString();
+        }
+
+        /// <summary>
         /// UpdateLastCollectionTime
         /// </summary>
         /// <param name="date"></param>
@@ -288,7 +404,7 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
                 double frequencyType = Convert.ToDouble(frequency.FrequencyType);
                 DateTime lastUpdateDate = frequency.LastUpdateDate;
 
-                if(DateTime.Compare(lastUpdateDate.AddDays(frequencyType), DateTime.Now) <= 0 &&
+                if (DateTime.Compare(lastUpdateDate.AddDays(frequencyType), DateTime.Now) <= 0 &&
                     lastUpdateDate.ToShortDateString() != DateTime.Now.AddDays(-1).ToShortDateString())
                 {
                     frequency.LastUpdateDate = DateTime.Now.AddDays(-1);

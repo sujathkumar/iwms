@@ -26,7 +26,7 @@ namespace IWMS.Solutions.Server.BinServiceProvider.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=INCSNAIRS6L1C;Initial Catalog=IWMS;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SUJATHVM1;Initial Catalog=IWMS;Integrated Security=True")]
         public string IWMSConnectionString {
             get {
                 return ((string)(this["IWMSConnectionString"]));
