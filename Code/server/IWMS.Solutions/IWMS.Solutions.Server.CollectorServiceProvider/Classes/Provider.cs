@@ -125,7 +125,9 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
                     Tag = garbage.Tag,
                     GarbageType = garbageType.Type,
                     UserName = user.Name,
-                    UserAddress = address.HouseNo + ", " + address.HouseName + ", " + address.ApartmentName + ", " + address.Street + ", " + address.Locality
+                    UserAddress = address.HouseNo + ", " + address.HouseName + ", " + address.ApartmentName + ", " + address.Street + ", " + address.Locality,
+                    Quantity = request.Quantity,
+                    DonateGarbage = request.DonateGarbage
                 };
 
                 requestPointList.Add(requestPoint);
@@ -149,6 +151,87 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
             }
 
             return garbageTypeList;
+        }
+
+        /// <summary>
+        /// RetrieveCollectorDates
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string RetrieveCollectorDates(string key)
+        {
+            StringBuilder dates = new StringBuilder();
+
+            var auth = context.Auths.Where(@w => @w.Key == key).First();
+            var address = context.Addresses.Where(@w => @w.UserId == auth.UserId).First();
+            var collector = context.Collectors.Where(@w => @w.WardId == address.WardId).First();
+            var frequency = context.CollectorFrequencies.Where(@w => @w.Id == collector.FrequencyId).First();
+
+            int pickupFrequency = frequency.PickupFrequency;
+            int frequencyType = frequency.FrequencyType;
+            DateTime lastUpdatedTime = frequency.LastUpdateDate;
+
+            if (frequencyType > 1)
+            {
+                for (int i = 1; i < 10; i++)
+                {
+                    dates.Append(lastUpdatedTime.AddDays(frequencyType * i).ToString("dd-MMM-yyyy"));
+                    dates.Append(",");
+                }
+            }
+            else
+            {
+                for (int i = 1; i < 10; i++)
+                {
+                    dates.Append(lastUpdatedTime.AddDays(frequencyType * i).ToString("dd-MMM-yyyy"));
+                    dates.Append(",");
+                }
+            }
+
+            return dates.ToString();
+        }
+
+        /// <summary>
+        /// RetrieveCollectorTimes
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string RetrieveCollectorTimes(string key)
+        {
+            StringBuilder times = new StringBuilder();
+
+            var auth = context.Auths.Where(@w => @w.Key == key).First();
+            var address = context.Addresses.Where(@w => @w.UserId == auth.UserId).First();
+            var collector = context.Collectors.Where(@w => @w.WardId == address.WardId).First();
+            var frequency = context.CollectorFrequencies.Where(@w => @w.Id == collector.FrequencyId).First();
+
+            int pickupFrequency = frequency.PickupFrequency;
+            int frequencyType = frequency.FrequencyType;
+            DateTime lastUpdatedTime = frequency.LastUpdateDate;
+
+            if (pickupFrequency == 1)
+            {
+                var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).First();
+                times.Append(slots.SlotFrom);
+            }
+            else if (pickupFrequency == 2)
+            {
+                var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).ToList();
+                times.Append(slots.ElementAt(0).SlotFrom);
+                times.Append(",");
+                times.Append(slots.ElementAt(1).SlotFrom);
+            }
+            else if (pickupFrequency == 3)
+            {
+                var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).ToList();
+                times.Append(slots.ElementAt(0).SlotFrom);
+                times.Append(",");
+                times.Append(slots.ElementAt(1).SlotFrom);
+                times.Append(",");
+                times.Append(slots.ElementAt(2).SlotFrom);
+            }
+
+            return times.ToString();
         }
 
         /// <summary>
@@ -278,16 +361,17 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
         /// <summary>
         /// SchedulePickup
         /// </summary>
-        public string SchedulePickup(string key, string garbageType)
+        public string SchedulePickup(string key, string garbageType, int quantity, bool donateGarbage, string scheduleTime)
         {
             var auth = context.Auths.Where(@w => @w.Key == key).First();
             var address = context.Addresses.Where(@w => @w.UserId == auth.UserId).First();
             var bin = context.Bins.Where(@w => @w.UserId == auth.UserId).First();
             var garbage = context.Garbages.Where(@w => @w.BinId == bin.Id).First();
-            var collector = context.Collectors.Where(@w => @w.WardId == address.WardId).First();
-            var frequency = context.CollectorFrequencies.Where(@w => @w.Id == collector.FrequencyId).First();
             var garbageCollectorType = context.GarbageTypes.Where(@w => @w.Type == garbageType).First();
-            var request = context.UserRequests.OrderBy(@orderby => @orderby.RequestNumber);
+            var collctorGarbageType = context.CollectorGarbageTypes.Where(@w => @w.GarbageTypeId == garbageCollectorType.Id).First();
+            var collector = context.Collectors.Where(@w => @w.WardId == address.WardId && @w.Id == collctorGarbageType.CollectorId).First();
+            var frequency = context.CollectorFrequencies.Where(@w => @w.Id == collector.FrequencyId).First();
+            var request = context.UserRequests.OrderByDescending(@orderby => @orderby.RequestNumber);
             Guid requestId = Guid.NewGuid();
             int requestNumber = 1;
             DateTime scheduleDateTime = DateTime.Now;
@@ -296,66 +380,43 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
             int frequencyType = frequency.FrequencyType;
             DateTime lastUpdatedTime = frequency.LastUpdateDate;
 
-            if (frequencyType > 1)
+            if (string.IsNullOrEmpty(scheduleTime))
             {
-                scheduleDateTime = lastUpdatedTime.AddDays(frequencyType);
-            }
-            else
-            {
-                if (pickupFrequency == 1)
+                if (frequencyType > 1)
                 {
                     var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).First();
-
-                    if (DateTime.Now.Hour < Convert.ToInt32(slots.SlotFrom))
-                    {
-                        scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.SlotFrom), 0, 0);
-                    }
-                    else
-                    {
-                        DateTime date = DateTime.Now.AddDays(1);
-                        scheduleDateTime = new DateTime(date.Year, date.Month, date.Day, Convert.ToInt32(slots.SlotFrom), 0, 0);
-                    }
+                    DateTime date = lastUpdatedTime.AddDays(frequencyType);
+                    scheduleDateTime = new DateTime(date.Year, date.Month, date.Day, Convert.ToInt32(slots.SlotFrom), 0, 0);
                 }
-                else if (pickupFrequency == 2)
+                else
                 {
-                    var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).ToList();
+                    if (pickupFrequency == 1)
+                    {
+                        var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).First();
 
-                    if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(0).SlotFrom))
-                    {
-                        scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(0).SlotFrom), 0, 0);
-                    }
-                    else
-                    {
-                        if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(1).SlotFrom))
+                        if (DateTime.Now.Hour < Convert.ToInt32(slots.SlotFrom))
                         {
-                            scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(1).SlotFrom), 0, 0);
+                            scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.SlotFrom), 0, 0);
                         }
                         else
                         {
                             DateTime date = DateTime.Now.AddDays(1);
-                            scheduleDateTime = new DateTime(date.Year, date.Month, date.Day, Convert.ToInt32(slots.ElementAt(0).SlotFrom), 0, 0);
+                            scheduleDateTime = new DateTime(date.Year, date.Month, date.Day, Convert.ToInt32(slots.SlotFrom), 0, 0);
                         }
                     }
-                }
-                else if (pickupFrequency == 3)
-                {
-                    var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).ToList();
+                    else if (pickupFrequency == 2)
+                    {
+                        var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).ToList();
 
-                    if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(0).SlotFrom))
-                    {
-                        scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(0).SlotFrom), 0, 0);
-                    }
-                    else
-                    {
-                        if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(1).SlotFrom))
+                        if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(0).SlotFrom))
                         {
-                            scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(1).SlotFrom), 0, 0);
+                            scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(0).SlotFrom), 0, 0);
                         }
                         else
                         {
-                            if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(2).SlotFrom))
+                            if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(1).SlotFrom))
                             {
-                                scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(2).SlotFrom), 0, 0);
+                                scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(1).SlotFrom), 0, 0);
                             }
                             else
                             {
@@ -364,7 +425,42 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
                             }
                         }
                     }
+                    else if (pickupFrequency == 3)
+                    {
+                        var slots = context.CollectorSlots.Where(@w => @w.FrequencyId == frequency.Id).ToList();
+
+                        if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(0).SlotFrom))
+                        {
+                            scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(0).SlotFrom), 0, 0);
+                        }
+                        else
+                        {
+                            if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(1).SlotFrom))
+                            {
+                                scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(1).SlotFrom), 0, 0);
+                            }
+                            else
+                            {
+                                if (DateTime.Now.Hour < Convert.ToInt32(slots.ElementAt(2).SlotFrom))
+                                {
+                                    scheduleDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, Convert.ToInt32(slots.ElementAt(2).SlotFrom), 0, 0);
+                                }
+                                else
+                                {
+                                    DateTime date = DateTime.Now.AddDays(1);
+                                    scheduleDateTime = new DateTime(date.Year, date.Month, date.Day, Convert.ToInt32(slots.ElementAt(0).SlotFrom), 0, 0);
+                                }
+                            }
+                        }
+                    }
                 }
+            }
+            else
+            {
+                DateTime scheduledDate = new DateTime(Convert.ToInt32(scheduleTime.Split('_')[0]),
+                    Convert.ToInt32(scheduleTime.Split('_')[1]), Convert.ToInt32(scheduleTime.Split('_')[2]),
+                    Convert.ToInt32(scheduleTime.Split('_')[3]), Convert.ToInt32(scheduleTime.Split('_')[4]), 0);
+                scheduleDateTime = scheduledDate;
             }
 
             if (request != null && request.Count() > 0)
@@ -382,7 +478,9 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
                 RequestTime = DateTime.Now,
                 ScheduleTime = scheduleDateTime,
                 UserAddress = address.HouseNo + ", " + address.HouseName + ", " + address.ApartmentName + ", " + address.Street + ", " + address.Locality,
-                UserId = auth.UserId
+                UserId = auth.UserId,
+                Quantity = quantity,
+                DonateGarbage = donateGarbage
             };
 
             context.UserRequests.InsertOnSubmit(userRequest);

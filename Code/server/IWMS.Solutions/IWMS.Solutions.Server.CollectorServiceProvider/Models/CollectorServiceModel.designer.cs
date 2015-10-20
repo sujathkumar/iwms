@@ -63,16 +63,16 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider.Models
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
-    partial void InsertUserRequest(UserRequest instance);
-    partial void UpdateUserRequest(UserRequest instance);
-    partial void DeleteUserRequest(UserRequest instance);
     partial void InsertWard(Ward instance);
     partial void UpdateWard(Ward instance);
     partial void DeleteWard(Ward instance);
+    partial void InsertUserRequest(UserRequest instance);
+    partial void UpdateUserRequest(UserRequest instance);
+    partial void DeleteUserRequest(UserRequest instance);
     #endregion
 		
 		public CollectorServiceModelDataContext() : 
-				base(global::IWMS.Solutions.Server.CollectorServiceProvider.Properties.Settings.Default.IWMSConnectionString, mappingSource)
+				base(global::IWMS.Solutions.Server.CollectorServiceProvider.Properties.Settings.Default.IWMSConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -189,19 +189,19 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<UserRequest> UserRequests
-		{
-			get
-			{
-				return this.GetTable<UserRequest>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Ward> Wards
 		{
 			get
 			{
 				return this.GetTable<Ward>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UserRequest> UserRequests
+		{
+			get
+			{
+				return this.GetTable<UserRequest>();
 			}
 		}
 	}
@@ -1920,260 +1920,6 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserRequest")]
-	public partial class UserRequest : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _Id;
-		
-		private string _RequestNumber;
-		
-		private System.Guid _GarbageTypeId;
-		
-		private System.DateTime _RequestTime;
-		
-		private System.DateTime _ScheduleTime;
-		
-		private System.Guid _GarbageId;
-		
-		private System.Guid _CollectorId;
-		
-		private System.Guid _UserId;
-		
-		private string _UserAddress;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(System.Guid value);
-    partial void OnIdChanged();
-    partial void OnRequestNumberChanging(string value);
-    partial void OnRequestNumberChanged();
-    partial void OnGarbageTypeIdChanging(System.Guid value);
-    partial void OnGarbageTypeIdChanged();
-    partial void OnRequestTimeChanging(System.DateTime value);
-    partial void OnRequestTimeChanged();
-    partial void OnScheduleTimeChanging(System.DateTime value);
-    partial void OnScheduleTimeChanged();
-    partial void OnGarbageIdChanging(System.Guid value);
-    partial void OnGarbageIdChanged();
-    partial void OnCollectorIdChanging(System.Guid value);
-    partial void OnCollectorIdChanged();
-    partial void OnUserIdChanging(System.Guid value);
-    partial void OnUserIdChanged();
-    partial void OnUserAddressChanging(string value);
-    partial void OnUserAddressChanged();
-    #endregion
-		
-		public UserRequest()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestNumber", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string RequestNumber
-		{
-			get
-			{
-				return this._RequestNumber;
-			}
-			set
-			{
-				if ((this._RequestNumber != value))
-				{
-					this.OnRequestNumberChanging(value);
-					this.SendPropertyChanging();
-					this._RequestNumber = value;
-					this.SendPropertyChanged("RequestNumber");
-					this.OnRequestNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GarbageTypeId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid GarbageTypeId
-		{
-			get
-			{
-				return this._GarbageTypeId;
-			}
-			set
-			{
-				if ((this._GarbageTypeId != value))
-				{
-					this.OnGarbageTypeIdChanging(value);
-					this.SendPropertyChanging();
-					this._GarbageTypeId = value;
-					this.SendPropertyChanged("GarbageTypeId");
-					this.OnGarbageTypeIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTime", DbType="DateTime NOT NULL")]
-		public System.DateTime RequestTime
-		{
-			get
-			{
-				return this._RequestTime;
-			}
-			set
-			{
-				if ((this._RequestTime != value))
-				{
-					this.OnRequestTimeChanging(value);
-					this.SendPropertyChanging();
-					this._RequestTime = value;
-					this.SendPropertyChanged("RequestTime");
-					this.OnRequestTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ScheduleTime", DbType="DateTime NOT NULL")]
-		public System.DateTime ScheduleTime
-		{
-			get
-			{
-				return this._ScheduleTime;
-			}
-			set
-			{
-				if ((this._ScheduleTime != value))
-				{
-					this.OnScheduleTimeChanging(value);
-					this.SendPropertyChanging();
-					this._ScheduleTime = value;
-					this.SendPropertyChanged("ScheduleTime");
-					this.OnScheduleTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GarbageId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid GarbageId
-		{
-			get
-			{
-				return this._GarbageId;
-			}
-			set
-			{
-				if ((this._GarbageId != value))
-				{
-					this.OnGarbageIdChanging(value);
-					this.SendPropertyChanging();
-					this._GarbageId = value;
-					this.SendPropertyChanged("GarbageId");
-					this.OnGarbageIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CollectorId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid CollectorId
-		{
-			get
-			{
-				return this._CollectorId;
-			}
-			set
-			{
-				if ((this._CollectorId != value))
-				{
-					this.OnCollectorIdChanging(value);
-					this.SendPropertyChanging();
-					this._CollectorId = value;
-					this.SendPropertyChanged("CollectorId");
-					this.OnCollectorIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserAddress", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
-		public string UserAddress
-		{
-			get
-			{
-				return this._UserAddress;
-			}
-			set
-			{
-				if ((this._UserAddress != value))
-				{
-					this.OnUserAddressChanging(value);
-					this.SendPropertyChanging();
-					this._UserAddress = value;
-					this.SendPropertyChanged("UserAddress");
-					this.OnUserAddressChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Ward")]
 	public partial class Ward : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2379,6 +2125,308 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider.Models
 					this._BottomCordinate = value;
 					this.SendPropertyChanged("BottomCordinate");
 					this.OnBottomCordinateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserRequest")]
+	public partial class UserRequest : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private string _RequestNumber;
+		
+		private System.Guid _GarbageTypeId;
+		
+		private System.DateTime _RequestTime;
+		
+		private System.DateTime _ScheduleTime;
+		
+		private System.Guid _GarbageId;
+		
+		private System.Guid _CollectorId;
+		
+		private System.Guid _UserId;
+		
+		private string _UserAddress;
+		
+		private int _Quantity;
+		
+		private bool _DonateGarbage;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnRequestNumberChanging(string value);
+    partial void OnRequestNumberChanged();
+    partial void OnGarbageTypeIdChanging(System.Guid value);
+    partial void OnGarbageTypeIdChanged();
+    partial void OnRequestTimeChanging(System.DateTime value);
+    partial void OnRequestTimeChanged();
+    partial void OnScheduleTimeChanging(System.DateTime value);
+    partial void OnScheduleTimeChanged();
+    partial void OnGarbageIdChanging(System.Guid value);
+    partial void OnGarbageIdChanged();
+    partial void OnCollectorIdChanging(System.Guid value);
+    partial void OnCollectorIdChanged();
+    partial void OnUserIdChanging(System.Guid value);
+    partial void OnUserIdChanged();
+    partial void OnUserAddressChanging(string value);
+    partial void OnUserAddressChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    partial void OnDonateGarbageChanging(bool value);
+    partial void OnDonateGarbageChanged();
+    #endregion
+		
+		public UserRequest()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestNumber", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string RequestNumber
+		{
+			get
+			{
+				return this._RequestNumber;
+			}
+			set
+			{
+				if ((this._RequestNumber != value))
+				{
+					this.OnRequestNumberChanging(value);
+					this.SendPropertyChanging();
+					this._RequestNumber = value;
+					this.SendPropertyChanged("RequestNumber");
+					this.OnRequestNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GarbageTypeId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid GarbageTypeId
+		{
+			get
+			{
+				return this._GarbageTypeId;
+			}
+			set
+			{
+				if ((this._GarbageTypeId != value))
+				{
+					this.OnGarbageTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._GarbageTypeId = value;
+					this.SendPropertyChanged("GarbageTypeId");
+					this.OnGarbageTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequestTime", DbType="DateTime NOT NULL")]
+		public System.DateTime RequestTime
+		{
+			get
+			{
+				return this._RequestTime;
+			}
+			set
+			{
+				if ((this._RequestTime != value))
+				{
+					this.OnRequestTimeChanging(value);
+					this.SendPropertyChanging();
+					this._RequestTime = value;
+					this.SendPropertyChanged("RequestTime");
+					this.OnRequestTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ScheduleTime", DbType="DateTime NOT NULL")]
+		public System.DateTime ScheduleTime
+		{
+			get
+			{
+				return this._ScheduleTime;
+			}
+			set
+			{
+				if ((this._ScheduleTime != value))
+				{
+					this.OnScheduleTimeChanging(value);
+					this.SendPropertyChanging();
+					this._ScheduleTime = value;
+					this.SendPropertyChanged("ScheduleTime");
+					this.OnScheduleTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GarbageId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid GarbageId
+		{
+			get
+			{
+				return this._GarbageId;
+			}
+			set
+			{
+				if ((this._GarbageId != value))
+				{
+					this.OnGarbageIdChanging(value);
+					this.SendPropertyChanging();
+					this._GarbageId = value;
+					this.SendPropertyChanged("GarbageId");
+					this.OnGarbageIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CollectorId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid CollectorId
+		{
+			get
+			{
+				return this._CollectorId;
+			}
+			set
+			{
+				if ((this._CollectorId != value))
+				{
+					this.OnCollectorIdChanging(value);
+					this.SendPropertyChanging();
+					this._CollectorId = value;
+					this.SendPropertyChanged("CollectorId");
+					this.OnCollectorIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserAddress", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
+		public string UserAddress
+		{
+			get
+			{
+				return this._UserAddress;
+			}
+			set
+			{
+				if ((this._UserAddress != value))
+				{
+					this.OnUserAddressChanging(value);
+					this.SendPropertyChanging();
+					this._UserAddress = value;
+					this.SendPropertyChanged("UserAddress");
+					this.OnUserAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonateGarbage", DbType="Bit NOT NULL")]
+		public bool DonateGarbage
+		{
+			get
+			{
+				return this._DonateGarbage;
+			}
+			set
+			{
+				if ((this._DonateGarbage != value))
+				{
+					this.OnDonateGarbageChanging(value);
+					this.SendPropertyChanging();
+					this._DonateGarbage = value;
+					this.SendPropertyChanged("DonateGarbage");
+					this.OnDonateGarbageChanged();
 				}
 			}
 		}

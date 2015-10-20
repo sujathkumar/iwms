@@ -21,5 +21,9 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider.Models
         public string UserName { get; set; }
 
         public string UserAddress { get; set; }
+
+        public int Quantity { get; set; }
+
+        public bool DonateGarbage { get; set; }
     }
 }

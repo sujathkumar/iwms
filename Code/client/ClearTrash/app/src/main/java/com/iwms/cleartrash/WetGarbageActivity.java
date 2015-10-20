@@ -35,7 +35,11 @@ public class WetGarbageActivity extends Activity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String quantity = quantityText.getText().toString();
+                String donateGarbage = "false";
                 Intent intent = new Intent(WetGarbageActivity.this, OrderWetBagsActivity.class);
+                intent.putExtra("quantity", quantity);
+                intent.putExtra("donateGarbage", donateGarbage);
                 startActivity(intent);
             }
         });

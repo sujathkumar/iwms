@@ -27,11 +27,30 @@ namespace ManagementService.Controllers
                     string password = values[2];
                     return provider.RetrieveCollector(mobile, password).ToString();
                 }
-                else if(method == "sp")
+                else if (method == "sp")
                 {
                     string data = values[1];
                     string garbageType = values[2];
-                    return provider.SchedulePickup(data, garbageType);
+                    int quantity = Convert.ToInt32(values[3]);
+                    bool donateGarbage = Convert.ToBoolean(values[4]);
+
+                    string scheduleTime = "";
+                    if (values.Length > 5 && values[5] != null)
+                    {
+                        scheduleTime = values[5];
+                    }
+
+                    return provider.SchedulePickup(data, garbageType, quantity, donateGarbage, scheduleTime);
+                }
+                else if (method == "rcd")
+                {
+                    string data = values[1];
+                    return provider.RetrieveCollectorDates(data);
+                }
+                else if (method == "rct")
+                {
+                    string data = values[1];
+                    return provider.RetrieveCollectorTimes(data);
                 }
             }
 

@@ -10,21 +10,26 @@ import android.test.ActivityUnitTestCase;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class WasteGarbageActivity extends Activity {
 
     private Button b1;
     private Calendar calendar;
-    private EditText dateView;
+    private Spinner dateView;
     private Spinner timeView;
-    private int year, month, day;
-    private String[] Times ={"1:00","2:00","3:00","4:00","5:00","6:00","7:00",
-            "8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","24:00"};
+    EditText quantityText;
+    CheckBox donateGarbageCheckBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,52 +37,92 @@ public class WasteGarbageActivity extends Activity {
         setContentView(R.layout.activity_waste_garbage);
 
         b1 = (Button)findViewById(R.id.schedulePickupButton);
-        dateView = (EditText) findViewById(R.id.dateEditText);
+        dateView = (Spinner) findViewById(R.id.dateEditText);
         timeView = (Spinner) findViewById(R.id.timeEditText);
-        calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH);
-        day = calendar.get(Calendar.DAY_OF_MONTH);
-        showDate(year, month + 1, day);
+        quantityText = (EditText) findViewById(R.id.quantityText);
+        donateGarbageCheckBox = (CheckBox) findViewById(R.id.donateCheckBox);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+        String collectorDatesUrl = "http://" + Helper.Server  + "/ManagementService/api/collector/rcd%7C" + Helper.Key;
+        RequestTask task = (RequestTask) new RequestTask().execute(collectorDatesUrl);
+
+        String collectorDates = "";
+        String[] Dates = null;
+
+        try {
+            collectorDates = task.get();
+            Dates = collectorDates.replace('"',' ').trim().split(",");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        String collectorTimesUrl = "http://" + Helper.Server  + "/ManagementService/api/collector/rct%7C" + Helper.Key;
+        task = (RequestTask) new RequestTask().execute(collectorTimesUrl);
+
+        String collectorTimes = "";
+        String[] Times = null;
+
+        try {
+            collectorTimes = task.get();
+            Times = collectorTimes.replace('"',' ').trim().split(",");
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        ArrayAdapter<String> adapterDate = new ArrayAdapter<String>
+                (this,android.R.layout.select_dialog_item,Dates);
+        adapterDate.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dateView.setAdapter(adapterDate);
+
+
+        ArrayAdapter<String> adapterTime = new ArrayAdapter<String>
                 (this,android.R.layout.select_dialog_item,Times);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        timeView.setAdapter(adapter);
+        adapterTime.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        timeView.setAdapter(adapterTime);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WasteGarbageActivity.this, OrderWasteBagsActivity.class);
-                startActivity(intent);
+
+                try {
+                    String quantity = quantityText.getText().toString();
+                    String donateGarbage = "false";
+
+                    if (donateGarbageCheckBox.isChecked()) {
+                        donateGarbage = "true";
+                    }
+
+                    String scheduledDate = "";
+                    DateFormat format = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                    Date date = format.parse(dateView.getSelectedItem().toString());
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(date);
+                    int year = cal.get(Calendar.YEAR);
+                    int month = cal.get(Calendar.MONTH) + 1;
+                    int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                    scheduledDate = String.valueOf(year) + "_" +
+                            String.valueOf(month) + "_" +
+                            String.valueOf(day);
+
+                    String scheduledTime = timeView.getSelectedItem().toString() + "_0";
+
+                    String scheduledDateTime = scheduledDate + "_" + scheduledTime;
+
+                    Intent intent = new Intent(WasteGarbageActivity.this, OrderWasteBagsActivity.class);
+                    intent.putExtra("quantity", quantity);
+                    intent.putExtra("donateGarbage", donateGarbage);
+                    intent.putExtra("scheduledDateTime",scheduledDateTime);
+                    startActivity(intent);
+                }
+                catch (ParseException e)
+                {
+                    e.printStackTrace();
+                }
             }
         });
-    }
-
-    @SuppressWarnings("deprecation")
-    public void setDate(View view) {
-        showDialog(999);
-    }
-
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        // TODO Auto-generated method stub
-        if (id == 999) {
-            return new DatePickerDialog(this, myDateListener, year, month, day);
-        }
-
-        return null;
-    }
-
-    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            showDate(arg1, arg2+1, arg3);
-        }
-    };
-
-    private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(day).append("/")
-                .append(month).append("/").append(year));
     }
 }

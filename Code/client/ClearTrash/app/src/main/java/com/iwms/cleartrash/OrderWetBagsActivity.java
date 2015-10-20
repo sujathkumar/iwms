@@ -13,9 +13,13 @@ public class OrderWetBagsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_wet_bags);
 
+        final Bundle bundle = getIntent().getExtras();
+        final String quantity = bundle.getString("quantity");
+        final String donateGarbage = bundle.getString("donateGarbage");
         schedulePickupTextView =(TextView) findViewById(R.id.schedulePickupTextView);
 
-        String schedulePickupUrl = "http://" + Helper.Server  + "/ManagementService/api/collector/sp%7C" + Helper.Key + "%7CWET";
+        String schedulePickupUrl = "http://" + Helper.Server  + "/ManagementService/api/collector/sp%7C" + Helper.Key + "%7CWET"
+                + "%7C" + quantity + "%7C" + donateGarbage;
         RequestTask task = (RequestTask) new RequestTask().execute(schedulePickupUrl);
 
         String pickupTime = "";
