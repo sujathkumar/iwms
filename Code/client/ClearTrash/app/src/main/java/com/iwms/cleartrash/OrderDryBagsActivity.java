@@ -1,10 +1,11 @@
 package com.iwms.cleartrash;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class OrderDryBagsActivity extends AppCompatActivity {
+public class OrderDryBagsActivity extends Activity {
 
     TextView schedulePickupTextView;
 
