@@ -76,12 +76,12 @@ namespace ManagementService.Controllers
                 }
                 else if (method == "du")
                 {
-                    string mobile = values[1];
-                    return provider.DeleteUser(mobile).ToString();
+                    //string mobile = values[1];
+                    //return provider.DeleteUser(mobile).ToString();
                 }
                 else if (method == "dau")
                 {
-                    return provider.DeleteAllUsers().ToString();
+                    //return provider.DeleteAllUsers().ToString();
                 }
             }
             else

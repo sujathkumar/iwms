@@ -52,12 +52,17 @@ namespace ManagementService.Controllers
                     string data = values[1];
                     return provider.RetrieveCollectorTimes(data);
                 }
+                else if (method == "rr")
+                {
+                    string requestNumber = values[1];
+                    return provider.RetrieveRequest(requestNumber);
+                }
             }
 
             return "Error, Not Found!";
         }
 
-        public IList<RequestPoint> GetCollector(string key1, string key2)
+        public IList<string> GetCollector(string key1, string key2)
         {
             CollectorService.Provider provider = new CollectorService.Provider();
             Guid collectorId = Guid.Parse(key1);

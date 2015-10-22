@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,35 +106,131 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
         /// </summary>
         /// <param name="collectorId"></param>
         /// <returns></returns>
-        public IList<RequestPoint> RetrieveRequest(Guid collectorId)
-        {
-            IList<RequestPoint> requestPointList = new List<RequestPoint>();
-            var requests = context.UserRequests.Where(@w => @w.CollectorId == collectorId);
+        //public IList<RequestPoint> RetrieveRequest(Guid collectorId)
+        //{
+        //    try
+        //    {
+        //        IList<RequestPoint> requestPointList = new List<RequestPoint>();
+        //        var requests = context.UserRequests.Where(@w => @w.CollectorId == collectorId);
 
-            foreach (var request in requests)
+        //        foreach (var request in requests)
+        //        {
+        //            var garbage = context.Garbages.Where(@w => @w.Id == request.GarbageId).First();
+        //            var garbageType = context.GarbageTypes.Where(@w => @w.Id == request.GarbageTypeId).First();
+        //            var user = context.Users.Where(@w => @w.Id == request.UserId).First();
+        //            var address = context.Addresses.Where(@w => @w.UserId == request.UserId).First();
+
+        //            RequestPoint requestPoint = new RequestPoint
+        //            {
+        //                RequestNumber = request.RequestNumber,
+        //                RequestTime = request.RequestTime,
+        //                ScheduleTime = request.ScheduleTime,
+        //                Tag = garbage.Tag,
+        //                GarbageType = garbageType.Type,
+        //                UserName = user.Name,
+        //                UserAddress = address.HouseNo + ", " + address.HouseName + ", " + address.ApartmentName + ", " + address.Street + ", " + address.Locality,
+        //                Quantity = request.Quantity,
+        //                DonateGarbage = request.DonateGarbage
+        //            };
+
+        //            requestPointList.Add(requestPoint);
+        //        }
+
+        //        return requestPointList;
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        using (StreamWriter sw = File.AppendText(@"C:\IWMSLog.txt"))
+        //        {
+        //            Log(ex.Message, sw);
+        //        }
+
+        //        return null;
+        //    }
+        //}
+
+        /// <summary>
+        /// RetrieveRequest
+        /// </summary>
+        /// <param name="collectorId"></param>
+        /// <returns></returns>
+        public IList<string> RetrieveRequest(Guid collectorId)
+        {
+            try
             {
+                IList<string> requestPointList = new List<string>();
+                var requests = context.UserRequests.Where(@w => @w.CollectorId == collectorId);
+
+                foreach (var request in requests)
+                {
+                    var garbage = context.Garbages.Where(@w => @w.Id == request.GarbageId).First();
+                    var garbageType = context.GarbageTypes.Where(@w => @w.Id == request.GarbageTypeId).First();
+                    var user = context.Users.Where(@w => @w.Id == request.UserId).First();
+                    var address = context.Addresses.Where(@w => @w.UserId == request.UserId).First();
+
+                    //RequestPoint requestPoint = new RequestPoint
+                    //{
+                    //    RequestNumber = request.RequestNumber,
+                    //    RequestTime = request.RequestTime,
+                    //    ScheduleTime = request.ScheduleTime,
+                    //    Tag = garbage.Tag,
+                    //    GarbageType = garbageType.Type,
+                    //    UserName = user.Name,
+                    //    UserAddress = address.HouseNo + ", " + address.HouseName + ", " + address.ApartmentName + ", " + address.Street + ", " + address.Locality,
+                    //    Quantity = request.Quantity,
+                    //    DonateGarbage = request.DonateGarbage
+                    //};
+
+                    requestPointList.Add(request.RequestNumber + ". Tag: " + garbage.Tag);
+                }
+
+                return requestPointList;
+            }
+            catch (Exception ex)
+            {
+                using (StreamWriter sw = File.AppendText(@"C:\IWMSLog.txt"))
+                {
+                    Log(ex.Message, sw);
+                }
+
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// RetrieveRequest
+        /// </summary>
+        /// <param name="collectorId"></param>
+        /// <returns></returns>
+        public string RetrieveRequest(string requestNumber)
+        {
+            try
+            {
+                var request = context.UserRequests.Where(@w => @w.RequestNumber == requestNumber).First();
                 var garbage = context.Garbages.Where(@w => @w.Id == request.GarbageId).First();
                 var garbageType = context.GarbageTypes.Where(@w => @w.Id == request.GarbageTypeId).First();
                 var user = context.Users.Where(@w => @w.Id == request.UserId).First();
                 var address = context.Addresses.Where(@w => @w.UserId == request.UserId).First();
 
-                RequestPoint requestPoint = new RequestPoint
-                {
-                    RequestNumber = request.RequestNumber,
-                    RequestTime = request.RequestTime,
-                    ScheduleTime = request.ScheduleTime,
-                    Tag = garbage.Tag,
-                    GarbageType = garbageType.Type,
-                    UserName = user.Name,
-                    UserAddress = address.HouseNo + ", " + address.HouseName + ", " + address.ApartmentName + ", " + address.Street + ", " + address.Locality,
-                    Quantity = request.Quantity,
-                    DonateGarbage = request.DonateGarbage
-                };
-
-                requestPointList.Add(requestPoint);
+                return "Request Number: " + request.RequestNumber.ToString() + "s_pace" +
+                    "Request Time: " + request.RequestTime.ToString("dd-MMM-yyyy hh:ss") + "s_pace" +
+                    "Schedule Time: " + request.ScheduleTime.ToString("dd-MMM-yyyy hh:ss") + "s_pace" +
+                    "Tag: " + garbage.Tag.ToString() + "s_pace" +
+                    "Garbage Type: " + garbageType.Type.ToString() + "s_pace" +
+                    "User Name: " + user.Name.ToString() + "s_pace" +
+                    "Address: " + address.HouseNo + ", " + address.HouseName + ", " + address.ApartmentName + ", " + address.Street + ", " + address.Locality + "s_pace" +
+                    "Quantity: " + request.Quantity.ToString() + "s_pace" +
+                    "Donate Garbage: " + request.DonateGarbage.ToString();
             }
+            catch (Exception ex)
+            {
+                using (StreamWriter sw = File.AppendText(@"C:\IWMSLog.txt"))
+                {
+                    Log(ex.Message, sw);
+                }
 
-            return requestPointList;
+                return null;
+            }
         }
 
         /// <summary>
@@ -555,6 +652,21 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
         private void SubmitData()
         {
             context.SubmitChanges();
+        }
+
+        /// <summary>
+        /// Log
+        /// </summary>
+        /// <param name="logMessage"></param>
+        /// <param name="w"></param>
+        public static void Log(string logMessage, TextWriter w)
+        {
+            w.Write("\r\nLog Entry : ");
+            w.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToLongDateString());
+            w.WriteLine("  :");
+            w.WriteLine("  :{0}", logMessage);
+            w.WriteLine("-------------------------------");
         }
     }
 }
