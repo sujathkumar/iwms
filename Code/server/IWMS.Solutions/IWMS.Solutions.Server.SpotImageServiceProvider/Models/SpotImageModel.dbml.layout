@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SpotImageModel">
+  <DataContextMoniker Name="/SpotImageModelDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5d08436a-89c0-41b1-9348-a168725ad986" absoluteBounds="0.625, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/SpotImageModelDataContext/Auth" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0d857e88-ad1b-4ca5-a713-5d8d808ebd16" absoluteBounds="0.63999999999999968, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6e4fe368-da0e-49ce-966e-de48db09dfa7" absoluteBounds="3.125, 0.875, 2, 2.5401025390625">
+      <DataClassMoniker Name="/SpotImageModelDataContext/SpotImage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da524250-5077-46b0-8178-5326a2a6edda" absoluteBounds="3.1399999999999997, 1.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

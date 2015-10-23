@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AndroidGCMPushNotification.cs" />
+    <Compile Include="Classes\AndroidGCMPushNotification.cs" />
     <Compile Include="Models\CityPoint.cs" />
     <Compile Include="Models\DataAccess.designer.cs">
       <AutoGen>True</AutoGen>

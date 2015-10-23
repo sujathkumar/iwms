@@ -24,7 +24,7 @@ namespace IWMS.Solutions.Server.AuthProvider
 
             foreach (var city in cities)
             {
-                cityList.Add(new CityPoint { Name = city.Name, Code = city.Number, Server = city.Server });
+                cityList.Add(new CityPoint { Name = city.Name, Code = city.Number, Server = city.Server, GCMSenderId = city.GCMSenderId });
             }
 
             return cityList;

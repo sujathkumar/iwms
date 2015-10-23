@@ -42,6 +42,7 @@ public class RequestActivity extends AppCompatActivity {
         {
             sb.append(request[i].toString());
             sb.append("\n");
+            sb.append("\n");
         }
 
         requestText.setText(sb.toString());

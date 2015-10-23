@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutionException;
 
 public class HomeActivity extends Activity {
 
-    ImageButton b1;
+    ImageButton hhGarbageButton, spotGarbageButton;
     ScrollView scrollView;
 
 
@@ -32,9 +32,10 @@ public class HomeActivity extends Activity {
 
         turnGPSOn();
 
-        b1 = (ImageButton)findViewById(R.id.hhGarbageButton);
+        hhGarbageButton = (ImageButton)findViewById(R.id.hhGarbageButton);
+        spotGarbageButton = (ImageButton)findViewById(R.id.spotGarbageButton);
 
-        b1.setOnClickListener(new View.OnClickListener() {
+        hhGarbageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -67,6 +68,14 @@ public class HomeActivity extends Activity {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
+            }
+        });
+
+        spotGarbageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, SpotImageActivity.class);
+                startActivity(intent);
             }
         });
     }

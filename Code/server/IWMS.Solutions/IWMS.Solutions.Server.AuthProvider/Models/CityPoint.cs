@@ -13,5 +13,7 @@ namespace IWMS.Solutions.Server.AuthProvider
         public string Code { get; set; }
 
         public string Server { get; set; }
+
+        public string GCMSenderId { get; set; }
     }
 }

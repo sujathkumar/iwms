@@ -11,4 +11,6 @@ public class Helper {
     public static String CityCode = "01";
     public static String Server = "sujathvm1.cloudapp.net";
     public static String Key = "";
+    public static  String GCMSenderId = "";
+    public static String ImagePath = "";
 }

@@ -1,0 +1,5 @@
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.SpotImageServiceProvider\bin\Debug\IWMS.Solutions.Server.SpotImage.dll.config
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.SpotImageServiceProvider\bin\Debug\IWMS.Solutions.Server.SpotImage.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.SpotImageServiceProvider\bin\Debug\IWMS.Solutions.Server.SpotImage.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.SpotImageServiceProvider\obj\Debug\IWMS.Solutions.Server.SpotImage.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.SpotImageServiceProvider\obj\Debug\IWMS.Solutions.Server.SpotImage.pdb

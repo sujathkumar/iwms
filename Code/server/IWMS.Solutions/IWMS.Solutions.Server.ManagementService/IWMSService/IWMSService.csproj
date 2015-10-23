@@ -84,10 +84,12 @@
     <Compile Include="Controllers\HouseholdController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SpotImageController.cs" />
     <Compile Include="Controllers\WardController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,7 +103,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\IWMS.Solutions.Server.AuthProvider\IWMS.Solutions.Server.AuthProvider.csproj">
@@ -115,6 +116,10 @@
     <ProjectReference Include="..\..\IWMS.Solutions.Server.CollectorServiceProvider\IWMS.Solutions.Server.CollectorServiceProvider.csproj">
       <Project>{b7517221-b1cc-4410-8ba1-b05ee1eee775}</Project>
       <Name>IWMS.Solutions.Server.CollectorServiceProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IWMS.Solutions.Server.SpotImageServiceProvider\IWMS.Solutions.Server.SpotImageServiceProvider.csproj">
+      <Project>{7c3fc0e9-4b38-4d2a-b43b-7ae397c250f0}</Project>
+      <Name>IWMS.Solutions.Server.SpotImageServiceProvider</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\IWMS.Solutions.Server.WardDataProvider\IWMS.Solutions.Server.WardDataProvider.csproj">
       <Project>{f96b63d8-225f-4640-b08b-494dce5d90e0}</Project>

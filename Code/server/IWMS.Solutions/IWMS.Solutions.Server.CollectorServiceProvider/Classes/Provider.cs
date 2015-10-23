@@ -161,7 +161,7 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
                 IList<string> requestPointList = new List<string>();
                 var requests = context.UserRequests.Where(@w => @w.CollectorId == collectorId);
 
-                foreach (var request in requests)
+                foreach (var request in requests.OrderBy(@orderby => @orderby.RequestNumber))
                 {
                     var garbage = context.Garbages.Where(@w => @w.Id == request.GarbageId).First();
                     var garbageType = context.GarbageTypes.Where(@w => @w.Id == request.GarbageTypeId).First();
@@ -181,7 +181,7 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
                     //    DonateGarbage = request.DonateGarbage
                     //};
 
-                    requestPointList.Add(request.RequestNumber + ". Tag: " + garbage.Tag);
+                    requestPointList.Add(request.RequestNumber + ". " + user.Name + "- Garbage Tag: " + garbage.Tag);
                 }
 
                 return requestPointList;

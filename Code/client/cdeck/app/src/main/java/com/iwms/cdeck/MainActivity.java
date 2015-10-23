@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
         RequestTask task = (RequestTask) new RequestTask().execute(collectorRequestUrl);
 
         try {
-            requests = task.get().replace("[","").replace('"',' ').trim().split(",");
+            requests = task.get().replace("[","").replace("]","").replace('"',' ').trim().split(",");
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

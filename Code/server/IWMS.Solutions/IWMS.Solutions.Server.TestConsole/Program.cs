@@ -9,6 +9,7 @@ using IWMS.Solutions.Server.WardDataProvider.Models;
 using Auth = IWMS.Solutions.Server.AuthProvider;
 using WardData = IWMS.Solutions.Server.WardDataProvider;
 using BinService = IWMS.Solutions.Server.BinServiceProvider;
+using System.Net;
 
 
 namespace IWMS.Solutions.Server.TestConsole

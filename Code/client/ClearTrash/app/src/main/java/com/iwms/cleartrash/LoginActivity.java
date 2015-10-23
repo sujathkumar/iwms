@@ -59,7 +59,7 @@ public class LoginActivity extends Activity  {
         LoadLocations();
 
         mInstanceIdHelper = new InstanceIdHelper(this);
-        mInstanceIdHelper.getTokenInBackground("361344693527", GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+        mInstanceIdHelper.getTokenInBackground(Helper.GCMSenderId, GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
 
         try {
             WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);

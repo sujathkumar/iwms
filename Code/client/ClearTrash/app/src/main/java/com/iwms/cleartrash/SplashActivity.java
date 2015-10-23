@@ -54,6 +54,7 @@ public class SplashActivity extends Activity {
         if(key.trim() != "") {
             List<String> codeList = new ArrayList<String>();
             List<String> serverList = new ArrayList<String>();
+            List<String> gcmSenderIdList = new ArrayList<String>();
 
             String locationsUrl = "http://sujathvm1.cloudapp.net/ManagementService/api/location";
             RequestTask task = (RequestTask) new RequestTask().execute(locationsUrl);
@@ -76,11 +77,15 @@ public class SplashActivity extends Activity {
                 } else if (loc.contains("Server")) {
                     serverList.add(loc.split(":")[1].replace('"', ' ').replace('}', ' ').trim());
                 }
+                if (loc.contains("GCMSenderId")) {
+                    gcmSenderIdList.add(loc.split(":")[1].replace('"', ' ').replace('}', ' ').replace(']',' ').trim());
+                }
             }
 
             Helper.CityCode = key.substring(0, 2);
             int position = codeList.indexOf(Helper.CityCode);
             Helper.Server = serverList.get(position);
+            Helper.GCMSenderId = gcmSenderIdList.get(position).trim();
         }
     }
 
