@@ -1,7 +1,11 @@
 USE [IWMS]
 GO
 
-/****** Object:  Table [dbo].[Garbage]    Script Date: 10/11/2015 10:40:32 PM ******/
+/****** Object:  Table [dbo].[Garbage]    Script Date: 10/24/2015 1:11:35 PM ******/
+DROP TABLE [dbo].[Garbage]
+GO
+
+/****** Object:  Table [dbo].[Garbage]    Script Date: 10/24/2015 1:11:35 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -19,5 +23,4 @@ CREATE TABLE [dbo].[Garbage](
 ) ON [PRIMARY]
 
 GO
-
 

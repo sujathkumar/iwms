@@ -30,6 +30,11 @@ namespace ManagementService.Controllers
                     string imageData = values[4].Replace("c_olon", ":").Replace("s_la", "\\").Replace("_",".");
                     return provider.InsertSpotImage(data, latitude, longitude, imageData).ToString();
                 }
+                else if (method == "pi")
+                {
+                    provider.PostSpotImageProcess();
+                    return "Updated Successfully!";
+                }
             }
 
             return "Error, Not Found!";

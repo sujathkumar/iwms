@@ -89,7 +89,7 @@ public class SpotImageActivity extends ActionBarActivity {
                 // prepare for a progress bar dialog
                 progressBar = new ProgressDialog(view.getContext());
                 progressBar.setCancelable(true);
-                progressBar.setMessage("Uploading Image...");
+                progressBar.setMessage("Uploading Image...You will be awarded liquids post verification!");
                 progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressBar.setProgress(0);
                 progressBar.setMax(100);

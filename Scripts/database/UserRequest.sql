@@ -1,7 +1,11 @@
 USE [IWMS]
 GO
 
-/****** Object:  Table [dbo].[UserRequest]    Script Date: 10/15/2015 8:17:28 PM ******/
+/****** Object:  Table [dbo].[UserRequest]    Script Date: 10/24/2015 1:12:26 PM ******/
+DROP TABLE [dbo].[UserRequest]
+GO
+
+/****** Object:  Table [dbo].[UserRequest]    Script Date: 10/24/2015 1:12:26 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -17,7 +21,13 @@ CREATE TABLE [dbo].[UserRequest](
 	[GarbageId] [uniqueidentifier] NOT NULL,
 	[CollectorId] [uniqueidentifier] NOT NULL,
 	[UserId] [uniqueidentifier] NOT NULL,
-	[UserAddress] [nvarchar](250) NOT NULL
+	[UserAddress] [nvarchar](250) NOT NULL,
+	[Quantity] [int] NOT NULL,
+	[DonateGarbage] [bit] NOT NULL,
+ CONSTRAINT [PK_UserRequest] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO

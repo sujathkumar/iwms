@@ -1,7 +1,11 @@
 USE [IWMS]
 GO
 
-/****** Object:  Table [dbo].[City]    Script Date: 10/11/2015 10:40:15 PM ******/
+/****** Object:  Table [dbo].[City]    Script Date: 10/24/2015 1:10:20 PM ******/
+DROP TABLE [dbo].[City]
+GO
+
+/****** Object:  Table [dbo].[City]    Script Date: 10/24/2015 1:10:20 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,6 +17,7 @@ CREATE TABLE [dbo].[City](
 	[Name] [nvarchar](50) NOT NULL,
 	[Number] [nvarchar](10) NOT NULL,
 	[Server] [nvarchar](50) NOT NULL,
+	[GCMSenderId] [nvarchar](50) NOT NULL,
 	[Active] [bit] NOT NULL,
  CONSTRAINT [PK_City] PRIMARY KEY CLUSTERED 
 (
@@ -21,5 +26,4 @@ CREATE TABLE [dbo].[City](
 ) ON [PRIMARY]
 
 GO
-
 

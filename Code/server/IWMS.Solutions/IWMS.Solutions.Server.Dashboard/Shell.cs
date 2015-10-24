@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CollectorService = IWMS.Solutions.Server.CollectorServiceProvider;
+using SpotImageService = IWMS.Solutions.Server.SpotImageServiceProvider;
 
 namespace IWMS.Solutions.Server.Dashboard
 {
     public partial class Shell : Form
     {
-        CollectorService.Provider provider = null;
+        CollectorService.Provider collectorProvider = null;
+        SpotImageService.Provider spotImageProvider = null;
 
         public Shell()
         {
@@ -25,13 +27,32 @@ namespace IWMS.Solutions.Server.Dashboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void linkCreateCollector_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkCreate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            CreateCollector frm = new CreateCollector();
-            frm.ShowDialog();
+            if (tabControlMain.SelectedTabPage == tabControlCollector)
+            {
+                CreateCollector frm = new CreateCollector();
+                frm.ShowDialog();
 
-            LoadCollectors();
-            gridControlCollectors.Refresh();
+                LoadCollectors();
+                gridControlCollectors.Refresh();               
+            }
+            else if (tabControlMain.SelectedTabPage == tabControlSpotImages)
+            {
+                int[] selectedRows = gridViewSpotImages.GetSelectedRows();
+                SpotImageModel spotImage = null;
+
+                foreach (var row in selectedRows)
+                {
+                    spotImage = (SpotImageModel)gridViewSpotImages.GetRow(row);
+                }
+
+                VerifySpotImage frm = new VerifySpotImage(spotImage.ImagePath);
+                frm.ShowDialog();
+
+                LoadSpotImages();
+                gridControlSpotImages.Refresh();
+            }
         }
 
         /// <summary>
@@ -42,18 +63,22 @@ namespace IWMS.Solutions.Server.Dashboard
         private void Shell_Load(object sender, EventArgs e)
         {
             LoadCollectors();
+            LoadSpotImages();
         }
 
+        /// <summary>
+        /// LoadCollectors
+        /// </summary>
         private void LoadCollectors()
         {
             IList<CollectorModel> model = new List<CollectorModel>();
-            provider = new CollectorService.Provider();
+            collectorProvider = new CollectorService.Provider();
 
-            var collectors = provider.RetrieveCollectors();
+            var collectors = collectorProvider.RetrieveCollectors();
 
             foreach (var collector in collectors)
             {
-                var frequency = provider.RetrieveFrequency(collector.Id);
+                var frequency = collectorProvider.RetrieveFrequency(collector.Id);
 
                 model.Add(new CollectorModel
                 {
@@ -78,14 +103,46 @@ namespace IWMS.Solutions.Server.Dashboard
         }
 
         /// <summary>
+        /// LoadSpotImages
+        /// </summary>
+        private void LoadSpotImages()
+        {
+            IList<SpotImageModel> model = new List<SpotImageModel>();
+            spotImageProvider = new SpotImageService.Provider();
+
+            var spotImages = spotImageProvider.RetrievSpotImages();
+
+            foreach (var spotImage in spotImages)
+            {
+                model.Add(new SpotImageModel
+                {
+                    Ward = spotImage.WardName,
+                    UploadedTime = spotImage.UploadedTime,
+                    Verified = spotImage.Verified,
+                    ImagePath = spotImage.ImagePath.Substring(spotImage.ImagePath.LastIndexOf("\\") + 1)
+                });
+            }
+
+            gridControlSpotImages.DataSource = model;
+        }
+
+        /// <summary>
         /// linkRefresh_LinkClicked
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void linkRefresh_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            LoadCollectors();
-            gridControlCollectors.Refresh();
+            if (tabControlMain.SelectedTabPage == tabControlCollector)
+            {
+                LoadCollectors();
+                gridControlCollectors.Refresh();
+            }
+            else if (tabControlMain.SelectedTabPage == tabControlSpotImages)
+            {
+                LoadSpotImages();
+                gridControlSpotImages.Refresh();
+            }
         }
 
         /// <summary>
@@ -93,21 +150,68 @@ namespace IWMS.Solutions.Server.Dashboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void linkDeleteCollector_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkDelete_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            int[] selectedRows = gridViewCollectors.GetSelectedRows();
-
-            foreach(var row in selectedRows)
+            if (tabControlMain.SelectedTabPage == tabControlCollector)
             {
-                var collector = gridViewCollectors.GetRow(row);
-                provider = new CollectorService.Provider();
-                provider.DeleteCollector(((CollectorModel)collector).Mobile);
-            }           
+                int[] selectedRows = gridViewCollectors.GetSelectedRows();
 
-            LoadCollectors();
-            gridControlCollectors.Refresh();
+                foreach (var row in selectedRows)
+                {
+                    var collector = gridViewCollectors.GetRow(row);
+                    collectorProvider = new CollectorService.Provider();
+                    collectorProvider.DeleteCollector(((CollectorModel)collector).Mobile);
+                }
+
+                LoadCollectors();
+                gridControlCollectors.Refresh();
+            }
+            else if (tabControlMain.SelectedTabPage == tabControlSpotImages)
+            {
+                int[] selectedRows = gridViewSpotImages.GetSelectedRows();
+
+                foreach (var row in selectedRows)
+                {
+                    var spotImage = gridViewSpotImages.GetRow(row);
+                    spotImageProvider = new SpotImageService.Provider();
+                    spotImageProvider.DeleteSpotImage(((SpotImageModel)spotImage).ImagePath);
+                }
+
+                LoadSpotImages();
+                gridControlSpotImages.Refresh();
+            }
 
             MessageBox.Show("Deleted successfully!");
+        }
+
+        /// <summary>
+        /// treeViewMain_AfterSelect
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void treeViewMain_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            SelectTabs(e.Node.Text);
+        }
+
+        private void tabControlMain_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            SelectTabs(e.Page.Text);
+        }
+
+        private void SelectTabs(string selection)
+        {
+            switch (selection)
+            {
+                case "Collectors": tabControlMain.SelectedTabPage = tabControlCollector;
+                    linkCreate.Text = "Create Collector";
+                    linkDelete.Text = "Delete Collector";
+                    break;
+                case "Spot Images": tabControlMain.SelectedTabPage = tabControlSpotImages;
+                    linkCreate.Text = "Verify Spot Image";
+                    linkDelete.Text = "Delete Spot Image";
+                    break;
+            }
         }
     }
 }

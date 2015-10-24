@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Collectors");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Recyclers");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Collectors");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Spot Images");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shell));
             this.panelControlCenter = new DevExpress.XtraEditors.PanelControl();
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.tabControlCollector = new DevExpress.XtraTab.XtraTabPage();
             this.gridControlCollectors = new DevExpress.XtraGrid.GridControl();
             this.gridViewCollectors = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.tabControlSpotImages = new DevExpress.XtraTab.XtraTabPage();
             this.lblHeader = new DevExpress.XtraEditors.LabelControl();
             this.panelControlLHS = new DevExpress.XtraEditors.PanelControl();
             this.treeViewMain = new System.Windows.Forms.TreeView();
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.panelRHS = new System.Windows.Forms.Panel();
-            this.linkDeleteCollector = new System.Windows.Forms.LinkLabel();
+            this.linkDelete = new System.Windows.Forms.LinkLabel();
             this.linkRefresh = new System.Windows.Forms.LinkLabel();
-            this.linkCreateCollector = new System.Windows.Forms.LinkLabel();
+            this.linkCreate = new System.Windows.Forms.LinkLabel();
             this.panelControlRHS = new DevExpress.XtraEditors.PanelControl();
+            this.gridControlSpotImages = new DevExpress.XtraGrid.GridControl();
+            this.gridViewSpotImages = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlCenter)).BeginInit();
             this.panelControlCenter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
@@ -52,12 +55,15 @@
             this.tabControlCollector.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCollectors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCollectors)).BeginInit();
+            this.tabControlSpotImages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlLHS)).BeginInit();
             this.panelControlLHS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.panelRHS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlRHS)).BeginInit();
             this.panelControlRHS.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlSpotImages)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSpotImages)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControlCenter
@@ -76,7 +82,9 @@
             this.tabControlMain.Size = new System.Drawing.Size(1068, 600);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.tabControlCollector});
+            this.tabControlCollector,
+            this.tabControlSpotImages});
+            this.tabControlMain.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabControlMain_SelectedPageChanged);
             // 
             // tabControlCollector
             // 
@@ -100,6 +108,13 @@
             this.gridViewCollectors.GridControl = this.gridControlCollectors;
             this.gridViewCollectors.Name = "gridViewCollectors";
             this.gridViewCollectors.OptionsSelection.MultiSelect = true;
+            // 
+            // tabControlSpotImages
+            // 
+            this.tabControlSpotImages.Controls.Add(this.gridControlSpotImages);
+            this.tabControlSpotImages.Name = "tabControlSpotImages";
+            this.tabControlSpotImages.Size = new System.Drawing.Size(1062, 572);
+            this.tabControlSpotImages.Text = "Spot Images";
             // 
             // lblHeader
             // 
@@ -129,15 +144,16 @@
             this.treeViewMain.ForeColor = System.Drawing.Color.White;
             this.treeViewMain.Location = new System.Drawing.Point(6, 30);
             this.treeViewMain.Name = "treeViewMain";
-            treeNode1.Name = "collectorsnode";
-            treeNode1.Text = "Collectors";
-            treeNode2.Name = "nodeRecyclers";
-            treeNode2.Text = "Recyclers";
+            treeNode3.Name = "collectorsnode";
+            treeNode3.Text = "Collectors";
+            treeNode4.Name = "nodeSpotImages";
+            treeNode4.Text = "Spot Images";
             this.treeViewMain.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
+            treeNode3,
+            treeNode4});
             this.treeViewMain.Size = new System.Drawing.Size(189, 572);
             this.treeViewMain.TabIndex = 0;
+            this.treeViewMain.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMain_AfterSelect);
             // 
             // pictureLogo
             // 
@@ -152,25 +168,25 @@
             // panelRHS
             // 
             this.panelRHS.BackColor = System.Drawing.Color.White;
-            this.panelRHS.Controls.Add(this.linkDeleteCollector);
+            this.panelRHS.Controls.Add(this.linkDelete);
             this.panelRHS.Controls.Add(this.linkRefresh);
-            this.panelRHS.Controls.Add(this.linkCreateCollector);
+            this.panelRHS.Controls.Add(this.linkCreate);
             this.panelRHS.Location = new System.Drawing.Point(5, 7);
             this.panelRHS.Name = "panelRHS";
             this.panelRHS.Size = new System.Drawing.Size(190, 595);
             this.panelRHS.TabIndex = 2;
             // 
-            // linkDeleteCollector
+            // linkDelete
             // 
-            this.linkDeleteCollector.AutoSize = true;
-            this.linkDeleteCollector.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkDeleteCollector.Location = new System.Drawing.Point(10, 87);
-            this.linkDeleteCollector.Name = "linkDeleteCollector";
-            this.linkDeleteCollector.Size = new System.Drawing.Size(108, 17);
-            this.linkDeleteCollector.TabIndex = 2;
-            this.linkDeleteCollector.TabStop = true;
-            this.linkDeleteCollector.Text = "Delete Collector";
-            this.linkDeleteCollector.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDeleteCollector_LinkClicked);
+            this.linkDelete.AutoSize = true;
+            this.linkDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkDelete.Location = new System.Drawing.Point(10, 87);
+            this.linkDelete.Name = "linkDelete";
+            this.linkDelete.Size = new System.Drawing.Size(108, 17);
+            this.linkDelete.TabIndex = 2;
+            this.linkDelete.TabStop = true;
+            this.linkDelete.Text = "Delete Collector";
+            this.linkDelete.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkDelete_LinkClicked);
             // 
             // linkRefresh
             // 
@@ -184,17 +200,17 @@
             this.linkRefresh.Text = "Refresh";
             this.linkRefresh.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkRefresh_LinkClicked);
             // 
-            // linkCreateCollector
+            // linkCreate
             // 
-            this.linkCreateCollector.AutoSize = true;
-            this.linkCreateCollector.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkCreateCollector.Location = new System.Drawing.Point(10, 49);
-            this.linkCreateCollector.Name = "linkCreateCollector";
-            this.linkCreateCollector.Size = new System.Drawing.Size(109, 17);
-            this.linkCreateCollector.TabIndex = 0;
-            this.linkCreateCollector.TabStop = true;
-            this.linkCreateCollector.Text = "Create Collector";
-            this.linkCreateCollector.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCreateCollector_LinkClicked);
+            this.linkCreate.AutoSize = true;
+            this.linkCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkCreate.Location = new System.Drawing.Point(10, 49);
+            this.linkCreate.Name = "linkCreate";
+            this.linkCreate.Size = new System.Drawing.Size(109, 17);
+            this.linkCreate.TabIndex = 0;
+            this.linkCreate.TabStop = true;
+            this.linkCreate.Text = "Create Collector";
+            this.linkCreate.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCreate_LinkClicked);
             // 
             // panelControlRHS
             // 
@@ -203,6 +219,22 @@
             this.panelControlRHS.Name = "panelControlRHS";
             this.panelControlRHS.Size = new System.Drawing.Size(200, 607);
             this.panelControlRHS.TabIndex = 2;
+            // 
+            // gridControl1
+            // 
+            this.gridControlSpotImages.Location = new System.Drawing.Point(4, 4);
+            this.gridControlSpotImages.MainView = this.gridViewSpotImages;
+            this.gridControlSpotImages.Name = "gridControl1";
+            this.gridControlSpotImages.Size = new System.Drawing.Size(1055, 565);
+            this.gridControlSpotImages.TabIndex = 1;
+            this.gridControlSpotImages.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewSpotImages});
+            // 
+            // gridView1
+            // 
+            this.gridViewSpotImages.GridControl = this.gridControlSpotImages;
+            this.gridViewSpotImages.Name = "gridView1";
+            this.gridViewSpotImages.OptionsSelection.MultiSelect = true;
             // 
             // Shell
             // 
@@ -229,6 +261,7 @@
             this.tabControlCollector.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCollectors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCollectors)).EndInit();
+            this.tabControlSpotImages.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControlLHS)).EndInit();
             this.panelControlLHS.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
@@ -236,6 +269,8 @@
             this.panelRHS.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlRHS)).EndInit();
             this.panelControlRHS.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlSpotImages)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSpotImages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,9 +289,12 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewCollectors;
         private System.Windows.Forms.Panel panelRHS;
         private System.Windows.Forms.LinkLabel linkRefresh;
-        private System.Windows.Forms.LinkLabel linkCreateCollector;
+        private System.Windows.Forms.LinkLabel linkCreate;
         private DevExpress.XtraEditors.PanelControl panelControlRHS;
-        private System.Windows.Forms.LinkLabel linkDeleteCollector;
+        private System.Windows.Forms.LinkLabel linkDelete;
+        private DevExpress.XtraTab.XtraTabPage tabControlSpotImages;
+        private DevExpress.XtraGrid.GridControl gridControlSpotImages;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewSpotImages;
 
     }
 }

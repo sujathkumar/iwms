@@ -47,6 +47,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpotImageModel.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\SpotImagePoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -73,6 +74,12 @@
     <None Include="Models\SpotImageModel.dbml.layout">
       <DependentUpon>SpotImageModel.dbml</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IWMS.Solutions.Server.WardDataProvider\IWMS.Solutions.Server.WardDataProvider.csproj">
+      <Project>{f96b63d8-225f-4640-b08b-494dce5d90e0}</Project>
+      <Name>IWMS.Solutions.Server.WardDataProvider</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

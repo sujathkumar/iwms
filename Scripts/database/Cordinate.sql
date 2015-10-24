@@ -1,7 +1,11 @@
 USE [IWMS]
 GO
 
-/****** Object:  Table [dbo].[Cordinate]    Script Date: 10/11/2015 10:40:24 PM ******/
+/****** Object:  Table [dbo].[Cordinate]    Script Date: 10/24/2015 1:11:02 PM ******/
+DROP TABLE [dbo].[Cordinate]
+GO
+
+/****** Object:  Table [dbo].[Cordinate]    Script Date: 10/24/2015 1:11:02 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -21,5 +25,4 @@ CREATE TABLE [dbo].[Cordinate](
 ) ON [PRIMARY]
 
 GO
-
 

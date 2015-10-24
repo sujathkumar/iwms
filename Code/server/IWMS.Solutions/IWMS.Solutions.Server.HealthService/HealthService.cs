@@ -7,14 +7,11 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
-using CollectorService = IWMS.Solutions.Server.CollectorServiceProvider;
 
 namespace IWMS.Solutions.Server.HealthService
 {
     public partial class HealthService : ServiceBase
     {
-        CollectorService.Provider provider = null;
-
         public HealthService()
         {
             InitializeComponent();
@@ -35,7 +32,7 @@ namespace IWMS.Solutions.Server.HealthService
 
             // Set up a timer to trigger every minute.
             System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = 360000; // 60 seconds
+            timer.Interval = 60000; //One hour
             timer.Elapsed += new System.Timers.ElapsedEventHandler(this.OnTimer);
             timer.Start();
         }
@@ -49,8 +46,8 @@ namespace IWMS.Solutions.Server.HealthService
         {
             eventLogHealthService.WriteEntry("Monitoring the System", EventLogEntryType.Information);
 
-            provider = new CollectorService.Provider();
-            provider.UpdateLastCollectionTime();
+            Consumer consumer = new Consumer();
+            consumer.StartActivity();
 
         }
 

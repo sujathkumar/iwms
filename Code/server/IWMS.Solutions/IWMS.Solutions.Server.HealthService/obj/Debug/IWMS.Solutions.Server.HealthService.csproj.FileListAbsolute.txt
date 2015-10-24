@@ -9,3 +9,7 @@ C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Soluti
 C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\bin\Debug\IWMS.Solutions.Server.CollectorServiceProvider.dll
 C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\bin\Debug\IWMS.Solutions.Server.CollectorServiceProvider.pdb
 C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\obj\Debug\IWMS.Solutions.Server.HealthService.ProjectInstaller.resources
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\bin\Debug\IWMS.Solutions.Server.SpotImage.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\bin\Debug\IWMS.Solutions.Server.WardDataProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\bin\Debug\IWMS.Solutions.Server.SpotImage.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.HealthService\bin\Debug\IWMS.Solutions.Server.WardDataProvider.pdb

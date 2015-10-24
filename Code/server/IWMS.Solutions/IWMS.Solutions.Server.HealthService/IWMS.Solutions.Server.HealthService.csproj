@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consumer.cs" />
     <Compile Include="HealthService.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -74,6 +75,10 @@
     <ProjectReference Include="..\IWMS.Solutions.Server.CollectorServiceProvider\IWMS.Solutions.Server.CollectorServiceProvider.csproj">
       <Project>{b7517221-b1cc-4410-8ba1-b05ee1eee775}</Project>
       <Name>IWMS.Solutions.Server.CollectorServiceProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IWMS.Solutions.Server.SpotImageServiceProvider\IWMS.Solutions.Server.SpotImageServiceProvider.csproj">
+      <Project>{7c3fc0e9-4b38-4d2a-b43b-7ae397c250f0}</Project>
+      <Name>IWMS.Solutions.Server.SpotImageServiceProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

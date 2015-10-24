@@ -1,7 +1,11 @@
 USE [IWMS]
 GO
 
-/****** Object:  Table [dbo].[Zone]    Script Date: 10/11/2015 10:41:29 PM ******/
+/****** Object:  Table [dbo].[Zone]    Script Date: 10/24/2015 1:12:56 PM ******/
+DROP TABLE [dbo].[Zone]
+GO
+
+/****** Object:  Table [dbo].[Zone]    Script Date: 10/24/2015 1:12:56 PM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -19,5 +23,4 @@ CREATE TABLE [dbo].[Zone](
 ) ON [PRIMARY]
 
 GO
-
 
