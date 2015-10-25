@@ -32,25 +32,5 @@ namespace IWMS.Solutions.Server.AuthProvider.Properties {
                 return ((string)(this["IWMSConnectionString"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SUJATHVM1;Initial Catalog=IWMS;Integrated Security=True")]
-        public string IWMSConnectionString1 {
-            get {
-                return ((string)(this["IWMSConnectionString1"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SUJATHVM1;Initial Catalog=IWMS;Integrated Security=True")]
-        public string IWMSConnectionString2 {
-            get {
-                return ((string)(this["IWMSConnectionString2"]));
-            }
-        }
     }
 }

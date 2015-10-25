@@ -45,7 +45,7 @@ namespace IWMS.Solutions.Server.AuthProvider.Models
     #endregion
 		
 		public DataAccessDataContext() : 
-				base(global::IWMS.Solutions.Server.AuthProvider.Properties.Settings.Default.IWMSConnectionString2, mappingSource)
+				base(global::IWMS.Solutions.Server.AuthProvider.Properties.Settings.Default.IWMSConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

@@ -21,8 +21,8 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_splash);
 
         Thread timerThread = new Thread(){
-            public void run()
-            {
+                public void run()
+                {
                 try {
                     sleep(3000);
                     //Read key from Cache

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="IWMS" Class="SpotImageModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=SUJATHVM1;Initial Catalog=IWMS;Integrated Security=True" SettingsObjectName="IWMS.Solutions.Server.SpotImage.Properties.Settings" SettingsPropertyName="IWMSConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SUJATHVM1;Initial Catalog=IWMS;Integrated Security=True" SettingsObjectName="IWMS.Solutions.Server.SpotImage.Properties.Settings" SettingsPropertyName="IWMSConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Auth" Member="Auths">
     <Type Name="Auth">
       <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

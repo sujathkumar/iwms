@@ -1,11 +1,11 @@
 USE [IWMS]
 GO
 
-/****** Object:  Table [dbo].[Garbage]    Script Date: 10/24/2015 1:11:35 PM ******/
+/****** Object:  Table [dbo].[Garbage]    Script Date: 10/25/2015 10:48:02 AM ******/
 DROP TABLE [dbo].[Garbage]
 GO
 
-/****** Object:  Table [dbo].[Garbage]    Script Date: 10/24/2015 1:11:35 PM ******/
+/****** Object:  Table [dbo].[Garbage]    Script Date: 10/25/2015 10:48:02 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -16,6 +16,7 @@ CREATE TABLE [dbo].[Garbage](
 	[Id] [uniqueidentifier] NOT NULL,
 	[Tag] [nvarchar](50) NOT NULL,
 	[BinId] [uniqueidentifier] NOT NULL,
+	[CreateDateTime] [datetime] NOT NULL,
  CONSTRAINT [PK_Garbage] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,6 +97,40 @@ namespace IWMS.Solutions.Server.BinServiceProvider
         }
 
         /// <summary>
+        /// RetrieveGarbageTags
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public IList<GarbagePoint> RetrieveOrders()
+        {
+            try
+            {
+                IList<GarbagePoint> garbageList = new List<GarbagePoint>();
+                var orders = context.Orders.Where(@w => @w.Printed == null && @w.QRCodeRequired == true);
+
+                foreach (var order in orders)
+                {
+                    var garbage = context.Garbages.Where(@w => @w.Id == order.GarbageId).First();
+                    var garbageType = context.GarbageTypes.Where(@w => @w.Id == order.GarbageTypeId).First();
+                    var bin = context.Bins.Where(@w => @w.Id == garbage.BinId).First();
+                    var user = context.Users.Where(@w => @w.Id == bin.UserId).First();
+                    var address = context.Addresses.Where(@w => @w.UserId == user.Id).First();
+
+                    string userAddress = user.Name + ", " + address.HouseNo + ", " + address.HouseName + ", " +
+                    address.ApartmentName + ", " + address.Street + ", " + address.Locality + ", " + address.PINCODE;
+
+                    garbageList.Add(new GarbagePoint { Name = user.Name, Address = userAddress, Tag = garbage.Tag, GarbageType = garbageType.Type,  GeneratedDate = garbage.CreateDateTime });
+                }
+
+                return garbageList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
         /// RetrieveAddress
         /// </summary>
         /// <param name="key"></param>
@@ -110,7 +145,7 @@ namespace IWMS.Solutions.Server.BinServiceProvider
                 var user = context.Users.Where(@w => @w.Id == auth.UserId).First();
                 var address = context.Addresses.Where(@w => @w.UserId == auth.UserId).First();
 
-                return  user.Name + "s_lash" + address.HouseNo + "s_lash" + address.HouseName + "s_lash" +
+                return user.Name + "s_lash" + address.HouseNo + "s_lash" + address.HouseName + "s_lash" +
                     address.ApartmentName + "s_lash" + address.Street + "s_lash" +
                     address.Locality + "s_lash" + city.Name + "s_lash" + address.PINCODE;
             }
@@ -209,17 +244,82 @@ namespace IWMS.Solutions.Server.BinServiceProvider
                 {
                     Id = garbageId,
                     Tag = tag,
-                    BinId = binId
+                    BinId = binId,
+                    CreateDateTime = DateTime.Now
                 };
 
-                context.Garbages.InsertOnSubmit(garbage);
+                context.Garbages.InsertOnSubmit(garbage);                
                 SubmitData();
+
+                InsertOrder(tag, "WET");
+                InsertOrder(tag, "DRY");
 
                 return 211;
             }
             catch (Exception ex)
             {
                 return 100;
+            }
+        }
+
+        /// <summary>
+        /// InsertOrder
+        /// </summary>
+        /// <param name="binId"></param>
+        public int InsertOrder(string tag, string type)
+        {
+            try
+            {
+                var garbage = context.Garbages.Where(@w => @w.Tag == tag).First();
+                var garbageType = context.GarbageTypes.Where(@w => @w.Type == type).First();
+
+                Order order = new Order
+                {
+                    Id = Guid.NewGuid(),
+                    DateOrdered = DateTime.Now,
+                    GarbageId = garbage.Id,
+                    GarbageTypeId = garbageType.Id,
+                    Promotion = false,
+                    QRCodeRequired = true,
+                };
+
+                context.Orders.InsertOnSubmit(order);
+                SubmitData();
+
+                return 214;
+            }
+            catch (Exception ex)
+            {
+                using (StreamWriter sw = File.AppendText(@"C:\IWMSLog.txt"))
+                {
+                    Log(ex.Message, sw);
+                }
+
+                return 100;
+            }
+        }
+
+        /// <summary>
+        /// GenerateOrder
+        /// </summary>
+        /// <param name="binId"></param>
+        public Order GenerateOrder(string tag, string type)
+        {
+            try
+            {
+                var garbage = context.Garbages.Where(@w => @w.Tag == tag).First();
+                var garbageType = context.GarbageTypes.Where(@w => @w.Type == type).First();
+                var order = context.Orders.Where(@w => @w.GarbageId == garbage.Id && @w.GarbageTypeId == garbageType.Id).First();
+
+                order.DatePrinted = DateTime.Now;
+                order.Printed = true;
+                order.Quantity = 30;
+
+                return order;
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
 
@@ -269,6 +369,26 @@ namespace IWMS.Solutions.Server.BinServiceProvider
         private void SubmitData()
         {
             context.SubmitChanges();
+        }
+
+        public void InsertOrders(IList<Order> orders)
+        {
+            SubmitData();
+        }
+
+        /// <summary>
+        /// Log
+        /// </summary>
+        /// <param name="logMessage"></param>
+        /// <param name="w"></param>
+        public void Log(string logMessage, TextWriter w)
+        {
+            w.Write("\r\nLog Entry : ");
+            w.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToLongDateString());
+            w.WriteLine("  :");
+            w.WriteLine("  :{0}", logMessage);
+            w.WriteLine("-------------------------------");
         }
     }
 }

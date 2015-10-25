@@ -1,0 +1,12 @@
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\bin\Debug\IWMS.Solutions.Server.QRCodeGenerator.exe.config
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\bin\Debug\IWMS.Solutions.Server.QRCodeGenerator.exe
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\bin\Debug\IWMS.Solutions.Server.QRCodeGenerator.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\bin\Debug\Gma.QrCodeNet.Encoding.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\bin\Debug\IWMS.Solutions.Server.BinServiceProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\bin\Debug\IWMS.Solutions.Server.BinServiceProvider.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\obj\x86\Debug\IWMS.Solutions.Server.QRCodeGenerator.csprojResolveAssemblyReference.cache
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\obj\x86\Debug\IWMS.Solutions.Server.QRCodeGenerator.Shell.resources
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\obj\x86\Debug\IWMS.Solutions.Server.QRCodeGenerator.csproj.GenerateResource.Cache
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\obj\x86\Debug\IWMS.Solutions.Server.QRCodeGenerator.exe.licenses
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\obj\x86\Debug\IWMS.Solutions.Server.QRCodeGenerator.exe
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.QRCodeGenerator\obj\x86\Debug\IWMS.Solutions.Server.QRCodeGenerator.pdb

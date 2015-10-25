@@ -48,7 +48,7 @@ namespace IWMS.Solutions.Server.SpotImage.Models
     #endregion
 		
 		public SpotImageModelDataContext() : 
-				base(global::IWMS.Solutions.Server.SpotImage.Properties.Settings.Default.IWMSConnectionString1, mappingSource)
+				base(global::IWMS.Solutions.Server.SpotImage.Properties.Settings.Default.IWMSConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
