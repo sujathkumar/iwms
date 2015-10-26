@@ -364,6 +364,15 @@ namespace IWMS.Solutions.Server.BinServiceProvider
         }
 
         /// <summary>
+        /// InsertOrders
+        /// </summary>
+        /// <param name="orders"></param>
+        public void InsertOrders(IList<Order> orders)
+        {
+            SubmitData();
+        }
+
+        /// <summary>
         /// Submit Database Changes
         /// </summary>
         private void SubmitData()
@@ -371,12 +380,7 @@ namespace IWMS.Solutions.Server.BinServiceProvider
             context.SubmitChanges();
         }
 
-        public void InsertOrders(IList<Order> orders)
-        {
-            SubmitData();
-        }
-
-        /// <summary>
+                /// <summary>
         /// Log
         /// </summary>
         /// <param name="logMessage"></param>

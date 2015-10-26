@@ -1,6 +1,7 @@
 package com.iwms.cleartrash;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -9,8 +10,12 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.RemoteViews;
 
+import com.google.android.gms.gcm.GcmPubSub;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+
+import java.io.IOException;
 
 public class GCMNotificationIntentService extends IntentService {
 
@@ -34,40 +39,37 @@ public class GCMNotificationIntentService extends IntentService {
         if (!extras.isEmpty()) {
             if (GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR
                     .equals(messageType)) {
-                sendNotification("Send error: " + extras.toString());
+                sendNotification("","Send error: " + extras.toString());
             } else if (GoogleCloudMessaging.MESSAGE_TYPE_DELETED
                     .equals(messageType)) {
-                sendNotification("Deleted messages on server: "
+                sendNotification("","Deleted messages on server: "
                         + extras.toString());
             } else if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE
                     .equals(messageType)) {
-
-                for (int i = 0; i < 3; i++) {
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                    }
-
-                }
-
-                sendNotification(extras.getString("message"));
+                sendNotification(extras.getString("action"),extras.getString("message"));
             }
         }
+
         GcmBroadcastReceiver.completeWakefulIntent(intent);
     }
 
-    private void sendNotification(String msg) {
+    private void sendNotification(String action, String msg) {
         mNotificationManager = (NotificationManager) this
                 .getSystemService(Context.NOTIFICATION_SERVICE);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, HomeActivity.class), 0);
+        Intent intent = new Intent(this, NotificationActivity.class);
+        intent.putExtra("action",action);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
                 this).setSmallIcon(R.drawable.gcm_cloud)
-                .setContentTitle("GCM Notification")
+                .setContentTitle("Clear Trash")
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
-                .setContentText(msg);
+                .setContentText(msg)
+                .setTicker("Message from ClearTrash.")
+                .setContentIntent(contentIntent)
+                .setDefaults(Notification.DEFAULT_SOUND)
+                .setAutoCancel(true);
 
         mBuilder.setContentIntent(contentIntent);
         mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());

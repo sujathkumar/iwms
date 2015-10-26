@@ -34,9 +34,9 @@
 
     <uses-feature
         android:name="android.hardware.Camera"
-        android:required="true"></uses-feature>
+        android:required="true" />
 
-    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -130,6 +130,17 @@
         <activity android:name=".PromotionsActivity" >
         </activity>
         <activity android:name=".SpotImageActivity" >
+        </activity>
+        <activity android:name=".VolunteerConfirmationActivity" >
+        </activity>
+        <activity android:name=".VolunteerWardSelectionActivity" >
+        </activity>
+        <activity android:name=".PointActivity" >
+        </activity>
+        <activity
+            android:name=".NotificationActivity"
+            android:label="@string/title_activity_notification"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 

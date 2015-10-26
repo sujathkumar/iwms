@@ -583,7 +583,42 @@ namespace IWMS.Solutions.Server.CollectorServiceProvider
             context.UserRequests.InsertOnSubmit(userRequest);
             SubmitData();
 
+            InsertOrderBagPoints(auth.UserId, garbageType);
+
             return scheduleDateTime.ToString("dd-MMM-yyyy") + " " + scheduleDateTime.ToLongTimeString();
+        }
+
+        /// <summary>
+        /// InsertOrderBagPoints
+        /// </summary>
+        /// <param name="userId"></param>
+        private void InsertOrderBagPoints(Guid userId, string garbageType)
+        {
+            string type = "OW";
+            if(garbageType.Trim()=="WET")
+            {
+                type = "OW";
+            }
+            else if(garbageType.Trim() == "DRY")
+            {
+                type = "OD";
+            }
+            else if (garbageType.Trim() == "E-Waste")
+            {
+                type = "OE";
+            }
+
+            var urPoints = context.PointConfigurations.Where(@w => @w.Type == type).First();
+
+            Point point = new Point
+            {
+                Id = Guid.NewGuid(),
+                Point1 = urPoints.Point,
+                UserId = userId
+            };
+
+            context.Points.InsertOnSubmit(point);
+            SubmitData();
         }
 
         /// <summary>

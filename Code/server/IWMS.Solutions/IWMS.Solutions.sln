@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWMS.Solutions.Server.SpotI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWMS.Solutions.Server.QRCodeGenerator", "IWMS.Solutions.Server.QRCodeGenerator\IWMS.Solutions.Server.QRCodeGenerator.csproj", "{8A5C0B8E-480C-45B1-B961-8F21F994BD9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWMS.Solutions.Server.VolunteerServiceProvider", "IWMS.Solutions.Server.VolunteerServiceProvider\IWMS.Solutions.Server.VolunteerServiceProvider.csproj", "{113441D5-0F63-45A8-8925-02BB5E789FE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWMS.Solutions.Server.PointServiceProvider", "IWMS.Solutions.Server.PointServiceProvider\IWMS.Solutions.Server.PointServiceProvider.csproj", "{44550F79-A868-4342-845E-0E29AC8704A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +137,26 @@ Global
 		{8A5C0B8E-480C-45B1-B961-8F21F994BD9A}.Release|Mixed Platforms.Build.0 = Release|x86
 		{8A5C0B8E-480C-45B1-B961-8F21F994BD9A}.Release|x86.ActiveCfg = Release|x86
 		{8A5C0B8E-480C-45B1-B961-8F21F994BD9A}.Release|x86.Build.0 = Release|x86
+		{113441D5-0F63-45A8-8925-02BB5E789FE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{113441D5-0F63-45A8-8925-02BB5E789FE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{113441D5-0F63-45A8-8925-02BB5E789FE5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{113441D5-0F63-45A8-8925-02BB5E789FE5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{113441D5-0F63-45A8-8925-02BB5E789FE5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{113441D5-0F63-45A8-8925-02BB5E789FE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{113441D5-0F63-45A8-8925-02BB5E789FE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{113441D5-0F63-45A8-8925-02BB5E789FE5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{113441D5-0F63-45A8-8925-02BB5E789FE5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{113441D5-0F63-45A8-8925-02BB5E789FE5}.Release|x86.ActiveCfg = Release|Any CPU
+		{44550F79-A868-4342-845E-0E29AC8704A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44550F79-A868-4342-845E-0E29AC8704A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44550F79-A868-4342-845E-0E29AC8704A1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{44550F79-A868-4342-845E-0E29AC8704A1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{44550F79-A868-4342-845E-0E29AC8704A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{44550F79-A868-4342-845E-0E29AC8704A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44550F79-A868-4342-845E-0E29AC8704A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44550F79-A868-4342-845E-0E29AC8704A1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{44550F79-A868-4342-845E-0E29AC8704A1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{44550F79-A868-4342-845E-0E29AC8704A1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

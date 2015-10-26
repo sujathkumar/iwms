@@ -19,4 +19,5 @@
     <string name="title_activity_manual_verification_code">ManualVerificationCodeActivity</string>
     <string name="title_activity_house_hold_garbage">HouseHoldGarbageActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_notification">NotificationActivity</string>
 </resources>

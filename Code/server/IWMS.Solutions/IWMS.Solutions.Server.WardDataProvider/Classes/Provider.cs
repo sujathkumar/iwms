@@ -27,6 +27,23 @@ namespace IWMS.Solutions.Server.WardDataProvider
         #endregion
 
         /// <summary>
+        /// RetrieveZone
+        /// </summary>
+        public string RetrieveZones()
+        {
+            StringBuilder sb = new StringBuilder();
+            var zones = context.Zones.Select(@s => @s.Name);
+
+            foreach (var zone in zones)
+            {
+                sb.Append(zone.Trim());
+                sb.Append(",");
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
         /// Retrieve Zone details
         /// </summary>
         public Zone RetrieveZone(int zoneNumber)
@@ -39,6 +56,24 @@ namespace IWMS.Solutions.Server.WardDataProvider
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// RetrieveWard
+        /// </summary>
+        public string RetrieveWards(string zoneName)
+        {
+            StringBuilder sb = new StringBuilder();
+            var zone = context.Zones.Where(@w => @w.Name.Trim() == zoneName).First();
+            var wards = context.Wards.Where(@w => @w.ZoneId.Equals(zone.Id)).Select(@s => @s.Name);
+
+            foreach (var ward in wards)
+            {
+                sb.Append(ward.Trim());
+                sb.Append(",");
+            }
+
+            return sb.ToString();
         }
 
         /// <summary>

@@ -30,18 +30,24 @@ namespace IWMS.Solutions.Server.AuthProvider.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAddress(Address instance);
-    partial void UpdateAddress(Address instance);
-    partial void DeleteAddress(Address instance);
     partial void InsertAuth(Auth instance);
     partial void UpdateAuth(Auth instance);
     partial void DeleteAuth(Auth instance);
-    partial void InsertCity(City instance);
-    partial void UpdateCity(City instance);
-    partial void DeleteCity(City instance);
+    partial void InsertAddress(Address instance);
+    partial void UpdateAddress(Address instance);
+    partial void DeleteAddress(Address instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
+    partial void InsertCity(City instance);
+    partial void UpdateCity(City instance);
+    partial void DeleteCity(City instance);
+    partial void InsertPoint(Point instance);
+    partial void UpdatePoint(Point instance);
+    partial void DeletePoint(Point instance);
+    partial void InsertPointConfiguration(PointConfiguration instance);
+    partial void UpdatePointConfiguration(PointConfiguration instance);
+    partial void DeletePointConfiguration(PointConfiguration instance);
     #endregion
 		
 		public DataAccessDataContext() : 
@@ -74,6 +80,14 @@ namespace IWMS.Solutions.Server.AuthProvider.Models
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Auth> Auths
+		{
+			get
+			{
+				return this.GetTable<Auth>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Address> Addresses
 		{
 			get
@@ -82,11 +96,11 @@ namespace IWMS.Solutions.Server.AuthProvider.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Auth> Auths
+		public System.Data.Linq.Table<User> Users
 		{
 			get
 			{
-				return this.GetTable<Auth>();
+				return this.GetTable<User>();
 			}
 		}
 		
@@ -98,11 +112,201 @@ namespace IWMS.Solutions.Server.AuthProvider.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<User> Users
+		public System.Data.Linq.Table<Point> Points
 		{
 			get
 			{
-				return this.GetTable<User>();
+				return this.GetTable<Point>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PointConfiguration> PointConfigurations
+		{
+			get
+			{
+				return this.GetTable<PointConfiguration>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Auth")]
+	public partial class Auth : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private string _Key;
+		
+		private string _ApplicationId;
+		
+		private string _GCMToken;
+		
+		private string _REFCODE;
+		
+		private System.Guid _UserId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnKeyChanging(string value);
+    partial void OnKeyChanged();
+    partial void OnApplicationIdChanging(string value);
+    partial void OnApplicationIdChanged();
+    partial void OnGCMTokenChanging(string value);
+    partial void OnGCMTokenChanged();
+    partial void OnREFCODEChanging(string value);
+    partial void OnREFCODEChanged();
+    partial void OnUserIdChanging(System.Guid value);
+    partial void OnUserIdChanged();
+    #endregion
+		
+		public Auth()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Key]", Storage="_Key", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Key
+		{
+			get
+			{
+				return this._Key;
+			}
+			set
+			{
+				if ((this._Key != value))
+				{
+					this.OnKeyChanging(value);
+					this.SendPropertyChanging();
+					this._Key = value;
+					this.SendPropertyChanged("Key");
+					this.OnKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ApplicationId
+		{
+			get
+			{
+				return this._ApplicationId;
+			}
+			set
+			{
+				if ((this._ApplicationId != value))
+				{
+					this.OnApplicationIdChanging(value);
+					this.SendPropertyChanging();
+					this._ApplicationId = value;
+					this.SendPropertyChanged("ApplicationId");
+					this.OnApplicationIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GCMToken", DbType="NVarChar(500)")]
+		public string GCMToken
+		{
+			get
+			{
+				return this._GCMToken;
+			}
+			set
+			{
+				if ((this._GCMToken != value))
+				{
+					this.OnGCMTokenChanging(value);
+					this.SendPropertyChanging();
+					this._GCMToken = value;
+					this.SendPropertyChanged("GCMToken");
+					this.OnGCMTokenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REFCODE", DbType="NVarChar(10)")]
+		public string REFCODE
+		{
+			get
+			{
+				return this._REFCODE;
+			}
+			set
+			{
+				if ((this._REFCODE != value))
+				{
+					this.OnREFCODEChanging(value);
+					this.SendPropertyChanging();
+					this._REFCODE = value;
+					this.SendPropertyChanged("REFCODE");
+					this.OnREFCODEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -385,23 +589,21 @@ namespace IWMS.Solutions.Server.AuthProvider.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Auth")]
-	public partial class Auth : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private System.Guid _Id;
 		
-		private string _Key;
+		private string _Name;
 		
-		private string _ApplicationId;
+		private string _Mobile;
 		
-		private string _GCMToken;
+		private System.Guid _CityId;
 		
-		private string _REFCODE;
-		
-		private System.Guid _UserId;
+		private bool _Active;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -409,19 +611,17 @@ namespace IWMS.Solutions.Server.AuthProvider.Models
     partial void OnCreated();
     partial void OnIdChanging(System.Guid value);
     partial void OnIdChanged();
-    partial void OnKeyChanging(string value);
-    partial void OnKeyChanged();
-    partial void OnApplicationIdChanging(string value);
-    partial void OnApplicationIdChanged();
-    partial void OnGCMTokenChanging(string value);
-    partial void OnGCMTokenChanged();
-    partial void OnREFCODEChanging(string value);
-    partial void OnREFCODEChanged();
-    partial void OnUserIdChanging(System.Guid value);
-    partial void OnUserIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnMobileChanging(string value);
+    partial void OnMobileChanged();
+    partial void OnCityIdChanging(System.Guid value);
+    partial void OnCityIdChanged();
+    partial void OnActiveChanging(bool value);
+    partial void OnActiveChanged();
     #endregion
 		
-		public Auth()
+		public User()
 		{
 			OnCreated();
 		}
@@ -446,102 +646,82 @@ namespace IWMS.Solutions.Server.AuthProvider.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Key]", Storage="_Key", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Key
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Name
 		{
 			get
 			{
-				return this._Key;
+				return this._Name;
 			}
 			set
 			{
-				if ((this._Key != value))
+				if ((this._Name != value))
 				{
-					this.OnKeyChanging(value);
+					this.OnNameChanging(value);
 					this.SendPropertyChanging();
-					this._Key = value;
-					this.SendPropertyChanged("Key");
-					this.OnKeyChanged();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationId", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ApplicationId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mobile", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
+		public string Mobile
 		{
 			get
 			{
-				return this._ApplicationId;
+				return this._Mobile;
 			}
 			set
 			{
-				if ((this._ApplicationId != value))
+				if ((this._Mobile != value))
 				{
-					this.OnApplicationIdChanging(value);
+					this.OnMobileChanging(value);
 					this.SendPropertyChanging();
-					this._ApplicationId = value;
-					this.SendPropertyChanged("ApplicationId");
-					this.OnApplicationIdChanged();
+					this._Mobile = value;
+					this.SendPropertyChanged("Mobile");
+					this.OnMobileChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GCMToken", DbType="NVarChar(500)")]
-		public string GCMToken
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid CityId
 		{
 			get
 			{
-				return this._GCMToken;
+				return this._CityId;
 			}
 			set
 			{
-				if ((this._GCMToken != value))
+				if ((this._CityId != value))
 				{
-					this.OnGCMTokenChanging(value);
+					this.OnCityIdChanging(value);
 					this.SendPropertyChanging();
-					this._GCMToken = value;
-					this.SendPropertyChanged("GCMToken");
-					this.OnGCMTokenChanged();
+					this._CityId = value;
+					this.SendPropertyChanged("CityId");
+					this.OnCityIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REFCODE", DbType="NVarChar(10)")]
-		public string REFCODE
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit NOT NULL")]
+		public bool Active
 		{
 			get
 			{
-				return this._REFCODE;
+				return this._Active;
 			}
 			set
 			{
-				if ((this._REFCODE != value))
+				if ((this._Active != value))
 				{
-					this.OnREFCODEChanging(value);
+					this.OnActiveChanging(value);
 					this.SendPropertyChanging();
-					this._REFCODE = value;
-					this.SendPropertyChanged("REFCODE");
-					this.OnREFCODEChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this.OnUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
+					this._Active = value;
+					this.SendPropertyChanged("Active");
+					this.OnActiveChanged();
 				}
 			}
 		}
@@ -749,21 +929,17 @@ namespace IWMS.Solutions.Server.AuthProvider.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Point")]
+	public partial class Point : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private System.Guid _Id;
 		
-		private string _Name;
+		private int _Point1;
 		
-		private string _Mobile;
-		
-		private System.Guid _CityId;
-		
-		private bool _Active;
+		private System.Guid _UserId;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -771,17 +947,13 @@ namespace IWMS.Solutions.Server.AuthProvider.Models
     partial void OnCreated();
     partial void OnIdChanging(System.Guid value);
     partial void OnIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnMobileChanging(string value);
-    partial void OnMobileChanged();
-    partial void OnCityIdChanging(System.Guid value);
-    partial void OnCityIdChanged();
-    partial void OnActiveChanging(bool value);
-    partial void OnActiveChanged();
+    partial void OnPoint1Changing(int value);
+    partial void OnPoint1Changed();
+    partial void OnUserIdChanging(System.Guid value);
+    partial void OnUserIdChanged();
     #endregion
 		
-		public User()
+		public Point()
 		{
 			OnCreated();
 		}
@@ -806,82 +978,152 @@ namespace IWMS.Solutions.Server.AuthProvider.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Point", Storage="_Point1", DbType="Int NOT NULL")]
+		public int Point1
 		{
 			get
 			{
-				return this._Name;
+				return this._Point1;
 			}
 			set
 			{
-				if ((this._Name != value))
+				if ((this._Point1 != value))
 				{
-					this.OnNameChanging(value);
+					this.OnPoint1Changing(value);
 					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					this._Point1 = value;
+					this.SendPropertyChanged("Point1");
+					this.OnPoint1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mobile", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
-		public string Mobile
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid UserId
 		{
 			get
 			{
-				return this._Mobile;
+				return this._UserId;
 			}
 			set
 			{
-				if ((this._Mobile != value))
+				if ((this._UserId != value))
 				{
-					this.OnMobileChanging(value);
+					this.OnUserIdChanging(value);
 					this.SendPropertyChanging();
-					this._Mobile = value;
-					this.SendPropertyChanged("Mobile");
-					this.OnMobileChanged();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid CityId
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PointConfiguration")]
+	public partial class PointConfiguration : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private int _Point;
+		
+		private string _Type;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnPointChanging(int value);
+    partial void OnPointChanged();
+    partial void OnTypeChanging(string value);
+    partial void OnTypeChanged();
+    #endregion
+		
+		public PointConfiguration()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
 		{
 			get
 			{
-				return this._CityId;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._CityId != value))
+				if ((this._Id != value))
 				{
-					this.OnCityIdChanging(value);
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					this._CityId = value;
-					this.SendPropertyChanged("CityId");
-					this.OnCityIdChanged();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Bit NOT NULL")]
-		public bool Active
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Point", DbType="Int NOT NULL")]
+		public int Point
 		{
 			get
 			{
-				return this._Active;
+				return this._Point;
 			}
 			set
 			{
-				if ((this._Active != value))
+				if ((this._Point != value))
 				{
-					this.OnActiveChanging(value);
+					this.OnPointChanging(value);
 					this.SendPropertyChanging();
-					this._Active = value;
-					this.SendPropertyChanged("Active");
-					this.OnActiveChanged();
+					this._Point = value;
+					this.SendPropertyChanged("Point");
+					this.OnPointChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
 				}
 			}
 		}

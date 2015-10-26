@@ -11,27 +11,20 @@ import android.widget.TextView;
 public class HHGPrintTagActivity extends Activity {
 
     TextView garbageIdTextView;
-    Button b1,b2;
+    Button b1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hhg_print_tag);
 
-        b1 = (Button)findViewById(R.id.knowSegregationButton);
-        b2 = (Button)findViewById(R.id.schedulePickupButton);
+        b1 = (Button)findViewById(R.id.schedulePickupButton);
         garbageIdTextView = (TextView) findViewById(R.id.garbageIdTextView);
 
         String generatedTagUrl = "http://" + Helper.Server  + "/ManagementService/api/household/rgt%7C" + Helper.Key;
         RequestTask task = (RequestTask) new RequestTask().execute(generatedTagUrl);
 
         b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
-        b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HHGPrintTagActivity.this, HHGDisplayAddressActivity.class);

@@ -55,7 +55,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class SpotImageActivity extends ActionBarActivity {
+public class SpotImageActivity extends Activity {
 
     String ba1;
     String mCurrentPhotoPath;
@@ -168,6 +168,14 @@ public class SpotImageActivity extends ActionBarActivity {
 
         String latStr = String.valueOf(latitude).replace('.','_').substring(0,8);
         String longStr = String.valueOf(longitude).replace('.','_').substring(0,8);
+
+        try {
+            Thread.sleep(3000);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
         String spotImageUrl = "http://sujathvm1.cloudapp.net/ManagementService/api/spotimage/is%7C" + Helper.Key +
                 "%7C" + latStr + "%7C" + longStr + "%7C" + Helper.ImagePath.replace(":","c_olon").replace("\\","s_la").replace('.','_');

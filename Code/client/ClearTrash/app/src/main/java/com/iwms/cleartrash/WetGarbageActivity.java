@@ -12,8 +12,7 @@ import android.widget.ImageButton;
 
 public class WetGarbageActivity extends Activity {
 
-    Button b2;
-    ImageButton b1;
+    Button b1;
     EditText quantityText;
 
     @Override
@@ -21,18 +20,11 @@ public class WetGarbageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wet_garbage);
 
-        b1 = (ImageButton)findViewById(R.id.knowSegregationButton);
-        b2 = (Button)findViewById(R.id.schedulePickupButton);
+        b1 = (Button)findViewById(R.id.schedulePickupButton);
 
         quantityText = (EditText) findViewById(R.id.quantityText);
 
         b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
-        b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String quantity = quantityText.getText().toString();

@@ -19,6 +19,10 @@ namespace IWMS.Solutions.Server.TestConsole
         [STAThread]
         static void Main(string[] args)
         {
+            Auth.Provider provider = new Auth.Provider();
+            provider.SendNotification("UR", "csbY6rEVTL8:APA91bHJdiP1dA0hqBJxzqSvSPqqfV84bHF_p5PkIJiwySgiRbWqw6e_xhh0KPWDkXe0LgYYj5HSAF3otJx6H6_Fe3wNfqrV1_bDORkpbqJYSZZ5FH39yAv8qLP1EWmBMxrU-0_euZnN", "ABCD");
+            //provider.SendTopicNotification("VR", "ClearTrashVolunteers", "Hello, Rakesh!");
+
             while (true)
             {
                 //Console.WriteLine("*********************************************************");
@@ -98,7 +102,7 @@ namespace IWMS.Solutions.Server.TestConsole
                 Console.WriteLine("*********************************************************");
                 Console.WriteLine("1. Retrieve House Hold User Information");
                 string selection = Console.ReadLine();
-                if( selection == "")
+                if (selection == "")
                 {
                     RetrieveHHUserInfo();
                 }
@@ -117,7 +121,7 @@ namespace IWMS.Solutions.Server.TestConsole
             BinService.Provider provider = new BinService.Provider();
             provider.RetrieveHHUserInfo(key);
         }
-        
+
         /// <summary>
         /// Authenticate User
         /// </summary>

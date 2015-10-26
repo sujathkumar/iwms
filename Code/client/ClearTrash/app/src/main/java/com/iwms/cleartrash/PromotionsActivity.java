@@ -1,9 +1,10 @@
 package com.iwms.cleartrash;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class PromotionsActivity extends AppCompatActivity {
+public class PromotionsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

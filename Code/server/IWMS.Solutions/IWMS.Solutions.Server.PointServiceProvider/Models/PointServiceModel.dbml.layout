@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.5" name="PointServiceModel">
+  <DataContextMoniker Name="/PointServiceModelDataContext" />
+  <nestedChildShapes>
+    <classShape Id="e76237fa-2ec9-4fe4-a4d1-9306bd9d0130" absoluteBounds="1.25, 1.125, 2, 1.9631982421875">
+      <DataClassMoniker Name="/PointServiceModelDataContext/Auth" />
+      <nestedChildShapes>
+        <elementListCompartment Id="baa0a8f5-30cf-483f-9564-1501d10be721" absoluteBounds="1.2650000000000001, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="48c9f84b-a64c-41c3-a972-63c0d82411cf" absoluteBounds="4.75, 1.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/PointServiceModelDataContext/Garbage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="40e797b6-8b75-40c5-aae1-c5e51cb23684" absoluteBounds="4.765, 1.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f907a62a-f888-4968-aab7-936d5bfd49a9" absoluteBounds="1.625, 4.125, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/PointServiceModelDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4215d7f1-db1d-4d7f-b099-7bebd44290f6" absoluteBounds="1.6400000000000001, 4.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b25ff870-c901-4adf-80d6-3f38707701cb" absoluteBounds="5.25, 4.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PointServiceModelDataContext/Point" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5aea1ecf-88c4-44cb-8cec-0bb187c37288" absoluteBounds="5.265, 4.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="faf974e8-d500-40a7-9b08-1ed98907e972" absoluteBounds="2.125, 6.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PointServiceModelDataContext/PointConfiguration" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6aa39d51-98cd-49b5-96d0-5f35bbc2c7d7" absoluteBounds="2.14, 6.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="70595afd-d494-4914-b953-16c6227c918f" absoluteBounds="6.75, 6.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/PointServiceModelDataContext/Ward" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c2b9341a-6153-4a52-8110-d51c27d2f4ab" absoluteBounds="6.765, 7.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1ad01395-567a-4014-aae1-815917d3cdf6" absoluteBounds="1.625, 8.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PointServiceModelDataContext/Bin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d5f28632-46ea-4907-ada4-2b04d1bfc3f4" absoluteBounds="1.6400000000000001, 8.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a612ce43-c898-4d62-906f-84ffb07bd93a" absoluteBounds="5.375, 8.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/PointServiceModelDataContext/Volunteer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="680be546-757d-4d70-becb-dcb05662c579" absoluteBounds="5.39, 9.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

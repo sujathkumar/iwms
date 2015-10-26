@@ -13,7 +13,7 @@
         android:id="@+id/editText"
         android:text="DRY Garbage Pickup"
         android:background="@android:color/transparent"
-        android:padding="10dp"
+        android:padding="20dp"
         android:textColor="#000000"
         android:textSize="20dp"
         android:layout_alignParentTop="true"
@@ -25,8 +25,10 @@
         android:textColor="#000000"
         android:textSize="16dp"
         android:text=" - Please make sure that you have segregated your Garbage properly."
+        android:id="@+id/textView5"
         android:layout_below="@+id/editText"
-        android:id="@+id/textView5" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp" />
 
     <TextView
         android:layout_height="wrap_content"
@@ -48,31 +50,19 @@
         android:text="Please select the approximate quantity of the Garbage."
         android:id="@+id/textView4"
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
+        android:layout_below="@+id/garbageIdTextView"
         android:layout_toStartOf="@+id/quantityText" />
 
     <EditText
         android:layout_width="10dip"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView4"
-        android:background="#dedee6"
+        android:background="#83edd527"
         android:layout_alignTop="@+id/textView4"
         android:id="@+id/quantityText"
         android:layout_alignEnd="@+id/dateEditText"
-        android:layout_toEndOf="@+id/editText" />
-
-    <ImageButton
-        android:layout_height="wrap_content"
-        android:width="10dp"
-        android:text="Know more about Waste Segregation"
-        android:background="@drawable/know_more_about_segregration"
-        android:textColor="#FFFFFF"
-        android:layout_width="127dp"
-        android:layout_column="5"
-        android:id="@+id/knowSegregationButton"
-        android:layout_alignTop="@+id/garbageIdTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/textView4" />
+        android:layout_toEndOf="@+id/editText"
+        android:padding="10dp"/>
 
     <Button
         android:layout_height="wrap_content"
@@ -83,8 +73,8 @@
         android:textColor="#FFFFFF"
         android:layout_column="5"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/timeEditText"
-        android:layout_toEndOf="@+id/garbageIdTextView" />
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_alignStart="@+id/editText" />
 
     <TextView
         android:layout_height="wrap_content"
@@ -94,9 +84,8 @@
         android:padding="6dp"
         android:text="Select date and time of pickup"
         android:id="@+id/textView8"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/dateEditText" />
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:id="@+id/dateEditText"
@@ -104,8 +93,9 @@
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:text="SET DATE"
-        android:layout_above="@+id/timeEditText"
-        android:layout_alignParentStart="true" />
+        android:spinnerMode="dialog"
+        android:layout_below="@+id/textView8"
+        android:layout_alignParentEnd="true" />
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -114,8 +104,7 @@
         android:text="Donate my DRY Waste"
         android:id="@+id/donateCheckBox"
         android:checked="false"
-        android:layout_alignBaseline="@+id/schedulePickupButton"
-        android:layout_alignBottom="@+id/schedulePickupButton"
+        android:layout_below="@+id/timeEditText"
         android:layout_alignParentStart="true" />
 
     <Spinner
@@ -124,7 +113,8 @@
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:text="SET TIME"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/schedulePickupButton" />
+        android:spinnerMode="dialog"
+        android:layout_below="@+id/dateEditText"
+        android:layout_alignEnd="@+id/quantityText" />
 
 </RelativeLayout>

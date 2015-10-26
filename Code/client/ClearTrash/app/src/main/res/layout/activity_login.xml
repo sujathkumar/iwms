@@ -56,7 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColorHint="#000000"
-        android:layout_below="@+id/mobileNumberEditText" />
+        android:layout_below="@+id/mobileNumberEditText"
+        android:spinnerMode="dialog" />
 
     <EditText
         android:layout_width="wrap_content"

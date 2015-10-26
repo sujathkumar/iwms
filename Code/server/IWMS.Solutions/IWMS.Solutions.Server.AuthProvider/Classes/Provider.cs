@@ -129,14 +129,15 @@ namespace IWMS.Solutions.Server.AuthProvider
                 string referralCode = GenerateReferralCode();
                 key = cityCode + name + mobile + applicationId;
                 DataAccessDataContext ctx = new DataAccessDataContext();
-                Guid cityId = RetrieveCity(cityCode, ctx);                
+                Guid cityId = RetrieveCity(cityCode, ctx);
                 Guid userId = InsertUserMetaData(name, mobile, ctx, cityId);
                 Guid addressId = InsertAddressMetaData(ctx, userId);
                 Guid authId = InsertAuthSingleMetaData(applicationId, gcmToken, refCode, referralCode, key, ctx, userId);
+                InsertRegistrationPoints(userId);
 
                 if (!string.IsNullOrEmpty(gcmToken))
                 {
-                    SendNotification(gcmToken, referralCode);
+                    SendNotification("UR", gcmToken, referralCode);
                 }
 
                 return key;
@@ -151,12 +152,41 @@ namespace IWMS.Solutions.Server.AuthProvider
         }
 
         /// <summary>
+        /// InsertRegistrationPoints
+        /// </summary>
+        /// <param name="userId"></param>
+        private void InsertRegistrationPoints(Guid userId)
+        {
+            DataAccessDataContext ctx = new DataAccessDataContext();
+            var urPoints = ctx.PointConfigurations.Where(@w => @w.Type == "UR").First();
+
+            Point point = new Point
+            {
+                Id = Guid.NewGuid(),
+                Point1 = urPoints.Point,
+                UserId = userId
+            };
+
+            ctx.Points.InsertOnSubmit(point);
+            ctx.SubmitChanges();
+        }
+
+        /// <summary>
         /// SendNotification
         /// </summary>
-        public void SendNotification(string gcmToken, string referralCode)
+        public void SendNotification(string action, string gcmToken, string referralCode)
         {
             AndroidGCMPushNotification notification = new AndroidGCMPushNotification();
-            notification.SendNotification("Welcome to ClearTrash! Your REF_CODE is " + referralCode, gcmToken);
+            notification.SendNotification(action, "Welcome to ClearTrash! Your REF_CODE is " + referralCode, gcmToken);
+        }
+
+        /// <summary>
+        /// SendTopicNotification
+        /// </summary>
+        public void SendTopicNotification(string action, string topic, string message)
+        {
+            AndroidGCMPushNotification notification = new AndroidGCMPushNotification();
+            notification.SendTopicNotification(message, topic);
         }
 
         /// <summary>
@@ -353,7 +383,7 @@ namespace IWMS.Solutions.Server.AuthProvider
         {
             DataAccessDataContext ctx = new DataAccessDataContext();
             var userList = ctx.Users.ToList();
-            foreach(var user in userList)
+            foreach (var user in userList)
             {
                 ctx.Users.DeleteOnSubmit(user);
             }
@@ -379,7 +409,7 @@ namespace IWMS.Solutions.Server.AuthProvider
         public int DeleteAllUsers()
         {
             DataAccessDataContext ctx = new DataAccessDataContext();
-            
+
             var userList = ctx.Users.ToList();
             ctx.Users.DeleteAllOnSubmit(userList);
 

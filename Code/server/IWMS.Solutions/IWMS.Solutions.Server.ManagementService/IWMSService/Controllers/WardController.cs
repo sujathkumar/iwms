@@ -46,7 +46,30 @@ namespace ManagementService.Controllers
                 WardData.Provider rdr = new WardData.Provider();
                 string method = values[0].ToLower();
 
-                if (method == "ward")
+                if (method == "zones")
+                {
+                    string zones = rdr.RetrieveZones();
+
+                    if (string.IsNullOrEmpty(zones))
+                    {
+                        throw new HttpResponseException(HttpStatusCode.NotFound);
+                    }
+
+                    return zones;
+                }
+                else if (method == "wards")
+                {
+                    string data = values[1];
+                    string wards = rdr.RetrieveWards(data);
+
+                    if (string.IsNullOrEmpty(wards))
+                    {
+                        throw new HttpResponseException(HttpStatusCode.NotFound);
+                    }
+
+                    return wards;
+                }
+                else if (method == "ward")
                 {
                     string data = values[1];
                     string ward = rdr.RetrieveWard(data);

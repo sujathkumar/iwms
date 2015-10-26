@@ -23,7 +23,7 @@
         android:id="@+id/houseAddressEditText"
         android:padding="20dip"
         android:gravity="bottom"
-        android:background="#dedee6"
+        android:background="#83edd527"
         android:layout_below="@+id/editText"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/garbageTagTextView" />
@@ -36,7 +36,7 @@
         android:checked="false"
         android:layout_below="@+id/houseAddressEditText"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/dryGarbageButton" />
+        android:layout_toStartOf="@+id/editButton" />
 
     <RadioButton android:id="@+id/manualButton"
         android:layout_width="160dip"
@@ -53,7 +53,7 @@
         android:textColor="#000000"
         android:text="Edit"
         android:layout_alignBottom="@+id/houseAddressEditText"
-        android:layout_alignStart="@+id/wasteGarbageButton" />
+        android:layout_toEndOf="@+id/editText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -64,9 +64,9 @@
         android:layout_gravity="center_horizontal"
         android:textSize="20dp"
         android:id="@+id/textView7"
+        android:layout_marginTop="32dp"
         android:layout_below="@+id/currentButton"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="35dp" />
+        android:layout_alignParentStart="true" />
 
     <RadioButton android:id="@+id/wetGarbageButton"
         android:layout_width="100dip"
@@ -80,27 +80,27 @@
         android:layout_width="100dip"
         android:layout_height="wrap_content"
         android:text="DRY"
-        android:layout_below="@+id/textView7"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/wetGarbageButton"
+        android:layout_alignParentStart="true" />
 
     <RadioButton android:id="@+id/wasteGarbageButton"
         android:layout_width="100dip"
         android:layout_height="wrap_content"
         android:text="E-Waste"
-        android:layout_below="@+id/textView7"
-        android:layout_alignEnd="@+id/manualButton" />
+        android:layout_below="@+id/dryGarbageButton"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
         android:text="Your Garbage TAG ID:"
-        android:background="@android:color/transparent"
+        android:background="#83edd527"
         android:textColor="#000000"
         android:textSize="30dp"
         android:id="@+id/garbageTagTextView"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/wetGarbageButton" />
+        android:padding="20dp"
+        android:layout_below="@+id/wasteGarbageButton" />
 </RelativeLayout>

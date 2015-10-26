@@ -26,7 +26,8 @@
         android:layout_marginTop="400dp"
         android:layout_above="@+id/button"
         android:layout_alignStart="@+id/button"
-        android:layout_alignEnd="@+id/button" />
+        android:layout_alignEnd="@+id/button"
+        android:padding="10dp" />
 
     <Button
         android:layout_width="wrap_content"

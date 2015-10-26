@@ -47,40 +47,22 @@
         android:textColor="#000000"
         android:textSize="16dp"
         android:text="Please select the approximate quantity of the Garbage."
-        android:paddingBottom="20dp"
         android:id="@+id/textView4"
-        android:layout_above="@+id/schedulePickupButton"
+        android:layout_below="@+id/garbageIdTextView"
         android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/knowSegregationButton" />
+        android:layout_alignEnd="@+id/editText"
+        android:padding="6dp" />
 
     <EditText
         android:layout_width="10dip"
         android:layout_height="wrap_content"
-        android:background="#dedee6"
+        android:background="#83edd527"
         android:layout_alignTop="@+id/textView4"
         android:id="@+id/quantityText"
         android:layout_alignEnd="@+id/textView5"
         android:layout_toEndOf="@+id/editText"
-        android:layout_alignBottom="@+id/textView4" />
-
-    <ImageButton
-        android:layout_height="wrap_content"
-        android:background="@drawable/know_more_about_segregration"
-        android:layout_width="wrap_content"
-        android:layout_column="5"
-        android:id="@+id/knowSegregationButton"
-        android:layout_below="@+id/textView5"
-        android:layout_alignStart="@+id/editText" />
-    <TextView
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:textColor="#000000"
-        android:text="Know more about Segregation"
-        android:paddingLeft="20dp"
-        android:layout_below="@+id/knowSegregationButton"
-        android:layout_alignStart="@+id/knowSegregationButton"
-        android:layout_alignEnd="@+id/textView4"
-        android:id="@+id/textView9" />
+        android:layout_alignBottom="@+id/textView4"
+        android:padding="10dp" />
 
     <Button
         android:layout_height="wrap_content"

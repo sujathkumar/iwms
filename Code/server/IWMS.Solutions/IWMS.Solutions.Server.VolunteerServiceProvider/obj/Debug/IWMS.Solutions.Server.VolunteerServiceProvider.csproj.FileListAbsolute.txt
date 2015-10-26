@@ -1,0 +1,10 @@
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.VolunteerServiceProvider\bin\Debug\IWMS.Solutions.Server.VolunteerServiceProvider.dll.config
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.VolunteerServiceProvider\bin\Debug\IWMS.Solutions.Server.VolunteerServiceProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.VolunteerServiceProvider\bin\Debug\IWMS.Solutions.Server.VolunteerServiceProvider.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.VolunteerServiceProvider\obj\Debug\IWMS.Solutions.Server.VolunteerServiceProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.VolunteerServiceProvider\obj\Debug\IWMS.Solutions.Server.VolunteerServiceProvider.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.VolunteerServiceProvider\bin\Debug\IWMS.Solutions.Server.AuthProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.VolunteerServiceProvider\bin\Debug\IWMS.Solutions.Server.AuthProvider.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.VolunteerServiceProvider\obj\Debug\IWMS.Solutions.Server.VolunteerServiceProvider.csprojResolveAssemblyReference.cache
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.VolunteerServiceProvider\bin\Debug\IWMS.Solutions.Server.WardDataProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.VolunteerServiceProvider\bin\Debug\IWMS.Solutions.Server.WardDataProvider.pdb

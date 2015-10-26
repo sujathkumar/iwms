@@ -172,8 +172,31 @@ namespace IWMS.Solutions.Server.SpotImageServiceProvider
         public void VerifySpotImage(string imagePath)
         {
             var spotImage = context.SpotImages.Where(@w => @w.ImagePath.Contains(imagePath)).First();
+            var user = context.Users.Where(@w => @w.Id == spotImage.UserId).First();
+
+            InsertSpotImagePoints(user.Id);
+
             spotImage.Verified = true;
             SubmitData();
+        }
+
+        /// <summary>
+        /// InsertRegistrationPoints
+        /// </summary>
+        /// <param name="userId"></param>
+        private void InsertSpotImagePoints(Guid userId)
+        {
+            var urPoints = context.PointConfigurations.Where(@w => @w.Type == "SG").First();
+
+            Point point = new Point
+            {
+                Id = Guid.NewGuid(),
+                Point1 = urPoints.Point,
+                UserId = userId
+            };
+
+            context.Points.InsertOnSubmit(point);
+            context.SubmitChanges();
         }
 
         /// <summary>

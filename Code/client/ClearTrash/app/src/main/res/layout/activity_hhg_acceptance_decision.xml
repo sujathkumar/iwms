@@ -71,8 +71,8 @@
             android:padding="10dp"
             android:text="will be sent to your Home Address."
             android:id="@+id/textView2"
-            android:layout_below="@+id/textView6"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
 
         <Button
             android:layout_height="wrap_content"
@@ -83,7 +83,6 @@
             android:textColor="#FFFFFF"
             android:layout_width="127dp"
             android:layout_column="5"
-            android:layout_marginStart="33dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true" />
 
@@ -95,8 +94,8 @@
             android:background="@drawable/roundedstylebutton"
             android:textColor="#FFFFFF"
             android:layout_column="5"
-            android:layout_alignTop="@+id/acceptButton"
-            android:layout_alignEnd="@+id/textView2"
+            android:layout_alignParentBottom="true"
+            android:layout_alignEnd="@+id/textView4"
             android:layout_toEndOf="@+id/editText" />
 
 </RelativeLayout>

@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:padding="6dp"
+        android:text="My Points"
+        android:id="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000000"
+        android:textSize="40dp"
+        android:padding="6dp"
+        android:text="0 Points"
+        android:id="@+id/totalPointTextView"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:id="@+id/redeemButton"
+        android:width="10dp"
+        android:text="REDEEM"
+        android:background="@drawable/roundedstylebutton"
+        android:textColor="#FFFFFF"
+        android:layout_width="127dp"
+        android:layout_column="5"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView" />
+
+</RelativeLayout>
