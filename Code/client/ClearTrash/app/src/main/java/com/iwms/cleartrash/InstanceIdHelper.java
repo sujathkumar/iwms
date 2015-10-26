@@ -48,7 +48,8 @@ public class InstanceIdHelper {
                             .getToken(authorizedEntity, scope, extras);
                     Helper.GCMToken = token.replace(":","c_olon");
                 }
-                catch (final IOException e) {
+                catch (IOException e) {
+                    e.printStackTrace();
                 }
                 return null;
             }

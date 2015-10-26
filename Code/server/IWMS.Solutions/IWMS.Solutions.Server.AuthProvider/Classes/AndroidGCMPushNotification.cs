@@ -46,11 +46,12 @@ namespace IWMS.Solutions.Server.AuthProvider
             tResponse.Close();
         }
 
-        public void SendTopicNotification(string message, string topic)
+        public void SendTopicNotification(string action, string message, string topic)
         {
             var applicationID = "AIzaSyCWAUaOoXnDuGltmH3xmGsKJylzGbFA6kc";
             var SENDER_ID = "361344693527";
-            string postData = "{ \"to\" : \"/topics/" + topic + "\", \"data\": {\"message\": \"" + message + "\" } }";
+
+            string postData = "{ \"to\" : \"/topics/" + topic + "\", \"data\": {\"message\": \"" + message + "\", \"action\": \"" + action + "\" } }";
             byte[] byteArray = Encoding.UTF8.GetBytes(postData);
             HttpWebRequest Request = (HttpWebRequest)WebRequest.Create("https://gcm-http.googleapis.com/gcm/send");
             Request.Method = "POST";

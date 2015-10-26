@@ -43,6 +43,7 @@ public class LoginActivity extends Activity  {
     List<String> nameList;
     List<String> codeList;
     List<String> serverList;
+    List<String> gcmSenderIdList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,14 @@ public class LoginActivity extends Activity  {
         refCode = (EditText)findViewById(R.id.refferalCodeEditText);
 
         LoadLocations();
+
+        try {
+            Thread.sleep(1000);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
+        }
 
         mInstanceIdHelper = new InstanceIdHelper(this);
         mInstanceIdHelper.getTokenInBackground(Helper.GCMSenderId, GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
@@ -77,6 +86,7 @@ public class LoginActivity extends Activity  {
         nameList = new ArrayList<String>();
         codeList = new ArrayList<String>();
         serverList = new ArrayList<String>();
+        gcmSenderIdList = new ArrayList<String>();
 
         String locationsUrl = "http://sujathvm1.cloudapp.net/ManagementService/api/location";
         RequestTask task = (RequestTask) new RequestTask().execute(locationsUrl);
@@ -107,7 +117,12 @@ public class LoginActivity extends Activity  {
             } else if (loc.contains("Server")) {
                 serverList.add(loc.split(":")[1].replace('"', ' ').replace('}', ' ').replace(']',' ').trim());
             }
+            else if (loc.contains("GCMSenderId")) {
+                gcmSenderIdList.add(loc.split(":")[1].replace('"', ' ').replace('}', ' ').replace(']',' ').trim());
+            }
         }
+
+        Helper.GCMSenderId = gcmSenderIdList.get(0).trim();
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, nameList);
@@ -124,6 +139,7 @@ public class LoginActivity extends Activity  {
                         int position = citySpinner.getSelectedItemPosition();
                         Helper.CityCode = codeList.get(position);
                         Helper.Server = serverList.get(position);
+                        Helper.GCMSenderId = gcmSenderIdList.get(position).trim();
                     }
 
                     @Override

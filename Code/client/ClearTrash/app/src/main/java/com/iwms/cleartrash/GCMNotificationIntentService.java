@@ -7,15 +7,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
-import android.widget.RemoteViews;
 
-import com.google.android.gms.gcm.GcmPubSub;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-
-import java.io.IOException;
 
 public class GCMNotificationIntentService extends IntentService {
 
@@ -57,16 +51,30 @@ public class GCMNotificationIntentService extends IntentService {
         mNotificationManager = (NotificationManager) this
                 .getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Intent intent = new Intent(this, NotificationActivity.class);
-        intent.putExtra("action",action);
+        Intent intent = null;
+        if(action.equals("UR")) {
+            intent = new Intent(this, HomeActivity.class);
+        }
+        else if(action.equals("UN")) {
+            intent = new Intent(this, UserNotificationActivity.class);
+        }
+        else if(action.equals("EN")) {
+            intent = new Intent(this, VolunteerEventActivity.class);
+        }
+        else if(action.equals("NU")) {
+            intent = new Intent(this, VolunteerUserNotificationActivity.class);
+        }
+        else if(action.equals("GN")) {
+            intent = new Intent(this, VolunteerGeneralNotificationActivity.class);
+        }
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(
                 this).setSmallIcon(R.drawable.gcm_cloud)
-                .setContentTitle("Clear Trash")
+                .setContentTitle("ClearTrash")
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
                 .setContentText(msg)
-                .setTicker("Message from ClearTrash.")
+                .setTicker("Message from ClearTrash")
                 .setContentIntent(contentIntent)
                 .setDefaults(Notification.DEFAULT_SOUND)
                 .setAutoCancel(true);

@@ -138,9 +138,15 @@
         <activity android:name=".PointActivity" >
         </activity>
         <activity
-            android:name=".NotificationActivity"
+            android:name=".UserNotificationActivity"
             android:label="@string/title_activity_notification"
             android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name=".VolunteerEventActivity" >
+        </activity>
+        <activity android:name=".VolunteerUserNotificationActivity" >
+        </activity>
+        <activity android:name=".VolunteerGeneralNotificationActivity" >
         </activity>
     </application>
 

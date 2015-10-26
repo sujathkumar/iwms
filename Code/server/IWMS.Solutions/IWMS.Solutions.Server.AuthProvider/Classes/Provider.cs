@@ -174,10 +174,18 @@ namespace IWMS.Solutions.Server.AuthProvider
         /// <summary>
         /// SendNotification
         /// </summary>
-        public void SendNotification(string action, string gcmToken, string referralCode)
+        public void SendNotification(string action, string gcmToken, string message)
         {
             AndroidGCMPushNotification notification = new AndroidGCMPushNotification();
-            notification.SendNotification(action, "Welcome to ClearTrash! Your REF_CODE is " + referralCode, gcmToken);
+            
+            if (action == "UR")
+            {
+                notification.SendNotification(action, "Welcome to ClearTrash! Your REF_CODE is " + message, gcmToken);
+            }
+            else if (action == "UN")
+            {
+                notification.SendNotification(action, message, gcmToken);
+            }
         }
 
         /// <summary>
@@ -186,7 +194,19 @@ namespace IWMS.Solutions.Server.AuthProvider
         public void SendTopicNotification(string action, string topic, string message)
         {
             AndroidGCMPushNotification notification = new AndroidGCMPushNotification();
-            notification.SendTopicNotification(message, topic);
+
+            if (action == "EN")
+            {
+                notification.SendTopicNotification(action, "Event Notification: " + message, topic);
+            }
+            else if (action == "NU")
+            {
+                notification.SendTopicNotification(action, "Non Complaint User Notification: " + message, topic);
+            }
+            else if (action == "GN")
+            {
+                notification.SendTopicNotification(action, "General Notification: " + message, topic);
+            }
         }
 
         /// <summary>
