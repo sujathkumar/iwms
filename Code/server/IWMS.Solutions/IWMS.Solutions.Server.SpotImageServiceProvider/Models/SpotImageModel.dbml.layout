@@ -1,17 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 10.375" name="SpotImageModel">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 13.5" name="SpotImageModel">
   <DataContextMoniker Name="/SpotImageModelDataContext" />
   <nestedChildShapes>
     <classShape Id="10f74828-e5c9-4e46-a0e4-7db33ee64204" absoluteBounds="1.125, 0.5, 2, 1.9631982421875">
       <DataClassMoniker Name="/SpotImageModelDataContext/Auth" />
       <nestedChildShapes>
         <elementListCompartment Id="50be93ac-992e-47d5-82df-f903315a97e4" absoluteBounds="1.1400000000000001, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="b3876ce5-51b5-4bf1-a9f9-c1e5387c0646" absoluteBounds="4.5, 0.75, 2, 2.5401025390625">
-      <DataClassMoniker Name="/SpotImageModelDataContext/SpotImage" />
-      <nestedChildShapes>
-        <elementListCompartment Id="48e86325-758c-438d-b65c-1a21b5507ba0" absoluteBounds="4.515, 1.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="d86a868a-d3aa-4318-a529-347d6565b83d" absoluteBounds="1.5, 3.875, 2, 2.3478011067708335">
@@ -26,12 +20,6 @@
         <elementListCompartment Id="d36d33a9-f140-41b0-9f98-2e01e936727b" absoluteBounds="3.64, 7.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="35ce88fc-82e3-475b-9d15-a5a07ede5773" absoluteBounds="4.5, 4, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/SpotImageModelDataContext/Event" />
-      <nestedChildShapes>
-        <elementListCompartment Id="efaaf233-2a81-414a-9a1b-f6eb2ab0953f" absoluteBounds="4.515, 4.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="cb7482ad-9f4f-4705-9ebe-b136046487ff" absoluteBounds="0.875, 8.625, 2, 1.3862939453125">
       <DataClassMoniker Name="/SpotImageModelDataContext/Point" />
       <nestedChildShapes>
@@ -42,6 +30,36 @@
       <DataClassMoniker Name="/SpotImageModelDataContext/PointConfiguration" />
       <nestedChildShapes>
         <elementListCompartment Id="07f31830-047b-4b1b-9b78-38a296d84c51" absoluteBounds="3.6399999999999997, 9.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="af548a89-c614-47f0-a7c4-f77e3fb58c1f" absoluteBounds="1.125, 11, 2, 1.3862939453125">
+      <DataClassMoniker Name="/SpotImageModelDataContext/Topic" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0bc8bd11-85eb-4752-8b5e-bfe9e08bd327" absoluteBounds="1.1400000000000001, 11.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="13869418-ecab-4634-9a6f-27c2f768246b" absoluteBounds="4.5, 11.125, 2, 1.3862939453125">
+      <DataClassMoniker Name="/SpotImageModelDataContext/TopicUserMap" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2595168d-7d78-4370-8dad-966ea8228c54" absoluteBounds="4.515, 11.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="69cce353-f411-447b-b571-9ad711ca8625" absoluteBounds="5.25, 11.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/SpotImageModelDataContext/Zone" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0accda37-1911-4371-a577-c59133d9cd1b" absoluteBounds="5.265, 12.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4597b59f-96d0-492a-86f4-469b63ff453d" absoluteBounds="4.625, 3.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/SpotImageModelDataContext/Event" />
+      <nestedChildShapes>
+        <elementListCompartment Id="61082ed4-edbe-4c1b-9474-6f1201ae32da" absoluteBounds="4.64, 4.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="33cc90fa-7ddd-44d7-9791-095a0a8eefac" absoluteBounds="4.625, 0.875, 2, 2.5401025390625">
+      <DataClassMoniker Name="/SpotImageModelDataContext/SpotImage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eaac7bdd-35b1-48f6-b702-8fad27eaf1e5" absoluteBounds="4.64, 1.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

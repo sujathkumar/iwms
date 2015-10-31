@@ -6,3 +6,5 @@ C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Soluti
 C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.SpotImageServiceProvider\bin\Debug\IWMS.Solutions.Server.WardDataProvider.dll
 C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.SpotImageServiceProvider\bin\Debug\IWMS.Solutions.Server.WardDataProvider.pdb
 C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.SpotImageServiceProvider\obj\Debug\IWMS.Solutions.Server.SpotImageServiceProvider.csprojResolveAssemblyReference.cache
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.SpotImageServiceProvider\bin\Debug\IWMS.Solutions.Server.AuthProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.SpotImageServiceProvider\bin\Debug\IWMS.Solutions.Server.AuthProvider.pdb

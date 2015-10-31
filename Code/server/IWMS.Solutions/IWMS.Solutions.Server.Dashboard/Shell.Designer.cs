@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Collectors");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Spot Images");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Collectors");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Spot Images");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Events");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shell));
             this.panelControlCenter = new DevExpress.XtraEditors.PanelControl();
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
@@ -37,6 +38,11 @@
             this.gridControlCollectors = new DevExpress.XtraGrid.GridControl();
             this.gridViewCollectors = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tabControlSpotImages = new DevExpress.XtraTab.XtraTabPage();
+            this.gridControlSpotImages = new DevExpress.XtraGrid.GridControl();
+            this.gridViewSpotImages = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.tabControlEvents = new DevExpress.XtraTab.XtraTabPage();
+            this.gridControlEvents = new DevExpress.XtraGrid.GridControl();
+            this.gridViewEvents = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.lblHeader = new DevExpress.XtraEditors.LabelControl();
             this.panelControlLHS = new DevExpress.XtraEditors.PanelControl();
             this.treeViewMain = new System.Windows.Forms.TreeView();
@@ -46,8 +52,7 @@
             this.linkRefresh = new System.Windows.Forms.LinkLabel();
             this.linkCreate = new System.Windows.Forms.LinkLabel();
             this.panelControlRHS = new DevExpress.XtraEditors.PanelControl();
-            this.gridControlSpotImages = new DevExpress.XtraGrid.GridControl();
-            this.gridViewSpotImages = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.linkClearEvent = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlCenter)).BeginInit();
             this.panelControlCenter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
@@ -56,14 +61,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCollectors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCollectors)).BeginInit();
             this.tabControlSpotImages.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlSpotImages)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSpotImages)).BeginInit();
+            this.tabControlEvents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlEvents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewEvents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlLHS)).BeginInit();
             this.panelControlLHS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             this.panelRHS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlRHS)).BeginInit();
             this.panelControlRHS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlSpotImages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewSpotImages)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControlCenter
@@ -83,7 +91,8 @@
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabControlCollector,
-            this.tabControlSpotImages});
+            this.tabControlSpotImages,
+            this.tabControlEvents});
             this.tabControlMain.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabControlMain_SelectedPageChanged);
             // 
             // tabControlCollector
@@ -116,6 +125,45 @@
             this.tabControlSpotImages.Size = new System.Drawing.Size(1062, 572);
             this.tabControlSpotImages.Text = "Spot Images";
             // 
+            // gridControlSpotImages
+            // 
+            this.gridControlSpotImages.Location = new System.Drawing.Point(4, 4);
+            this.gridControlSpotImages.MainView = this.gridViewSpotImages;
+            this.gridControlSpotImages.Name = "gridControlSpotImages";
+            this.gridControlSpotImages.Size = new System.Drawing.Size(1055, 565);
+            this.gridControlSpotImages.TabIndex = 1;
+            this.gridControlSpotImages.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewSpotImages});
+            // 
+            // gridViewSpotImages
+            // 
+            this.gridViewSpotImages.GridControl = this.gridControlSpotImages;
+            this.gridViewSpotImages.Name = "gridViewSpotImages";
+            this.gridViewSpotImages.OptionsSelection.MultiSelect = true;
+            // 
+            // tabControlEvents
+            // 
+            this.tabControlEvents.Controls.Add(this.gridControlEvents);
+            this.tabControlEvents.Name = "tabControlEvents";
+            this.tabControlEvents.Size = new System.Drawing.Size(1062, 572);
+            this.tabControlEvents.Text = "Events";
+            // 
+            // gridControlEvents
+            // 
+            this.gridControlEvents.Location = new System.Drawing.Point(4, 4);
+            this.gridControlEvents.MainView = this.gridViewEvents;
+            this.gridControlEvents.Name = "gridControlEvents";
+            this.gridControlEvents.Size = new System.Drawing.Size(1055, 565);
+            this.gridControlEvents.TabIndex = 1;
+            this.gridControlEvents.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewEvents});
+            // 
+            // gridViewEvents
+            // 
+            this.gridViewEvents.GridControl = this.gridControlEvents;
+            this.gridViewEvents.Name = "gridViewEvents";
+            this.gridViewEvents.OptionsSelection.MultiSelect = true;
+            // 
             // lblHeader
             // 
             this.lblHeader.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -144,13 +192,16 @@
             this.treeViewMain.ForeColor = System.Drawing.Color.White;
             this.treeViewMain.Location = new System.Drawing.Point(6, 30);
             this.treeViewMain.Name = "treeViewMain";
-            treeNode3.Name = "collectorsnode";
-            treeNode3.Text = "Collectors";
-            treeNode4.Name = "nodeSpotImages";
-            treeNode4.Text = "Spot Images";
+            treeNode4.Name = "collectorsnode";
+            treeNode4.Text = "Collectors";
+            treeNode5.Name = "nodeSpotImages";
+            treeNode5.Text = "Spot Images";
+            treeNode6.Name = "nodeEvents";
+            treeNode6.Text = "Events";
             this.treeViewMain.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
+            treeNode4,
+            treeNode5,
+            treeNode6});
             this.treeViewMain.Size = new System.Drawing.Size(189, 572);
             this.treeViewMain.TabIndex = 0;
             this.treeViewMain.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMain_AfterSelect);
@@ -168,6 +219,7 @@
             // panelRHS
             // 
             this.panelRHS.BackColor = System.Drawing.Color.White;
+            this.panelRHS.Controls.Add(this.linkClearEvent);
             this.panelRHS.Controls.Add(this.linkDelete);
             this.panelRHS.Controls.Add(this.linkRefresh);
             this.panelRHS.Controls.Add(this.linkCreate);
@@ -220,21 +272,18 @@
             this.panelControlRHS.Size = new System.Drawing.Size(200, 607);
             this.panelControlRHS.TabIndex = 2;
             // 
-            // gridControl1
+            // linkClearEvent
             // 
-            this.gridControlSpotImages.Location = new System.Drawing.Point(4, 4);
-            this.gridControlSpotImages.MainView = this.gridViewSpotImages;
-            this.gridControlSpotImages.Name = "gridControl1";
-            this.gridControlSpotImages.Size = new System.Drawing.Size(1055, 565);
-            this.gridControlSpotImages.TabIndex = 1;
-            this.gridControlSpotImages.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewSpotImages});
-            // 
-            // gridView1
-            // 
-            this.gridViewSpotImages.GridControl = this.gridControlSpotImages;
-            this.gridViewSpotImages.Name = "gridView1";
-            this.gridViewSpotImages.OptionsSelection.MultiSelect = true;
+            this.linkClearEvent.AutoSize = true;
+            this.linkClearEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkClearEvent.Location = new System.Drawing.Point(10, 124);
+            this.linkClearEvent.Name = "linkClearEvent";
+            this.linkClearEvent.Size = new System.Drawing.Size(81, 17);
+            this.linkClearEvent.TabIndex = 3;
+            this.linkClearEvent.TabStop = true;
+            this.linkClearEvent.Text = "Clear Event";
+            this.linkClearEvent.Visible = false;
+            this.linkClearEvent.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkClearEvent_LinkClicked);
             // 
             // Shell
             // 
@@ -262,6 +311,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCollectors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCollectors)).EndInit();
             this.tabControlSpotImages.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlSpotImages)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSpotImages)).EndInit();
+            this.tabControlEvents.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlEvents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewEvents)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlLHS)).EndInit();
             this.panelControlLHS.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).EndInit();
@@ -269,8 +323,6 @@
             this.panelRHS.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlRHS)).EndInit();
             this.panelControlRHS.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlSpotImages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewSpotImages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,6 +347,10 @@
         private DevExpress.XtraTab.XtraTabPage tabControlSpotImages;
         private DevExpress.XtraGrid.GridControl gridControlSpotImages;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewSpotImages;
+        private DevExpress.XtraTab.XtraTabPage tabControlEvents;
+        private DevExpress.XtraGrid.GridControl gridControlEvents;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewEvents;
+        private System.Windows.Forms.LinkLabel linkClearEvent;
 
     }
 }

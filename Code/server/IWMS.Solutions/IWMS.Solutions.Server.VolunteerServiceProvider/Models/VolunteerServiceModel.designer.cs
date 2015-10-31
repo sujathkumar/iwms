@@ -30,6 +30,9 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertEventVolunteerMap(EventVolunteerMap instance);
+    partial void UpdateEventVolunteerMap(EventVolunteerMap instance);
+    partial void DeleteEventVolunteerMap(EventVolunteerMap instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
@@ -87,6 +90,14 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider.Models
 				base(connection, mappingSource)
 		{
 			OnCreated();
+		}
+		
+		public System.Data.Linq.Table<EventVolunteerMap> EventVolunteerMaps
+		{
+			get
+			{
+				return this.GetTable<EventVolunteerMap>();
+			}
 		}
 		
 		public System.Data.Linq.Table<User> Users
@@ -158,6 +169,116 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider.Models
 			get
 			{
 				return this.GetTable<PointConfiguration>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EventVolunteerMap")]
+	public partial class EventVolunteerMap : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private System.Guid _EventId;
+		
+		private System.Guid _VolunteerId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnEventIdChanging(System.Guid value);
+    partial void OnEventIdChanged();
+    partial void OnVolunteerIdChanging(System.Guid value);
+    partial void OnVolunteerIdChanged();
+    #endregion
+		
+		public EventVolunteerMap()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid EventId
+		{
+			get
+			{
+				return this._EventId;
+			}
+			set
+			{
+				if ((this._EventId != value))
+				{
+					this.OnEventIdChanging(value);
+					this.SendPropertyChanging();
+					this._EventId = value;
+					this.SendPropertyChanged("EventId");
+					this.OnEventIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VolunteerId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid VolunteerId
+		{
+			get
+			{
+				return this._VolunteerId;
+			}
+			set
+			{
+				if ((this._VolunteerId != value))
+				{
+					this.OnVolunteerIdChanging(value);
+					this.SendPropertyChanging();
+					this._VolunteerId = value;
+					this.SendPropertyChanged("VolunteerId");
+					this.OnVolunteerIdChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

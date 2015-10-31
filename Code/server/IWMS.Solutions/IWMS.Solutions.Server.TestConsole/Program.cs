@@ -19,13 +19,6 @@ namespace IWMS.Solutions.Server.TestConsole
         [STAThread]
         static void Main(string[] args)
         {
-            //Auth.Provider provider = new Auth.Provider();
-            //provider.SendNotification("UR", "fkEKCUSeBGk:APA91bGP1TSZ8s0vVJfQPYa8eAr0Ti_7SXbnzsp-a472psQFfZa3pbHO9Bo-FEtnYd67WXOX6hQPUX1hWVemu5Myd5ekvTCXeAgUmskHaWm2xzZe4YYKh1CsCnzS8RJIwcR5z5-UVBYj", "ACEG");
-            //provider.SendNotification("UN", "fkEKCUSeBGk:APA91bGP1TSZ8s0vVJfQPYa8eAr0Ti_7SXbnzsp-a472psQFfZa3pbHO9Bo-FEtnYd67WXOX6hQPUX1hWVemu5Myd5ekvTCXeAgUmskHaWm2xzZe4YYKh1CsCnzS8RJIwcR5z5-UVBYj", "User Notification");
-            //provider.SendTopicNotification("EN", "ClearTrashVolunteers", "Hello, Rakesh!");
-            //provider.SendTopicNotification("NU", "ClearTrashVolunteers", "Hello, Rakesh!");
-            //provider.SendTopicNotification("GN", "ClearTrashVolunteers", "Hello, Rakesh!");
-
             while (true)
             {
                 //Console.WriteLine("*********************************************************");

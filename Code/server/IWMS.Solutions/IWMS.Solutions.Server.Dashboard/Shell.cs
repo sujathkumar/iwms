@@ -35,7 +35,7 @@ namespace IWMS.Solutions.Server.Dashboard
                 frm.ShowDialog();
 
                 LoadCollectors();
-                gridControlCollectors.Refresh();               
+                gridControlCollectors.Refresh();
             }
             else if (tabControlMain.SelectedTabPage == tabControlSpotImages)
             {
@@ -53,6 +53,22 @@ namespace IWMS.Solutions.Server.Dashboard
                 LoadSpotImages();
                 gridControlSpotImages.Refresh();
             }
+            else if (tabControlMain.SelectedTabPage == tabControlEvents)
+            {
+                int[] selectedRows = gridViewEvents.GetSelectedRows();
+                EventModel ev = null;
+
+                foreach (var row in selectedRows)
+                {
+                    ev = (EventModel)gridViewEvents.GetRow(row);
+                }
+
+                EventNotification frm = new EventNotification(ev.ImagePath);
+                frm.ShowDialog();
+
+                LoadEvents();
+                gridControlEvents.Refresh();
+            }
         }
 
         /// <summary>
@@ -64,6 +80,7 @@ namespace IWMS.Solutions.Server.Dashboard
         {
             LoadCollectors();
             LoadSpotImages();
+            LoadEvents();
         }
 
         /// <summary>
@@ -110,7 +127,7 @@ namespace IWMS.Solutions.Server.Dashboard
             IList<SpotImageModel> model = new List<SpotImageModel>();
             spotImageProvider = new SpotImageService.Provider();
 
-            var spotImages = spotImageProvider.RetrievSpotImages();
+            var spotImages = spotImageProvider.RetrieveSpotImages();
 
             foreach (var spotImage in spotImages)
             {
@@ -124,6 +141,31 @@ namespace IWMS.Solutions.Server.Dashboard
             }
 
             gridControlSpotImages.DataSource = model;
+        }
+
+        /// <summary>
+        /// LoadEvents
+        /// </summary>
+        private void LoadEvents()
+        {
+            IList<EventModel> model = new List<EventModel>();
+            spotImageProvider = new SpotImageService.Provider();
+
+            var events = spotImageProvider.RetrieveEvents();
+
+            foreach (var ev in events)
+            {
+                model.Add(new EventModel
+                {
+                    Name = ev.Name,
+                    Date = ev.Date,
+                    Address = ev.Address,
+                    Ward = ev.Ward,
+                    ImagePath = ev.ImagePath.Substring(ev.ImagePath.LastIndexOf("\\") + 1)
+                });
+            }
+
+            gridControlEvents.DataSource = model;
         }
 
         /// <summary>
@@ -142,6 +184,11 @@ namespace IWMS.Solutions.Server.Dashboard
             {
                 LoadSpotImages();
                 gridControlSpotImages.Refresh();
+            }
+            else if (tabControlMain.SelectedTabPage == tabControlEvents)
+            {
+                LoadEvents();
+                gridControlEvents.Refresh();
             }
         }
 
@@ -180,6 +227,20 @@ namespace IWMS.Solutions.Server.Dashboard
                 LoadSpotImages();
                 gridControlSpotImages.Refresh();
             }
+            else if (tabControlMain.SelectedTabPage == tabControlEvents)
+            {
+                int[] selectedRows = gridViewEvents.GetSelectedRows();
+
+                foreach (var row in selectedRows)
+                {
+                    var ev = gridViewEvents.GetRow(row);
+                    spotImageProvider = new SpotImageService.Provider();
+                    spotImageProvider.DeleteEvent(((EventModel)ev).Name);
+                }
+
+                LoadEvents();
+                gridControlEvents.Refresh();
+            }
 
             MessageBox.Show("Deleted successfully!");
         }
@@ -201,6 +262,7 @@ namespace IWMS.Solutions.Server.Dashboard
 
         private void SelectTabs(string selection)
         {
+            linkClearEvent.Visible = false;
             switch (selection)
             {
                 case "Collectors": tabControlMain.SelectedTabPage = tabControlCollector;
@@ -211,7 +273,35 @@ namespace IWMS.Solutions.Server.Dashboard
                     linkCreate.Text = "Verify Spot Image";
                     linkDelete.Text = "Delete Spot Image";
                     break;
+                case "Events": tabControlMain.SelectedTabPage = tabControlEvents;
+                    linkCreate.Text = "Send Notification";
+                    linkDelete.Text = "Delete Event";
+                    linkClearEvent.Visible = true;
+                    break;
             }
+        }
+
+        /// <summary>
+        /// linkClearEvent_LinkClicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void linkClearEvent_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int[] selectedRows = gridViewEvents.GetSelectedRows();
+            EventModel ev = null;
+
+            foreach (var row in selectedRows)
+            {
+                ev = (EventModel)gridViewEvents.GetRow(row);
+            }
+
+            spotImageProvider.ClearEvent(ev.ImagePath);
+
+            MessageBox.Show("Event Cleared successfully!");
+
+            LoadEvents();
+            gridControlEvents.Refresh();
         }
     }
 }

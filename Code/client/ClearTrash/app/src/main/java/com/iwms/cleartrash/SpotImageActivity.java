@@ -101,7 +101,15 @@ public class SpotImageActivity extends Activity {
                 new Thread(new Runnable() {
                     public void run() {
                 while (progressBarStatus < 100) {
-                upload();
+                    Helper.ImagePath = "";
+                    upload();
+
+                    while(Helper.ImagePath.equals(""))
+                    {
+
+                    }
+
+                    InsertSpotImage();
 
                 progressBarStatus = 100;
 
@@ -160,36 +168,6 @@ public class SpotImageActivity extends Activity {
 
         // Upload image to server
         new uploadToServer().execute();
-
-        while(Helper.ImagePath.equals(""))
-        {
-            //Waiting for Image to upload.
-        }
-
-        String latStr = String.valueOf(latitude).replace('.','_').substring(0,8);
-        String longStr = String.valueOf(longitude).replace('.','_').substring(0,8);
-
-        try {
-            Thread.sleep(3000);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        String spotImageUrl = "http://sujathvm1.cloudapp.net/ManagementService/api/spotimage/is%7C" + Helper.Key +
-                "%7C" + latStr + "%7C" + longStr + "%7C" + Helper.ImagePath.replace(":","c_olon").replace("\\","s_la").replace('.','_');
-        RequestTask task = (RequestTask) new RequestTask().execute(spotImageUrl);
-
-        try {
-            task.get();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 
     private void captureImage() {
@@ -267,6 +245,26 @@ public class SpotImageActivity extends Activity {
 
             inputStream.close();
             return result;
+        }
+    }
+
+    private void InsertSpotImage()
+    {
+        String latStr = String.valueOf(latitude).replace('.','_').substring(0,8);
+        String longStr = String.valueOf(longitude).replace('.','_').substring(0,8);
+
+        String spotImageUrl = "http://sujathvm1.cloudapp.net/ManagementService/api/spotimage/is%7C" + Helper.Key +
+                "%7C" + latStr + "%7C" + longStr + "%7C" + Helper.ImagePath.replace(":","c_olon").replace("\\","s_la").replace('.','_');
+        RequestTask task = (RequestTask) new RequestTask().execute(spotImageUrl);
+
+        try {
+            task.get();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
 

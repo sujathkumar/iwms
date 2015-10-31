@@ -52,7 +52,7 @@ namespace IWMS.Solutions.Server.Dashboard
         private void VerifySpotImage_Load(object sender, EventArgs e)
         {
             spotImageProvider = new SpotImageService.Provider();
-            SpotImagePoint model = spotImageProvider.RetrievSpotImage(this.ImagePath);
+            SpotImagePoint model = spotImageProvider.RetrieveSpotImage(this.ImagePath);
 
             txtLatitude.Text = model.Latitude;
             txtLongitude.Text = model.Longitude;

@@ -35,6 +35,19 @@ namespace ManagementService.Controllers
                     provider.PostSpotImageProcess();
                     return "Updated Successfully!";
                 }
+                if (method == "is")
+                {
+                    string data = values[1];
+                    string latitude = values[2].Replace("_",".");
+                    string longitude = values[3].Replace("_", ".");
+                    string imageData = values[4].Replace("c_olon", ":").Replace("s_la", "\\").Replace("_",".");
+                    return provider.InsertSpotImage(data, latitude, longitude, imageData).ToString();
+                }
+                else if (method == "re")
+                {
+                    string id = values[1];
+                    return provider.RetrieveVolunteerEvent(id);
+                }
             }
 
             return "Error, Not Found!";

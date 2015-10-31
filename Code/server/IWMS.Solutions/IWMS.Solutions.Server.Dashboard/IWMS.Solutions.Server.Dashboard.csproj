@@ -59,6 +59,13 @@
     <Compile Include="EventMessageBox.Designer.cs">
       <DependentUpon>EventMessageBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="EventModel.cs" />
+    <Compile Include="EventNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventNotification.Designer.cs">
+      <DependentUpon>EventNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerifySpotImage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +89,9 @@
     <Compile Include="SpotImageModel.cs" />
     <EmbeddedResource Include="EventMessageBox.resx">
       <DependentUpon>EventMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventNotification.resx">
+      <DependentUpon>EventNotification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VerifySpotImage.resx">
       <DependentUpon>VerifySpotImage.cs</DependentUpon>

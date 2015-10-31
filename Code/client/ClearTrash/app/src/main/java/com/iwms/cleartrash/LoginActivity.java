@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.os.Handler;
@@ -19,6 +20,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.gcm.GcmPubSub;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import java.io.File;
@@ -295,8 +297,38 @@ public class LoginActivity extends Activity  {
              if(statusCode.contains("202"))
              {
                  String genKey =  Helper.CityCode + userName + mobile + Helper.MACAddress;
+                 //String volunteerSubsciptionUrl = "http://" + Helper.Server  + "/ManagementService/api/login/rs%7C" + genKey;
+                 //task = (RequestTask) new RequestTask().execute(volunteerSubsciptionUrl);
+                 //String topic = "";
+
+                 //try
+                 //{
+                 //    topic = task.get();
+
+                 //    try {
+                 //        if(!topic.equals("")) {
+                 //            subscribeTopics(Helper.GCMToken, topic);
+                 //        }
+                 //    }
+                 //    catch (IOException e)
+                 //    {
+                 //        e.printStackTrace();
+                 //    }
+                 //}
+                 //catch (InterruptedException e)
+                 //{
+                     // TODO Auto-generated catch block
+                 //    e.printStackTrace();
+                 //}
+                 //catch (ExecutionException e)
+                 //{
+                     // TODO Auto-generated catch block
+                 //    e.printStackTrace();
+                 //}
+
                  String confirmSignIpUrl = "http://" + Helper.Server  + "/ManagementService/api/login/confirmsignin%7Cmobile=" + mobile + "%7Ckey=" + genKey;
                  task = (RequestTask) new RequestTask().execute(confirmSignIpUrl);
+
                  String vc = "";
                  boolean flag = false;
 
@@ -354,6 +386,27 @@ public class LoginActivity extends Activity  {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public void subscribeTopics(final String token, final String topic) throws IOException
+    {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params)
+            {
+                try
+                {
+                    GcmPubSub pubSub = GcmPubSub.getInstance(getApplicationContext());
+                    pubSub.subscribe(token, "/topics/ClearTrashVolunteers", null);
+                    pubSub.subscribe(token, "/topics/" + topic, null);
+                }
+                catch (final IOException e)
+                {
+                }
+
+                return null;
+            }
+        }.execute();
     }
 
     public void WriteToCache(String key)

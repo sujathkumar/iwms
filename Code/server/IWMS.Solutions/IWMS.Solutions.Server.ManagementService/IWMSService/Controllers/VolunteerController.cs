@@ -36,6 +36,17 @@ namespace ManagementService.Controllers
                     provider.InsertTopics();
                     return "success";
                 }
+                else if(method == "rs")
+                {
+                    string data = values[1];
+                    provider.RetrieveVolunteerSubscription(data);
+                }
+                else if (method == "ie")
+                {
+                    string data = values[1];
+                    string eventId = values[2];
+                    return provider.InsertEventVolunteerMap(data, eventId).ToString();
+                }
             }
 
             return "Error, Not Found!";

@@ -36,6 +36,28 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider
         }
 
         /// <summary>
+        /// RetrieveVolunteerSubscription
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string RetrieveVolunteerSubscription(string key)
+        {
+            var user = context.Auths.Where(@w => @w.Key == key).First();
+            var volunteer = context.Volunteers.Where(@w => @w.UserId == user.UserId);
+
+            if (volunteer != null && volunteer.Count() > 0)
+            {
+                var ward = context.Wards.Where(@w => @w.Id == volunteer.First().WardId).First();
+                var zone = context.Zones.Where(@w => @w.Id == ward.ZoneId).First();
+                string topicName = zone.Name.Replace('"', ' ').Trim() + "-" + ward.Name.Replace('"', ' ').Trim();
+                var topic = context.Topics.Where(@w => @w.Name == topicName).First();
+                return topic.Name;
+            }
+
+            return "";
+        }
+
+        /// <summary>
         /// InsertVolunteer
         /// </summary>
         /// <param name="key"></param>
@@ -58,9 +80,9 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider
                     WardId = ward.Id
                 };
 
-                var volunteers = context.Volunteers.Where(@w => @w.UserId == user.UserId && @w.WardId == ward.Id);
-                
-                if(volunteers != null && volunteers.Count() > 0)
+                var volunteers = context.Volunteers.Where(@w => @w.UserId == user.UserId);
+
+                if (volunteers != null && volunteers.Count() > 0)
                 {
                     return 104;
                 }
@@ -88,9 +110,37 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider
             }
         }
 
+        /// <summary>
+        /// InsertEventVolunteerMap
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public int InsertEventVolunteerMap(string key, string eventId)
+        {
+            try
+            {
+                var user = context.Auths.Where(@w => @w.Key == key).First();
+                var volunteer = context.Volunteers.Where(@w => @w.UserId == user.UserId).First();
+
+                EventVolunteerMap map = new EventVolunteerMap
+                {
+                    Id = Guid.NewGuid(),
+                    EventId = Guid.Parse(eventId),
+                    VolunteerId = volunteer.Id
+                };
+
+                return 216;
+            }
+            catch(Exception ex)
+            {
+                return 100;
+            }
+        }
+
         public void InsertTopics()
         {
-            string[] sep = new string[]{","};
+            string[] sep = new string[] { "," };
             IList<Topic> topics = new List<Topic>();
             Ward.Provider provider = new Ward.Provider();
             var zones = provider.RetrieveZones();

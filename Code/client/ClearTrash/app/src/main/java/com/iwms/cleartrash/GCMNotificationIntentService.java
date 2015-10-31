@@ -59,6 +59,8 @@ public class GCMNotificationIntentService extends IntentService {
             intent = new Intent(this, UserNotificationActivity.class);
         }
         else if(action.equals("EN")) {
+            Helper.EventId = msg.substring(msg.indexOf('[')+1,msg.indexOf(']'));
+            msg = msg.replace(Helper.EventId,"").replace("[","").replace("]","");
             intent = new Intent(this, VolunteerEventActivity.class);
         }
         else if(action.equals("NU")) {

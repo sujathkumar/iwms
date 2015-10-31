@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Classes\Provider.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
+    <Compile Include="Models\EventPoint.cs" />
     <Compile Include="Models\SpotImageModel.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -76,6 +77,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IWMS.Solutions.Server.AuthProvider\IWMS.Solutions.Server.AuthProvider.csproj">
+      <Project>{6c6aa232-5b93-4173-a18f-ae8bb99faf43}</Project>
+      <Name>IWMS.Solutions.Server.AuthProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IWMS.Solutions.Server.WardDataProvider\IWMS.Solutions.Server.WardDataProvider.csproj">
       <Project>{f96b63d8-225f-4640-b08b-494dce5d90e0}</Project>
       <Name>IWMS.Solutions.Server.WardDataProvider</Name>

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using IWMS.Solutions.Server.SpotImage.Models;
 using WardData = IWMS.Solutions.Server.WardDataProvider;
+using Auth = IWMS.Solutions.Server.AuthProvider;
 
 namespace IWMS.Solutions.Server.SpotImageServiceProvider
 {
@@ -27,10 +28,10 @@ namespace IWMS.Solutions.Server.SpotImageServiceProvider
         #endregion
 
         /// <summary>
-        /// RetrievSpotImages
+        /// RetrieveSpotImages
         /// </summary>
         /// <returns></returns>
-        public IList<SpotImagePoint> RetrievSpotImages()
+        public IList<SpotImagePoint> RetrieveSpotImages()
         {
             IList<SpotImagePoint> spotImageList = new List<SpotImage.Models.SpotImagePoint>();
             var spotImages = context.SpotImages;
@@ -46,15 +47,57 @@ namespace IWMS.Solutions.Server.SpotImageServiceProvider
         }
 
         /// <summary>
-        /// RetrievSpotImage
+        /// RetrieveSpotImage
         /// </summary>
         /// <returns></returns>
-        public SpotImagePoint RetrievSpotImage(string imagePath)
+        public SpotImagePoint RetrieveSpotImage(string imagePath)
         {
             var spotImage = context.SpotImages.Where(@w => @w.ImagePath.Contains(imagePath)).First();
             var ward = context.Wards.Where(@w => @w.Id == spotImage.WardId).First();
             var user = context.Users.Where(@w => @w.Id == spotImage.UserId).First();
             return new SpotImagePoint { Id = spotImage.Id, ImagePath = spotImage.ImagePath, Latitude = spotImage.Latitude, Longitude = spotImage.Longitude, UploadedTime = spotImage.UploadedTime, UserAddress = spotImage.UserAddress, UserName = user.Name, Verified = spotImage.Verified, WardName = ward.Name };
+        }
+
+        /// <summary>
+        /// RetrieveEvents
+        /// </summary>
+        /// <returns></returns>
+        public IList<EventPoint> RetrieveEvents()
+        {
+            IList<EventPoint> eventList = new List<EventPoint>();
+            var events = context.Events.Where(@w=>@w.Cleared == null);
+
+            foreach (var ev in events)
+            {
+                var spotImage = context.SpotImages.Where(@w => @w.Id == ev.SpotImageId).First();
+                var ward = context.Wards.Where(@w => @w.Id == spotImage.WardId).First();
+                eventList.Add(new EventPoint { Id = ev.Id, Name = ev.EventName, Date = ev.EventDate, Address= spotImage.UserAddress, ImagePath= spotImage.ImagePath, Ward = ward.Name });
+            }
+
+            return eventList;
+        }
+
+        /// <summary>
+        /// RetrieveEvent
+        /// </summary>
+        /// <returns></returns>
+        public EventPoint RetrieveEvent(string imagePath)
+        {
+            var spotImage = context.SpotImages.Where(@w => @w.ImagePath.Contains(imagePath)).First();
+            var ev = context.Events.Where(@w => @w.SpotImageId == spotImage.Id).First();
+            var ward = context.Wards.Where(@w => @w.Id == spotImage.WardId).First();
+            return new EventPoint { Id = ev.Id, Name = ev.EventName, Date = ev.EventDate, Address = spotImage.UserAddress, ImagePath= spotImage.ImagePath, Ward=ward.Name };
+        }
+
+        /// <summary>
+        /// RetrieveEvent
+        /// </summary>
+        /// <returns></returns>
+        public string RetrieveVolunteerEvent(string Id)
+        {
+            var ev = context.Events.Where(@w => @w.Id == Guid.Parse(Id)).First();
+            var spotImage = context.SpotImages.Where(@w => @w.Id == ev.SpotImageId).First();
+            return "Are you willing to participate in the Event: '" + ev.EventName + "' happening on '" + ev.EventDate.ToString("dd-MMM-yyyy") + "'?" + spotImage.ImagePath;
         }
 
         /// <summary>
@@ -67,7 +110,7 @@ namespace IWMS.Solutions.Server.SpotImageServiceProvider
         /// <param name="password"></param>
         public string InsertSpotImage(string key, string latitude, string longitude, string imageData)
         {
-            string imagePath = @"C:\Images\" + DateTime.Today.Day.ToString() +
+            string imagePath = @"C:\inetpub\wwwroot\ManagementService\Images\" + DateTime.Today.Day.ToString() +
                  DateTime.Today.Month.ToString() +
                   DateTime.Today.Year.ToString();
 
@@ -120,7 +163,7 @@ namespace IWMS.Solutions.Server.SpotImageServiceProvider
         /// <returns></returns>
         public string PostImage(string image, string byteArray)
         {
-            string imagePath = @"C:\Images\" + DateTime.Today.Day.ToString() +
+            string imagePath = @"C:\inetpub\wwwroot\ManagementService\Images\" + DateTime.Today.Day.ToString() +
                  DateTime.Today.Month.ToString() +
                   DateTime.Today.Year.ToString();
             string filePath = imagePath + "\\" + image;
@@ -181,6 +224,38 @@ namespace IWMS.Solutions.Server.SpotImageServiceProvider
         }
 
         /// <summary>
+        /// SendNotification
+        /// </summary>
+        /// <param name="spotImageId"></param>
+        public void SendNotification(string imagePath)
+        {
+            var spotImage = context.SpotImages.Where(@w => @w.ImagePath.Contains(imagePath)).First();
+            var ev = context.Events.Where(@w=>@w.SpotImageId == spotImage.Id).First();
+            var ward = context.Wards.Where(@w=>@w.Id == spotImage.WardId).First();
+            var zone = context.Zones.Where(@w=>@w.Id == ward.ZoneId).First();
+            string topicName = zone.Name.Replace('"', ' ').Trim() + "-" + ward.Name.Replace('"', ' ').Trim();
+            var topic = context.Topics.Where(@w => @w.Name == topicName).First();
+
+            Auth.Provider provider = new Auth.Provider();
+            provider.SendTopicNotification("EN", topic.Name, "[" + ev.Id.ToString() + "]ClearTrash Event: " + ev.EventName + " on " + ev.EventDate);
+
+            spotImage.Verified = true;
+            SubmitData();
+        }
+
+        /// <summary>
+        /// ClearEvent
+        /// </summary>
+        /// <param name="imagePath"></param>
+        public void ClearEvent(string imagePath)
+        {
+            var spotImage = context.SpotImages.Where(@w => @w.ImagePath.Contains(imagePath)).First();
+            var ev = context.Events.Where(@w => @w.SpotImageId == spotImage.Id).First();
+            ev.Cleared = true;
+            SubmitData();
+        }
+
+        /// <summary>
         /// InsertRegistrationPoints
         /// </summary>
         /// <param name="userId"></param>
@@ -207,6 +282,17 @@ namespace IWMS.Solutions.Server.SpotImageServiceProvider
         {
             var spotImage = context.SpotImages.Where(@w => @w.ImagePath.Contains(imagePath)).First();
             context.SpotImages.DeleteOnSubmit(spotImage);
+            SubmitData();
+        }
+
+        /// <summary>
+        /// DeleteSpotImage
+        /// </summary>
+        /// <param name="mobile"></param>
+        public void DeleteEvent(string eventName)
+        {
+            var ev = context.Events.Where(@w => @w.EventName == eventName).First();
+            context.Events.DeleteOnSubmit(ev);
             SubmitData();
         }
 
