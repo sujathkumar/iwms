@@ -2,10 +2,6 @@ package com.iwms.cleartrash;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 public class VolunteerEventActivity extends Activity {
@@ -40,7 +32,7 @@ public class VolunteerEventActivity extends Activity {
 
         try {
             eventDetails = task.get().replace('"',' ').trim();
-            eventTextView.setText(eventDetails.substring(0, eventDetails.indexOf("?")) + "?");
+            eventTextView.setText("Are you willing to participate in the " + eventDetails.substring(0, eventDetails.lastIndexOf("'")) + "'?");
         }
         catch (InterruptedException e)
         {
@@ -54,9 +46,9 @@ public class VolunteerEventActivity extends Activity {
         }
 
         // Loader image - will be shown before loading image
-        int loader = R.drawable.icon_clear_trash;
+        int loader = R.drawable.loader;
         image = (ImageView) findViewById(R.id.imageView);
-        String imagePath = eventDetails.substring(eventDetails.indexOf("?")+1).replace("C:","").replace("inetpub","").replace("wwwroot","").substring(12);
+        String imagePath = eventDetails.substring(eventDetails.lastIndexOf("'")+1).replace("C:","").replace("inetpub","").replace("wwwroot","").substring(12);
         imagePath = imagePath.replace("\\\\","/");
         // Image url
         String image_url = "http://sujathvm1.cloudapp.net/" + imagePath;
@@ -75,14 +67,14 @@ public class VolunteerEventActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                String insertEventVolunteerUrl = "http://" + Helper.Server  + "/ManagementService/api/household/raddress%7C" + Helper.Key + "%7C" + eventId;
+                String insertEventVolunteerUrl = "http://" + Helper.Server  + "/ManagementService/api/volunteer/ie%7C" + Helper.Key + "%7C" + eventId;
                 RequestTask task = (RequestTask) new RequestTask().execute(insertEventVolunteerUrl);
                 String code = "";
 
                 try {
-                    code = task.get();
+                    code = task.get().replace('"',' ').trim();
                     if(code.equals("216")) {
-                        Intent intent = new Intent(VolunteerEventActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(VolunteerEventActivity.this, ClearTrashHomeActivity.class);
                         startActivity(intent);
                     }
                     else

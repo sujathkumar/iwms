@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class HHGPrintTagActivity extends Activity {
+public class HHGPrintTagActivity extends AppCompatActivity {
 
     TextView garbageIdTextView;
     Button b1;

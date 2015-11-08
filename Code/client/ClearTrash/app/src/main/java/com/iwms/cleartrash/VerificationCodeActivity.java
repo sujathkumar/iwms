@@ -104,7 +104,7 @@ public class VerificationCodeActivity extends Activity {
                 //Write to Cache
                 WriteToCache(key);
                 Helper.Key = key.replace('"',' ').trim();
-                Intent intent = new Intent(VerificationCodeActivity.this, HomeActivity.class);
+                Intent intent = new Intent(VerificationCodeActivity.this, ClearTrashHomeActivity.class);
                 startActivity(intent);
             } else {
                 PopupMessage("Verification failed...");
@@ -141,7 +141,7 @@ public class VerificationCodeActivity extends Activity {
                     if (statusCode.contains("203")) {
                         WriteToCache(genKey);
                         Helper.Key = genKey.replace('"',' ').trim();
-                        Intent intent = new Intent(VerificationCodeActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(VerificationCodeActivity.this, ClearTrashHomeActivity.class);
                         startActivity(intent);
                     } else {
                         PopupMessage("Authenication failed...");

@@ -22,7 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class WasteGarbageActivity extends Activity {
+public class WasteGarbageActivity extends AppCompatActivity {
 
     private Button b1;
     private Calendar calendar;

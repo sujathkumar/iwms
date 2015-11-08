@@ -30,11 +30,31 @@ namespace IWMS.Solutions.Server.HealthService
         {
             eventLogHealthService.WriteEntry("Starting IWMS Health Service.");
 
-            // Set up a timer to trigger every minute.
-            System.Timers.Timer timer = new System.Timers.Timer();
-            timer.Interval = 60000; //One hour
-            timer.Elapsed += new System.Timers.ElapsedEventHandler(this.OnTimer);
-            timer.Start();
+            // Set up a timer to trigger every day.
+            System.Timers.Timer timerDay = new System.Timers.Timer();
+            timerDay.Interval = 1000 * 60; //One hour
+            timerDay.Elapsed += new System.Timers.ElapsedEventHandler(this.MinuteTimer);
+            timerDay.Start();
+
+            // Set up a timer to trigger every week.
+            System.Timers.Timer timerWeek = new System.Timers.Timer();
+            timerWeek.Interval = 60000 * 60 * 24 * 7; //One hour
+            timerWeek.Elapsed += new System.Timers.ElapsedEventHandler(this.WeeklyTimer);
+            timerWeek.Start();
+        }
+
+        /// <summary>
+        /// OnDailyTimer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void MinuteTimer(object sender, System.Timers.ElapsedEventArgs args)
+        {
+            eventLogHealthService.WriteEntry("Monitoring the Daily System", EventLogEntryType.Information);
+
+            Consumer consumer = new Consumer();
+            consumer.StartMinuteActivity();
+
         }
 
         /// <summary>
@@ -42,12 +62,12 @@ namespace IWMS.Solutions.Server.HealthService
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        public void OnTimer(object sender, System.Timers.ElapsedEventArgs args)
+        public void WeeklyTimer(object sender, System.Timers.ElapsedEventArgs args)
         {
-            eventLogHealthService.WriteEntry("Monitoring the System", EventLogEntryType.Information);
+            eventLogHealthService.WriteEntry("Monitoring the Weekly System", EventLogEntryType.Information);
 
             Consumer consumer = new Consumer();
-            consumer.StartActivity();
+            consumer.StartWeeklyActivity();
 
         }
 

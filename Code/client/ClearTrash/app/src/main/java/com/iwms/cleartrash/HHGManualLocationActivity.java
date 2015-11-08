@@ -8,6 +8,7 @@ import android.location.Geocoder;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
-public class HHGManualLocationActivity extends Activity {
+public class HHGManualLocationActivity extends AppCompatActivity {
 
     String localities;
     EditText wardText, houseNoText, houseNameText, aptNameText, streetText, cityText, pincodeText;

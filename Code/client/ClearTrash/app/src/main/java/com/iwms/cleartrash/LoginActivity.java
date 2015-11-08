@@ -297,34 +297,34 @@ public class LoginActivity extends Activity  {
              if(statusCode.contains("202"))
              {
                  String genKey =  Helper.CityCode + userName + mobile + Helper.MACAddress;
-                 //String volunteerSubsciptionUrl = "http://" + Helper.Server  + "/ManagementService/api/login/rs%7C" + genKey;
-                 //task = (RequestTask) new RequestTask().execute(volunteerSubsciptionUrl);
-                 //String topic = "";
+                 String volunteerSubsciptionUrl = "http://" + Helper.Server  + "/ManagementService/api/volunteer/rvs%7C" + genKey;
+                 task = (RequestTask) new RequestTask().execute(volunteerSubsciptionUrl);
+                 String topic = "";
 
-                 //try
-                 //{
-                 //    topic = task.get();
+                 try
+                 {
+                     topic = task.get();
 
-                 //    try {
-                 //        if(!topic.equals("")) {
-                 //            subscribeTopics(Helper.GCMToken, topic);
-                 //        }
-                 //    }
-                 //    catch (IOException e)
-                 //    {
-                 //        e.printStackTrace();
-                 //    }
-                 //}
-                 //catch (InterruptedException e)
-                 //{
+                     try {
+                         if(!topic.equals("")) {
+                             subscribeTopics(Helper.GCMToken, topic);
+                         }
+                     }
+                     catch (IOException e)
+                     {
+                         e.printStackTrace();
+                     }
+                 }
+                 catch (InterruptedException e)
+                 {
                      // TODO Auto-generated catch block
-                 //    e.printStackTrace();
-                 //}
-                 //catch (ExecutionException e)
-                 //{
+                     e.printStackTrace();
+                 }
+                 catch (ExecutionException e)
+                 {
                      // TODO Auto-generated catch block
-                 //    e.printStackTrace();
-                 //}
+                     e.printStackTrace();
+                 }
 
                  String confirmSignIpUrl = "http://" + Helper.Server  + "/ManagementService/api/login/confirmsignin%7Cmobile=" + mobile + "%7Ckey=" + genKey;
                  task = (RequestTask) new RequestTask().execute(confirmSignIpUrl);
@@ -341,7 +341,7 @@ public class LoginActivity extends Activity  {
                          {
                              WriteToCache(genKey);
                              Helper.Key = genKey.replace('"',' ').trim();
-                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                             Intent intent = new Intent(LoginActivity.this, ClearTrashHomeActivity.class);
                              startActivity(intent);
                          }
                      }

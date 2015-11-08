@@ -8,4 +8,37 @@
     tools:context="com.iwms.rdeck.MainActivity"
     android:weightSum="1">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewGarbage"
+        android:textAlignment="center"
+        android:text="Captured Data"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ffffff"
+        android:background="#000000" />
+
+    <ListView
+        android:id="@+id/listviewGarbage"
+        android:layout_height="452dp"
+        android:layout_width="match_parent"
+        android:cacheColorHint="#000000"
+        android:padding="10dp"
+        android:background="@drawable/item_bg"
+        android:layout_below="@+id/textViewGarbage"
+        android:layout_weight="0.50">
+    </ListView>
+
+    <Button
+        android:id="@+id/up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload"
+        android:textColor="#000000"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>

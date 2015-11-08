@@ -119,7 +119,7 @@ namespace IWMS.Solutions.Server.BinServiceProvider
                     string userAddress = user.Name + ", " + address.HouseNo + ", " + address.HouseName + ", " +
                     address.ApartmentName + ", " + address.Street + ", " + address.Locality + ", " + address.PINCODE;
 
-                    garbageList.Add(new GarbagePoint { Name = user.Name, Address = userAddress, Tag = garbage.Tag, GarbageType = garbageType.Type,  GeneratedDate = garbage.CreateDateTime });
+                    garbageList.Add(new GarbagePoint { Name = user.Name, Address = userAddress, Tag = garbage.Tag, GarbageType = garbageType.Type, GeneratedDate = garbage.CreateDateTime });
                 }
 
                 return garbageList;
@@ -139,15 +139,38 @@ namespace IWMS.Solutions.Server.BinServiceProvider
         {
             try
             {
-                string cityNumber = key.Substring(0, 2);
-                var city = context.Cities.Where(@w => @w.Number == cityNumber).First();
                 var auth = context.Auths.Where(@w => @w.Key == key).First();
                 var user = context.Users.Where(@w => @w.Id == auth.UserId).First();
                 var address = context.Addresses.Where(@w => @w.UserId == auth.UserId).First();
+                var city = context.Cities.Where(@w => @w.Id == user.CityId).First();
 
                 return user.Name + "s_lash" + address.HouseNo + "s_lash" + address.HouseName + "s_lash" +
                     address.ApartmentName + "s_lash" + address.Street + "s_lash" +
-                    address.Locality + "s_lash" + city.Name + "s_lash" + address.PINCODE;
+                    address.Locality + "s_lash" + city.Name + "s_lash" + address.PINCODE + "s_lashMobile: " + user.Mobile;
+            }
+            catch (Exception ex)
+            {
+                return "100";
+            }
+        }
+
+        /// <summary>
+        /// RetrieveAddress
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string RetrieveUserAddress(string userId)
+        {
+            try
+            {
+                var user = context.Users.Where(@w => @w.Id == Guid.Parse(userId)).First();
+                var address = context.Addresses.Where(@w => @w.UserId == user.Id).First();
+                var auth = context.Auths.Where(@w => @w.UserId == user.Id).First();
+                var city = context.Cities.Where(@w => @w.Id == user.CityId).First();
+
+                return user.Name + "s_lash" + address.HouseNo + "s_lash" + address.HouseName + "s_lash" +
+                    address.ApartmentName + "s_lash" + address.Street + "s_lash" +
+                    address.Locality + "s_lash" + city.Name + "s_lash" + address.PINCODE + "s_lashMobile: " + user.Mobile;
             }
             catch (Exception ex)
             {
@@ -248,7 +271,7 @@ namespace IWMS.Solutions.Server.BinServiceProvider
                     CreateDateTime = DateTime.Now
                 };
 
-                context.Garbages.InsertOnSubmit(garbage);                
+                context.Garbages.InsertOnSubmit(garbage);
                 SubmitData();
 
                 InsertOrder(tag, "WET");
@@ -380,7 +403,7 @@ namespace IWMS.Solutions.Server.BinServiceProvider
             context.SubmitChanges();
         }
 
-                /// <summary>
+        /// <summary>
         /// Log
         /// </summary>
         /// <param name="logMessage"></param>

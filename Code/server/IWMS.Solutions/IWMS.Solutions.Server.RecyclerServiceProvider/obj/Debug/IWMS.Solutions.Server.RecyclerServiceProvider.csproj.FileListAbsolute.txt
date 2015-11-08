@@ -1,0 +1,8 @@
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.RecyclerServiceProvider\bin\Debug\IWMS.Solutions.Server.RecyclerServiceProvider.dll.config
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.RecyclerServiceProvider\bin\Debug\IWMS.Solutions.Server.RecyclerServiceProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.RecyclerServiceProvider\bin\Debug\IWMS.Solutions.Server.RecyclerServiceProvider.pdb
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.RecyclerServiceProvider\obj\Debug\IWMS.Solutions.Server.RecyclerServiceProvider.dll
+C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.RecyclerServiceProvider\obj\Debug\IWMS.Solutions.Server.RecyclerServiceProvider.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.RecyclerServiceProvider\bin\Debug\IWMS.Solutions.Server.AuthProvider.dll
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.RecyclerServiceProvider\bin\Debug\IWMS.Solutions.Server.AuthProvider.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.RecyclerServiceProvider\obj\Debug\IWMS.Solutions.Server.RecyclerServiceProvider.csprojResolveAssemblyReference.cache

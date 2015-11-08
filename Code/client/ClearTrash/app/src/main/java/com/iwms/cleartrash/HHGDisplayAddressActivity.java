@@ -3,15 +3,17 @@ package com.iwms.cleartrash;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-public class HHGDisplayAddressActivity extends Activity {
+public class HHGDisplayAddressActivity extends AppCompatActivity {
 
     TextView houseAddressEditText, garbageTagTextView;
-    Button editButton;
+    ImageButton editButton;
     RadioButton currentButton, manualButton, wetGarbageButton, dryGarbageButton, wasteGarbageButton;
 
     @Override
@@ -20,7 +22,7 @@ public class HHGDisplayAddressActivity extends Activity {
         setContentView(R.layout.activity_hhg_display_address);
 
         houseAddressEditText = (TextView) findViewById(R.id.houseAddressEditText);
-        editButton = (Button)findViewById(R.id.editButton);
+        editButton = (ImageButton)findViewById(R.id.editButton);
         currentButton = (RadioButton)findViewById(R.id.currentButton);
         manualButton = (RadioButton)findViewById(R.id.manualButton);
         garbageTagTextView = (TextView) findViewById(R.id.garbageTagTextView);

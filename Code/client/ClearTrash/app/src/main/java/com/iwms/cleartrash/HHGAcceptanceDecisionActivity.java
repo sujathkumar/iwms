@@ -3,10 +3,11 @@ package com.iwms.cleartrash;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class HHGAcceptanceDecisionActivity extends Activity {
+public class HHGAcceptanceDecisionActivity extends AppCompatActivity {
 
     Button b1,b2;
 
@@ -51,7 +52,7 @@ public class HHGAcceptanceDecisionActivity extends Activity {
                 try {
                     statusCode = task.get();
                     if (statusCode.contains("210")) {
-                        Intent intent = new Intent(HHGAcceptanceDecisionActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(HHGAcceptanceDecisionActivity.this, ClearTrashHomeActivity.class);
                         startActivity(intent);
                     }
                 }

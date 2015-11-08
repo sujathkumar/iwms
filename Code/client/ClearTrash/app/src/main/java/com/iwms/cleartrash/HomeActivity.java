@@ -9,6 +9,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,11 +20,10 @@ import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends AppCompatActivity {
 
     ImageButton hhGarbageButton, spotGarbageButton, registerVolunteerButton, checkmyPointsButton;
     ScrollView scrollView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +84,37 @@ public class HomeActivity extends Activity {
         registerVolunteerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, VolunteerConfirmationActivity.class);
-                startActivity(intent);
+
+                RequestTask task = null;
+                String volunteerSubsciptionUrl = "http://" + Helper.Server  + "/ManagementService/api/volunteer/rvs%7C" + Helper.Key;
+                task = (RequestTask) new RequestTask().execute(volunteerSubsciptionUrl);
+                String topic = "";
+
+                try
+                {
+                    topic = task.get().replace('"',' ').trim();
+
+                    if(!topic.equals(""))
+                    {
+                        Intent intent = new Intent(HomeActivity.this, VolunteerHomeActivity.class);
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(HomeActivity.this, VolunteerConfirmationActivity.class);
+                        startActivity(intent);
+                    }
+                }
+                catch (InterruptedException e)
+                {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                catch (ExecutionException e)
+                {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         });
 

@@ -85,6 +85,7 @@
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PointController.cs" />
+    <Compile Include="Controllers\RecyclerController.cs" />
     <Compile Include="Controllers\SpotImageController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Controllers\WardController.cs" />
@@ -122,6 +123,10 @@
     <ProjectReference Include="..\..\IWMS.Solutions.Server.PointServiceProvider\IWMS.Solutions.Server.PointServiceProvider.csproj">
       <Project>{44550f79-a868-4342-845e-0e29ac8704a1}</Project>
       <Name>IWMS.Solutions.Server.PointServiceProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\IWMS.Solutions.Server.RecyclerServiceProvider\IWMS.Solutions.Server.RecyclerServiceProvider.csproj">
+      <Project>{67540381-e4b1-4f18-9c05-259f2b8506e5}</Project>
+      <Name>IWMS.Solutions.Server.RecyclerServiceProvider</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\IWMS.Solutions.Server.SpotImageServiceProvider\IWMS.Solutions.Server.SpotImageServiceProvider.csproj">
       <Project>{7c3fc0e9-4b38-4d2a-b43b-7ae397c250f0}</Project>

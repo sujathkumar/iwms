@@ -148,6 +148,20 @@
         </activity>
         <activity android:name=".VolunteerGeneralNotificationActivity" >
         </activity>
+        <activity
+            android:name=".VolunteerHomeActivity"
+            android:label="@string/title_activity_volunteer_home"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity android:name=".EventDetailsActivity" >
+        </activity>
+        <activity android:name=".UserDetailsActivity" >
+        </activity>
+        <activity
+            android:name=".ClearTrashHomeActivity"
+            android:label="ClearTrash"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

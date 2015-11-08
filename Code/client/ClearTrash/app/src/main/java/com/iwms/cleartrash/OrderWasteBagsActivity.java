@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class OrderWasteBagsActivity extends Activity {
+public class OrderWasteBagsActivity extends AppCompatActivity {
 
     TextView schedulePickupTextView;
 

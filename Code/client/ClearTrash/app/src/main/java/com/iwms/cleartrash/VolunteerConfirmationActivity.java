@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class VolunteerConfirmationActivity extends Activity {
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+
+public class VolunteerConfirmationActivity extends AppCompatActivity {
 
     Button b1;
 

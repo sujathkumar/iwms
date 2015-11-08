@@ -14,4 +14,5 @@ public class Helper {
     public static String GCMSenderId = "";
     public static String ImagePath = "";
     public static String EventId = "";
+    public static String UserId = "";
 }

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CollectorService = IWMS.Solutions.Server.CollectorServiceProvider;
 using SpotImageService = IWMS.Solutions.Server.SpotImageServiceProvider;
+using RecyclerService = IWMS.Solutions.Server.RecyclerServiceProvider;
+using IWMS.Solutions.Server.RecyclerServiceProvider;
 
 namespace IWMS.Solutions.Server.Dashboard
 {
@@ -16,6 +18,7 @@ namespace IWMS.Solutions.Server.Dashboard
     {
         CollectorService.Provider collectorProvider = null;
         SpotImageService.Provider spotImageProvider = null;
+        RecyclerService.Provider recyclerProvider = null;
 
         public Shell()
         {
@@ -23,7 +26,7 @@ namespace IWMS.Solutions.Server.Dashboard
         }
 
         /// <summary>
-        /// linkCreateCollector_LinkClicked
+        /// linkCreate_LinkClicked
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -36,6 +39,14 @@ namespace IWMS.Solutions.Server.Dashboard
 
                 LoadCollectors();
                 gridControlCollectors.Refresh();
+            }
+            else if (tabControlMain.SelectedTabPage == tabControlRecycler)
+            {
+                CreateRecycler frm = new CreateRecycler();
+                frm.ShowDialog();
+
+                LoadRecyclers();
+                gridControlRecyclers.Refresh();
             }
             else if (tabControlMain.SelectedTabPage == tabControlSpotImages)
             {
@@ -81,6 +92,7 @@ namespace IWMS.Solutions.Server.Dashboard
             LoadCollectors();
             LoadSpotImages();
             LoadEvents();
+            LoadRecyclers();
         }
 
         /// <summary>
@@ -169,6 +181,30 @@ namespace IWMS.Solutions.Server.Dashboard
         }
 
         /// <summary>
+        /// LoadCollectors
+        /// </summary>
+        private void LoadRecyclers()
+        {
+            IList<RecyclerModel> model = new List<RecyclerModel>();
+            recyclerProvider = new RecyclerService.Provider();
+
+            var recyclers = recyclerProvider.RetrieveRecyclers();
+
+            foreach (var recycler in recyclers)
+            {
+                model.Add(new RecyclerModel
+                {
+                    Name = recycler.Name,
+                    Address = recycler.Address,
+                    Mobile = recycler.Mobile,
+                    Ward = recycler.Ward,
+                });
+            }
+
+            gridControlRecyclers.DataSource = model;
+        }
+
+        /// <summary>
         /// linkRefresh_LinkClicked
         /// </summary>
         /// <param name="sender"></param>
@@ -179,6 +215,11 @@ namespace IWMS.Solutions.Server.Dashboard
             {
                 LoadCollectors();
                 gridControlCollectors.Refresh();
+            }
+            else if (tabControlMain.SelectedTabPage == tabControlRecycler)
+            {
+                LoadRecyclers();
+                gridControlRecyclers.Refresh();
             }
             else if (tabControlMain.SelectedTabPage == tabControlSpotImages)
             {
@@ -193,7 +234,7 @@ namespace IWMS.Solutions.Server.Dashboard
         }
 
         /// <summary>
-        /// linkDeleteCollector_LinkClicked
+        /// linkDelete_LinkClicked
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -212,6 +253,20 @@ namespace IWMS.Solutions.Server.Dashboard
 
                 LoadCollectors();
                 gridControlCollectors.Refresh();
+            }
+            else if (tabControlMain.SelectedTabPage == tabControlRecycler)
+            {
+                int[] selectedRows = gridViewRecyclers.GetSelectedRows();
+
+                foreach (var row in selectedRows)
+                {
+                    var recycler = gridViewRecyclers.GetRow(row);
+                    recyclerProvider = new RecyclerService.Provider();
+                    recyclerProvider.DeleteRecycler(((RecyclerModel)recycler).Mobile);
+                }
+
+                LoadRecyclers();
+                gridControlRecyclers.Refresh();
             }
             else if (tabControlMain.SelectedTabPage == tabControlSpotImages)
             {
@@ -268,6 +323,10 @@ namespace IWMS.Solutions.Server.Dashboard
                 case "Collectors": tabControlMain.SelectedTabPage = tabControlCollector;
                     linkCreate.Text = "Create Collector";
                     linkDelete.Text = "Delete Collector";
+                    break;
+                case "Recyclers": tabControlMain.SelectedTabPage = tabControlRecycler;
+                    linkCreate.Text = "Create Recycler";
+                    linkDelete.Text = "Delete Recycler";
                     break;
                 case "Spot Images": tabControlMain.SelectedTabPage = tabControlSpotImages;
                     linkCreate.Text = "Verify Spot Image";

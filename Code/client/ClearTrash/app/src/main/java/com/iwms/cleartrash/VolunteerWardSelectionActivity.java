@@ -6,23 +6,20 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.google.android.gms.gcm.GcmPubSub;
-import com.google.android.gms.iid.InstanceID;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
-public class VolunteerWardSelectionActivity extends Activity {
+public class VolunteerWardSelectionActivity extends AppCompatActivity {
 
     Button acceptButton;
     Spinner zoneSpinner, wardSpinner;
@@ -141,7 +138,7 @@ public class VolunteerWardSelectionActivity extends Activity {
                     }
 
                     // Show location settings when the user acknowledges the alert dialog
-                    Intent intent = new Intent(VolunteerWardSelectionActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(VolunteerWardSelectionActivity.this, ClearTrashHomeActivity.class);
                     startActivity(intent);
                 }
             });

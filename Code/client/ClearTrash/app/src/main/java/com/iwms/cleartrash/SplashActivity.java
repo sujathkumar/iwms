@@ -24,7 +24,7 @@ public class SplashActivity extends Activity {
                 public void run()
                 {
                 try {
-                    sleep(3000);
+                    sleep(1000);
                     //Read key from Cache
                     String key = ReadFromCache();
                     //Load Locations
@@ -34,7 +34,7 @@ public class SplashActivity extends Activity {
                     Intent intent = null;
                     if (statusCode.contains("201")) {
                         Helper.Key = key.replace('"',' ').trim();
-                        intent = new Intent(SplashActivity.this, HomeActivity.class);
+                        intent = new Intent(SplashActivity.this, ClearTrashHomeActivity.class);
                     } else {
                         intent = new Intent(SplashActivity.this, LoginActivity.class);
                     }

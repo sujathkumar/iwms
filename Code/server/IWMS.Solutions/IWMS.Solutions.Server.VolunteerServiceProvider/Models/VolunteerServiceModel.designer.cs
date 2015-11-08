@@ -30,6 +30,12 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertNonComplaintUser(NonComplaintUser instance);
+    partial void UpdateNonComplaintUser(NonComplaintUser instance);
+    partial void DeleteNonComplaintUser(NonComplaintUser instance);
+    partial void InsertEvent(Event instance);
+    partial void UpdateEvent(Event instance);
+    partial void DeleteEvent(Event instance);
     partial void InsertEventVolunteerMap(EventVolunteerMap instance);
     partial void UpdateEventVolunteerMap(EventVolunteerMap instance);
     partial void DeleteEventVolunteerMap(EventVolunteerMap instance);
@@ -63,7 +69,7 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider.Models
     #endregion
 		
 		public VolunteerServiceModelDataContext() : 
-				base(global::IWMS.Solutions.Server.VolunteerServiceProvider.Properties.Settings.Default.IWMSConnectionString, mappingSource)
+				base(global::IWMS.Solutions.Server.VolunteerServiceProvider.Properties.Settings.Default.IWMSConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -90,6 +96,22 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider.Models
 				base(connection, mappingSource)
 		{
 			OnCreated();
+		}
+		
+		public System.Data.Linq.Table<NonComplaintUser> NonComplaintUsers
+		{
+			get
+			{
+				return this.GetTable<NonComplaintUser>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Event> Events
+		{
+			get
+			{
+				return this.GetTable<Event>();
+			}
 		}
 		
 		public System.Data.Linq.Table<EventVolunteerMap> EventVolunteerMaps
@@ -169,6 +191,370 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider.Models
 			get
 			{
 				return this.GetTable<PointConfiguration>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NonComplaintUsers")]
+	public partial class NonComplaintUser : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private System.Guid _UserId;
+		
+		private System.Guid _WardId;
+		
+		private System.Nullable<System.Guid> _VolunteerId;
+		
+		private System.Nullable<bool> _Accepted;
+		
+		private System.Nullable<bool> _Processed;
+		
+		private System.DateTime _CreatedDateTime;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnUserIdChanging(System.Guid value);
+    partial void OnUserIdChanged();
+    partial void OnWardIdChanging(System.Guid value);
+    partial void OnWardIdChanged();
+    partial void OnVolunteerIdChanging(System.Nullable<System.Guid> value);
+    partial void OnVolunteerIdChanged();
+    partial void OnAcceptedChanging(System.Nullable<bool> value);
+    partial void OnAcceptedChanged();
+    partial void OnProcessedChanging(System.Nullable<bool> value);
+    partial void OnProcessedChanged();
+    partial void OnCreatedDateTimeChanging(System.DateTime value);
+    partial void OnCreatedDateTimeChanged();
+    #endregion
+		
+		public NonComplaintUser()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WardId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid WardId
+		{
+			get
+			{
+				return this._WardId;
+			}
+			set
+			{
+				if ((this._WardId != value))
+				{
+					this.OnWardIdChanging(value);
+					this.SendPropertyChanging();
+					this._WardId = value;
+					this.SendPropertyChanged("WardId");
+					this.OnWardIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VolunteerId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> VolunteerId
+		{
+			get
+			{
+				return this._VolunteerId;
+			}
+			set
+			{
+				if ((this._VolunteerId != value))
+				{
+					this.OnVolunteerIdChanging(value);
+					this.SendPropertyChanging();
+					this._VolunteerId = value;
+					this.SendPropertyChanged("VolunteerId");
+					this.OnVolunteerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Accepted", DbType="Bit")]
+		public System.Nullable<bool> Accepted
+		{
+			get
+			{
+				return this._Accepted;
+			}
+			set
+			{
+				if ((this._Accepted != value))
+				{
+					this.OnAcceptedChanging(value);
+					this.SendPropertyChanging();
+					this._Accepted = value;
+					this.SendPropertyChanged("Accepted");
+					this.OnAcceptedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Processed", DbType="Bit")]
+		public System.Nullable<bool> Processed
+		{
+			get
+			{
+				return this._Processed;
+			}
+			set
+			{
+				if ((this._Processed != value))
+				{
+					this.OnProcessedChanging(value);
+					this.SendPropertyChanging();
+					this._Processed = value;
+					this.SendPropertyChanged("Processed");
+					this.OnProcessedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDateTime", DbType="DateTime NOT NULL")]
+		public System.DateTime CreatedDateTime
+		{
+			get
+			{
+				return this._CreatedDateTime;
+			}
+			set
+			{
+				if ((this._CreatedDateTime != value))
+				{
+					this.OnCreatedDateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedDateTime = value;
+					this.SendPropertyChanged("CreatedDateTime");
+					this.OnCreatedDateTimeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Event")]
+	public partial class Event : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private string _EventName;
+		
+		private System.DateTime _EventDate;
+		
+		private System.Guid _SpotImageId;
+		
+		private System.Nullable<bool> _Cleared;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnEventNameChanging(string value);
+    partial void OnEventNameChanged();
+    partial void OnEventDateChanging(System.DateTime value);
+    partial void OnEventDateChanged();
+    partial void OnSpotImageIdChanging(System.Guid value);
+    partial void OnSpotImageIdChanged();
+    partial void OnClearedChanging(System.Nullable<bool> value);
+    partial void OnClearedChanged();
+    #endregion
+		
+		public Event()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string EventName
+		{
+			get
+			{
+				return this._EventName;
+			}
+			set
+			{
+				if ((this._EventName != value))
+				{
+					this.OnEventNameChanging(value);
+					this.SendPropertyChanging();
+					this._EventName = value;
+					this.SendPropertyChanged("EventName");
+					this.OnEventNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EventDate", DbType="DateTime NOT NULL")]
+		public System.DateTime EventDate
+		{
+			get
+			{
+				return this._EventDate;
+			}
+			set
+			{
+				if ((this._EventDate != value))
+				{
+					this.OnEventDateChanging(value);
+					this.SendPropertyChanging();
+					this._EventDate = value;
+					this.SendPropertyChanged("EventDate");
+					this.OnEventDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SpotImageId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid SpotImageId
+		{
+			get
+			{
+				return this._SpotImageId;
+			}
+			set
+			{
+				if ((this._SpotImageId != value))
+				{
+					this.OnSpotImageIdChanging(value);
+					this.SendPropertyChanging();
+					this._SpotImageId = value;
+					this.SendPropertyChanged("SpotImageId");
+					this.OnSpotImageIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cleared", DbType="Bit")]
+		public System.Nullable<bool> Cleared
+		{
+			get
+			{
+				return this._Cleared;
+			}
+			set
+			{
+				if ((this._Cleared != value))
+				{
+					this.OnClearedChanging(value);
+					this.SendPropertyChanging();
+					this._Cleared = value;
+					this.SendPropertyChanged("Cleared");
+					this.OnClearedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

@@ -30,7 +30,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class DryGarbageActivity extends Activity {
+public class DryGarbageActivity extends AppCompatActivity {
 
     private Button b1;
     private Calendar calendar;

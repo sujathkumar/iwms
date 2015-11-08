@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using IWMS.Solutions.Server.VolunteerServiceProvider.Models;
 using Ward = IWMS.Solutions.Server.WardDataProvider;
 using Auth = IWMS.Solutions.Server.AuthProvider;
+using System.IO;
 
 namespace IWMS.Solutions.Server.VolunteerServiceProvider
 {
@@ -55,6 +56,87 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider
             }
 
             return "";
+        }
+
+        /// <summary>
+        /// RetrieveVolunteerEvents
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string RetrieveVolunteerEvents(string key)
+        {
+            try
+            {
+                var user = context.Auths.Where(@w => @w.Key == key).First();
+                var volunteer = context.Volunteers.Where(@w => @w.UserId == user.UserId).First();
+                var volunteerEvents = context.EventVolunteerMaps.Where(@w => @w.VolunteerId == volunteer.Id);
+                StringBuilder sb = new StringBuilder();
+
+                if (volunteerEvents != null)
+                {
+                    foreach (var ve in volunteerEvents)
+                    {
+                        var ev = context.Events.Where(@w => @w.Id == ve.EventId);
+                        if (ev != null && ev.Count() > 0)
+                        {
+                            if (ev.First().Cleared == null)
+                            {
+                                sb.Append(ev.First().Id + "_" + ev.First().EventName + " on " + ev.First().EventDate.ToString("dd/MMM/yyyy") + ",");
+                            }
+                        }
+                    }
+                }
+
+                return sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                using (StreamWriter sw = File.AppendText(@"C:\IWMSLog.txt"))
+                {
+                    Log(ex.Message, sw);
+                }
+
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// RetrieveVolunteerUsersList
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string RetrieveVolunteerUsersList(string key)
+        {
+            try
+            {
+                var auth = context.Auths.Where(@w => @w.Key == key).First();
+                var volunteer = context.Volunteers.Where(@w => @w.UserId == auth.UserId).First();
+                var ncus = context.NonComplaintUsers.Where(@w => @w.VolunteerId == volunteer.Id && @w.Accepted == true);
+                StringBuilder sb = new StringBuilder();
+
+                if (ncus != null)
+                {
+                    foreach (var ncu in ncus)
+                    {
+                        var user = context.Users.Where(@w => @w.Id == ncu.UserId).First();
+                        if (ncu.Processed == null)
+                        {
+                            sb.Append(user.Id + "_" + user.Name + " Mob: " + user.Mobile + ",");
+                        }
+                    }
+                }
+
+                return sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                using (StreamWriter sw = File.AppendText(@"C:\IWMSLog.txt"))
+                {
+                    Log(ex.Message, sw);
+                }
+
+                return null;
+            }
         }
 
         /// <summary>
@@ -130,9 +212,12 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider
                     VolunteerId = volunteer.Id
                 };
 
+                context.EventVolunteerMaps.InsertOnSubmit(map);
+                SubmitData();
+
                 return 216;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return 100;
             }
@@ -196,6 +281,21 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider
         private void SubmitData()
         {
             context.SubmitChanges();
+        }
+
+        /// <summary>
+        /// Log
+        /// </summary>
+        /// <param name="logMessage"></param>
+        /// <param name="w"></param>
+        public void Log(string logMessage, TextWriter w)
+        {
+            w.Write("\r\nLog Entry : ");
+            w.WriteLine("{0} {1}", DateTime.Now.ToLongTimeString(),
+                DateTime.Now.ToLongDateString());
+            w.WriteLine("  :");
+            w.WriteLine("  :{0}", logMessage);
+            w.WriteLine("-------------------------------");
         }
     }
 }

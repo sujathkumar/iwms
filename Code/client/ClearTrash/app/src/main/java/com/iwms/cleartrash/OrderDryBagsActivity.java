@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class OrderDryBagsActivity extends Activity {
+public class OrderDryBagsActivity extends AppCompatActivity {
 
     TextView schedulePickupTextView;
 

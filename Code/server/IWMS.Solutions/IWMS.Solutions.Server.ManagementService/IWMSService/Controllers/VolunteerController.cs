@@ -10,7 +10,7 @@ namespace ManagementService.Controllers
 {
     public class VolunteerController : ApiController
     {
-        public string GetSpotImage(string key)
+        public string GetVolunteer(string key)
         {
             var values = key.Split('|');
 
@@ -36,16 +36,26 @@ namespace ManagementService.Controllers
                     provider.InsertTopics();
                     return "success";
                 }
-                else if(method == "rs")
+                else if(method == "rvs")
                 {
                     string data = values[1];
-                    provider.RetrieveVolunteerSubscription(data);
+                    return provider.RetrieveVolunteerSubscription(data);
                 }
                 else if (method == "ie")
                 {
                     string data = values[1];
                     string eventId = values[2];
                     return provider.InsertEventVolunteerMap(data, eventId).ToString();
+                }
+                else if (method == "rve")
+                {
+                    string data = values[1];
+                    return provider.RetrieveVolunteerEvents(data);
+                }
+                else if (method == "rvu")
+                {
+                    string data = values[1];
+                    return provider.RetrieveVolunteerUsersList(data);
                 }
             }
 

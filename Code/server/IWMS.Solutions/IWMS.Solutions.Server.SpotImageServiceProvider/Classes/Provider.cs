@@ -97,7 +97,7 @@ namespace IWMS.Solutions.Server.SpotImageServiceProvider
         {
             var ev = context.Events.Where(@w => @w.Id == Guid.Parse(Id)).First();
             var spotImage = context.SpotImages.Where(@w => @w.Id == ev.SpotImageId).First();
-            return "Are you willing to participate in the Event: '" + ev.EventName + "' happening on '" + ev.EventDate.ToString("dd-MMM-yyyy") + "'?" + spotImage.ImagePath;
+            return "Event: '" + ev.EventName + "' on '" + ev.EventDate.ToString("dd-MMM-yyyy") + "'" + spotImage.ImagePath;
         }
 
         /// <summary>

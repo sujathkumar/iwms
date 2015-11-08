@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-public class WetGarbageActivity extends Activity {
+public class WetGarbageActivity extends AppCompatActivity {
 
     Button b1;
     EditText quantityText;

@@ -3,16 +3,10 @@ package com.iwms.cleartrash;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -63,7 +57,7 @@ public class ManualVerificationCodeActivity extends Activity {
                         //Write to Cache
                         WriteToCache(key);
                         Helper.Key = key.replace('"',' ').trim();
-                        Intent intent = new Intent(ManualVerificationCodeActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(ManualVerificationCodeActivity.this, ClearTrashHomeActivity.class);
                         startActivity(intent);
                     }
                     else
@@ -88,7 +82,7 @@ public class ManualVerificationCodeActivity extends Activity {
                             if (statusCode.contains("203")) {
                                 WriteToCache(genKey);
                                 Helper.Key = genKey.replace('"',' ').trim();
-                                Intent intent = new Intent(ManualVerificationCodeActivity.this, HomeActivity.class);
+                                Intent intent = new Intent(ManualVerificationCodeActivity.this, ClearTrashHomeActivity.class);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(getApplicationContext(), "Authentication failed...", Toast.LENGTH_SHORT).show();

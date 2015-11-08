@@ -55,6 +55,11 @@ namespace ManagementService.Controllers
                     string data = values[1];
                     return provider.RetrieveAddress(data).ToString();
                 }
+                else if (method == "ru")
+                {
+                    string userId = values[1];
+                    return provider.RetrieveUserAddress(userId).ToString();
+                }
                 else
                 {
                     throw new HttpResponseException(HttpStatusCode.NotFound);

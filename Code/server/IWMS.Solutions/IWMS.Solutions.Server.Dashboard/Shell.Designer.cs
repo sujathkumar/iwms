@@ -28,15 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Collectors");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Spot Images");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Events");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Collectors");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Recyclers");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Spot Images");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Events");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shell));
             this.panelControlCenter = new DevExpress.XtraEditors.PanelControl();
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
             this.tabControlCollector = new DevExpress.XtraTab.XtraTabPage();
             this.gridControlCollectors = new DevExpress.XtraGrid.GridControl();
             this.gridViewCollectors = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.tabControlRecycler = new DevExpress.XtraTab.XtraTabPage();
+            this.gridControlRecyclers = new DevExpress.XtraGrid.GridControl();
+            this.gridViewRecyclers = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tabControlSpotImages = new DevExpress.XtraTab.XtraTabPage();
             this.gridControlSpotImages = new DevExpress.XtraGrid.GridControl();
             this.gridViewSpotImages = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -48,11 +52,11 @@
             this.treeViewMain = new System.Windows.Forms.TreeView();
             this.pictureLogo = new System.Windows.Forms.PictureBox();
             this.panelRHS = new System.Windows.Forms.Panel();
+            this.linkClearEvent = new System.Windows.Forms.LinkLabel();
             this.linkDelete = new System.Windows.Forms.LinkLabel();
             this.linkRefresh = new System.Windows.Forms.LinkLabel();
             this.linkCreate = new System.Windows.Forms.LinkLabel();
             this.panelControlRHS = new DevExpress.XtraEditors.PanelControl();
-            this.linkClearEvent = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlCenter)).BeginInit();
             this.panelControlCenter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlMain)).BeginInit();
@@ -60,6 +64,9 @@
             this.tabControlCollector.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCollectors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCollectors)).BeginInit();
+            this.tabControlRecycler.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlRecyclers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewRecyclers)).BeginInit();
             this.tabControlSpotImages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSpotImages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSpotImages)).BeginInit();
@@ -91,6 +98,7 @@
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabControlCollector,
+            this.tabControlRecycler,
             this.tabControlSpotImages,
             this.tabControlEvents});
             this.tabControlMain.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabControlMain_SelectedPageChanged);
@@ -117,6 +125,29 @@
             this.gridViewCollectors.GridControl = this.gridControlCollectors;
             this.gridViewCollectors.Name = "gridViewCollectors";
             this.gridViewCollectors.OptionsSelection.MultiSelect = true;
+            // 
+            // tabControlRecycler
+            // 
+            this.tabControlRecycler.Controls.Add(this.gridControlRecyclers);
+            this.tabControlRecycler.Name = "tabControlRecycler";
+            this.tabControlRecycler.Size = new System.Drawing.Size(1062, 572);
+            this.tabControlRecycler.Text = "Recyclers";
+            // 
+            // gridControlRecyclers
+            // 
+            this.gridControlRecyclers.Location = new System.Drawing.Point(4, 4);
+            this.gridControlRecyclers.MainView = this.gridViewRecyclers;
+            this.gridControlRecyclers.Name = "gridControlRecyclers";
+            this.gridControlRecyclers.Size = new System.Drawing.Size(1055, 565);
+            this.gridControlRecyclers.TabIndex = 1;
+            this.gridControlRecyclers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewRecyclers});
+            // 
+            // gridViewRecyclers
+            // 
+            this.gridViewRecyclers.GridControl = this.gridControlRecyclers;
+            this.gridViewRecyclers.Name = "gridViewRecyclers";
+            this.gridViewRecyclers.OptionsSelection.MultiSelect = true;
             // 
             // tabControlSpotImages
             // 
@@ -192,16 +223,19 @@
             this.treeViewMain.ForeColor = System.Drawing.Color.White;
             this.treeViewMain.Location = new System.Drawing.Point(6, 30);
             this.treeViewMain.Name = "treeViewMain";
-            treeNode4.Name = "collectorsnode";
-            treeNode4.Text = "Collectors";
-            treeNode5.Name = "nodeSpotImages";
-            treeNode5.Text = "Spot Images";
-            treeNode6.Name = "nodeEvents";
-            treeNode6.Text = "Events";
+            treeNode1.Name = "nodeCollectors";
+            treeNode1.Text = "Collectors";
+            treeNode2.Name = "nodeRecyclers";
+            treeNode2.Text = "Recyclers";
+            treeNode3.Name = "nodeSpotImages";
+            treeNode3.Text = "Spot Images";
+            treeNode4.Name = "nodeEvents";
+            treeNode4.Text = "Events";
             this.treeViewMain.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
             this.treeViewMain.Size = new System.Drawing.Size(189, 572);
             this.treeViewMain.TabIndex = 0;
             this.treeViewMain.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMain_AfterSelect);
@@ -227,6 +261,19 @@
             this.panelRHS.Name = "panelRHS";
             this.panelRHS.Size = new System.Drawing.Size(190, 595);
             this.panelRHS.TabIndex = 2;
+            // 
+            // linkClearEvent
+            // 
+            this.linkClearEvent.AutoSize = true;
+            this.linkClearEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkClearEvent.Location = new System.Drawing.Point(10, 124);
+            this.linkClearEvent.Name = "linkClearEvent";
+            this.linkClearEvent.Size = new System.Drawing.Size(81, 17);
+            this.linkClearEvent.TabIndex = 3;
+            this.linkClearEvent.TabStop = true;
+            this.linkClearEvent.Text = "Clear Event";
+            this.linkClearEvent.Visible = false;
+            this.linkClearEvent.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkClearEvent_LinkClicked);
             // 
             // linkDelete
             // 
@@ -272,19 +319,6 @@
             this.panelControlRHS.Size = new System.Drawing.Size(200, 607);
             this.panelControlRHS.TabIndex = 2;
             // 
-            // linkClearEvent
-            // 
-            this.linkClearEvent.AutoSize = true;
-            this.linkClearEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkClearEvent.Location = new System.Drawing.Point(10, 124);
-            this.linkClearEvent.Name = "linkClearEvent";
-            this.linkClearEvent.Size = new System.Drawing.Size(81, 17);
-            this.linkClearEvent.TabIndex = 3;
-            this.linkClearEvent.TabStop = true;
-            this.linkClearEvent.Text = "Clear Event";
-            this.linkClearEvent.Visible = false;
-            this.linkClearEvent.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkClearEvent_LinkClicked);
-            // 
             // Shell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,6 +344,9 @@
             this.tabControlCollector.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlCollectors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCollectors)).EndInit();
+            this.tabControlRecycler.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlRecyclers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewRecyclers)).EndInit();
             this.tabControlSpotImages.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlSpotImages)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSpotImages)).EndInit();
@@ -351,6 +388,9 @@
         private DevExpress.XtraGrid.GridControl gridControlEvents;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewEvents;
         private System.Windows.Forms.LinkLabel linkClearEvent;
+        private DevExpress.XtraTab.XtraTabPage tabControlRecycler;
+        private DevExpress.XtraGrid.GridControl gridControlRecyclers;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewRecyclers;
 
     }
 }
