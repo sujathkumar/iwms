@@ -23,22 +23,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText"
-                android:text="Select your Service"
-                android:background="@android:color/transparent"
-                android:textColor="#ffffff"
-                android:textSize="30dp"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
-
     <LinearLayout
         android:layout_width="400dp"
         android:layout_height="60dp"
         android:id="@+id/linearLayout1"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="2dp"
         android:padding="20dp"
         android:background="@drawable/linearstyle"
         android:clickable="true">
@@ -72,7 +61,7 @@
             android:layout_width="60dp"
             android:layout_height="fill_parent"
             android:id="@+id/bulkGarbageButton"
-            android:background="@drawable/household_garbage"/>
+            android:background="@drawable/bulk_garbage"/>
 
         <TextView
             android:layout_width="160dp"
@@ -150,7 +139,7 @@
             android:textColor="#000000"
             android:text="Waste Segregation Tutorials"
             android:paddingLeft="40dp"
-            android:layout_weight="0.74" />
+            android:layout_weight="0.99" />
     </LinearLayout>
 
     <LinearLayout
@@ -189,7 +178,7 @@
             android:layout_width="60dp"
             android:layout_height="fill_parent"
             android:id="@+id/registerComplaintButton"
-            android:background="@drawable/register_complaint"/>
+            android:background="@drawable/suggestions"/>
 
         <TextView
             android:layout_width="160dp"
@@ -212,7 +201,7 @@
             android:layout_width="60dp"
             android:layout_height="fill_parent"
             android:id="@+id/promotionsButton"
-            android:background="@drawable/volunteer" />
+            android:background="@drawable/promotions" />
 
         <TextView
             android:layout_width="160dp"
@@ -235,10 +224,10 @@
             android:layout_width="60dp"
             android:layout_height="fill_parent"
             android:id="@+id/donateUsedItemsButton"
-            android:background="@drawable/my_points" />
+            android:background="@drawable/donations" />
 
         <TextView
-            android:layout_width="160dp"
+            android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:textColor="#000000"
             android:text="Donate Used Items"
@@ -282,7 +271,7 @@
             android:layout_width="60dp"
             android:layout_height="fill_parent"
             android:id="@+id/referFriendButton"
-            android:background="@drawable/my_points" />
+            android:background="@drawable/refer_friends" />
 
         <TextView
             android:layout_width="160dp"
@@ -306,7 +295,7 @@
             android:layout_width="60dp"
             android:layout_height="fill_parent"
             android:id="@+id/suggestionsButton"
-            android:background="@drawable/register_complaint" />
+            android:background="@drawable/suggestions" />
 
         <TextView
             android:layout_width="160dp"

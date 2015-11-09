@@ -14,21 +14,10 @@
         android:textColor="#000000"
         android:textSize="30dp"
         android:padding="6dp"
-        android:text="My Points"
-        android:id="@+id/textView"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:textColor="#000000"
-        android:textSize="40dp"
-        android:padding="6dp"
         android:text="0 Points"
         android:id="@+id/totalPointTextView"
-        android:layout_marginTop="55dp"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/redeemButton" />
 
     <Button
         android:layout_height="wrap_content"
@@ -37,9 +26,19 @@
         android:text="REDEEM"
         android:background="@drawable/roundedstylebutton"
         android:textColor="#FFFFFF"
-        android:layout_width="127dp"
+        android:layout_width="100dp"
+        android:layout_marginLeft="20dp"
         android:layout_column="5"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_alignTop="@+id/totalPointTextView"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/totalPointTextView"
+        android:src="@drawable/redeem_liquids"
+        android:layout_alignBottom="@+id/redeemButton" />
 
 </RelativeLayout>

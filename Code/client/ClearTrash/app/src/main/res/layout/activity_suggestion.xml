@@ -11,26 +11,26 @@
     <EditText
         android:layout_width="10dip"
         android:layout_height="wrap_content"
-        android:background="#83edd527"
+        android:background="@drawable/edittextstyle"
         android:id="@+id/editTextSubject"
         android:padding="10dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:text="Subject" />
+        android:hint="Subject"/>
 
     <EditText
         android:layout_marginTop="10dp"
         android:layout_width="10dip"
         android:layout_height="wrap_content"
-        android:background="#83edd527"
+        android:background="@drawable/edittextstyle"
         android:id="@+id/editTextDescription"
         android:gravity="top"
         android:padding="10dp"
         android:layout_alignParentStart="true"
         android:layout_alignEnd="@+id/editTextSubject"
         android:layout_above="@+id/btnSuggest"
-        android:text="Description"
+        android:hint="Description"
         android:layout_below="@+id/editTextSubject" />
 
     <Button

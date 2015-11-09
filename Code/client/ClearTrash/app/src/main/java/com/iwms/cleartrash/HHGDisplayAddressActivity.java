@@ -73,7 +73,7 @@ public class HHGDisplayAddressActivity extends AppCompatActivity {
 
         try {
             generatedTagNumber = task.get();
-            garbageTagTextView.setText(garbageTagTextView.getText().toString() + "\n" + generatedTagNumber);
+            garbageTagTextView.setText(garbageTagTextView.getText().toString() + generatedTagNumber);
 
         }
         catch (Exception e)

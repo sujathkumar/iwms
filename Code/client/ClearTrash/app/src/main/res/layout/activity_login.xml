@@ -79,7 +79,7 @@
         android:textColor="#FFFFFF"
         android:layout_marginTop="30dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/roundedbutton"
+        android:background="@drawable/roundedstylebutton"
         android:layout_below="@+id/refferalCodeEditText"
         android:layout_toStartOf="@+id/signupButton" />
 
@@ -91,6 +91,6 @@
         android:textColor="#FFFFFF"
         android:layout_alignTop="@+id/signinButton"
         android:layout_alignEnd="@+id/citySpinner"
-        android:background="@drawable/roundedbutton"/>
+        android:background="@drawable/roundedstylebutton"/>
 
 </RelativeLayout>

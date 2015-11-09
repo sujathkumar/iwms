@@ -9,16 +9,6 @@
     tools:context="com.iwms.cleartrash.VolunteerUserNotificationActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Non Complaint Users List"
-        android:textSize="30dp"
-        android:textColor="#000000"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textView10" />
-
-    <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textColor="#000000"
@@ -26,9 +16,8 @@
         android:padding="6dp"
         android:text="Please select the number of users you can visit and give awareness."
         android:id="@+id/textViewUsersList"
-        android:layout_below="@+id/textView10"
-        android:layout_alignStart="@+id/textView10"
-        android:layout_marginTop="42dp" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:id="@+id/spinnerUsersCount"
@@ -37,7 +26,8 @@
         android:textColor="#000000"
         android:spinnerMode="dialog"
         android:layout_below="@+id/textViewUsersList"
-        android:layout_alignStart="@+id/textViewUsersList" />
+        android:layout_alignStart="@+id/textViewUsersList"
+        android:background="@drawable/item_bg"/>
 
     <Button
         android:layout_height="wrap_content"

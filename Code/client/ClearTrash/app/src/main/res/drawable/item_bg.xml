@@ -1,5 +1,12 @@
-<shape android:dither="true" android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:angle="180"/>
-    <stroke android:color="#FFFFFF" android:width="1dp">
-    </stroke>
+<shape android:dither="true" android:shape="rectangle"
+    android:thickness="0dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:startColor="#C8C8C8"
+        android:endColor="#FFFFFF"
+        android:type="linear"
+        android:angle="270"/>
+    <stroke android:width="3dp"
+        android:color="#4799E8"/>
+    <corners android:radius="5dp" />
 </shape>
