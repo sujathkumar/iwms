@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWMS.Solutions.Server.Point
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWMS.Solutions.Server.RecyclerServiceProvider", "IWMS.Solutions.Server.RecyclerServiceProvider\IWMS.Solutions.Server.RecyclerServiceProvider.csproj", "{67540381-E4B1-4F18-9C05-259F2B8506E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWMS.Solutions.Server.SuggestionServiceProvider", "IWMS.Solutions.Server.SuggestionServiceProvider\IWMS.Solutions.Server.SuggestionServiceProvider.csproj", "{88FEA2DD-E535-4550-BC33-FCD587DF600A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -169,6 +171,16 @@ Global
 		{67540381-E4B1-4F18-9C05-259F2B8506E5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{67540381-E4B1-4F18-9C05-259F2B8506E5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{67540381-E4B1-4F18-9C05-259F2B8506E5}.Release|x86.ActiveCfg = Release|Any CPU
+		{88FEA2DD-E535-4550-BC33-FCD587DF600A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88FEA2DD-E535-4550-BC33-FCD587DF600A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88FEA2DD-E535-4550-BC33-FCD587DF600A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{88FEA2DD-E535-4550-BC33-FCD587DF600A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{88FEA2DD-E535-4550-BC33-FCD587DF600A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{88FEA2DD-E535-4550-BC33-FCD587DF600A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88FEA2DD-E535-4550-BC33-FCD587DF600A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88FEA2DD-E535-4550-BC33-FCD587DF600A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{88FEA2DD-E535-4550-BC33-FCD587DF600A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{88FEA2DD-E535-4550-BC33-FCD587DF600A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

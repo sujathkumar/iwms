@@ -26,4 +26,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_cthome">CTHomeActivity</string>
+    <string name="title_activity_kws">KWSActivity</string>
+    <string name="title_activity_clear_trash_kws">ClearTrashKWSActivity</string>
 </resources>

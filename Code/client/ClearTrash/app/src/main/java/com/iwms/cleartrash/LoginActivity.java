@@ -341,7 +341,7 @@ public class LoginActivity extends Activity  {
                          {
                              WriteToCache(genKey);
                              Helper.Key = genKey.replace('"',' ').trim();
-                             Intent intent = new Intent(LoginActivity.this, ClearTrashHomeActivity.class);
+                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                              startActivity(intent);
                          }
                      }

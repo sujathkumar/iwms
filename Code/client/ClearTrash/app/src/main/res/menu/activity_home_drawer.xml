@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_vp" android:icon="@android:drawable/ic_menu_view"
+            android:title="Volunteers Point" />
+        <item android:id="@+id/nav_kms" android:icon="@android:drawable/ic_menu_info_details"
+            android:title="Waste Segregation Tutorials" />
+        <item android:id="@+id/nav_mp" android:icon="@android:drawable/ic_menu_manage"
+            android:title="My Liquids" />
+        <item android:id="@+id/nav_pws" android:icon="@android:drawable/ic_menu_help"
+            android:title="Practise Waste Segregation" />
+    </group>
+</menu>

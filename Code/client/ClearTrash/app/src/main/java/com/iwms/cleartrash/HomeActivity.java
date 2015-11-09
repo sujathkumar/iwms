@@ -7,35 +7,60 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.app.Activity;
 import android.provider.Settings;
+import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-    ImageButton hhGarbageButton, spotGarbageButton, registerVolunteerButton, checkmyPointsButton;
+    LinearLayout hhGarbageButton, spotGarbageButton, registerVolunteerButton, checkmyPointsButton,
+            knowSegregationButton, registerComplaintButton, suggestionsButton,bulkGarbageButton,
+            donateUsedItemsButton, referFriendButton;
+    LinearLayout linearLayout1;
     ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         turnGPSOn();
 
-        hhGarbageButton = (ImageButton)findViewById(R.id.hhGarbageButton);
-        spotGarbageButton = (ImageButton)findViewById(R.id.spotGarbageButton);
-        registerVolunteerButton = (ImageButton)findViewById(R.id.registerVolunteerButton);
-        checkmyPointsButton = (ImageButton)findViewById(R.id.checkmyPointsButton);
+        hhGarbageButton = (LinearLayout)findViewById(R.id.linearLayout1);
+        bulkGarbageButton = (LinearLayout)findViewById(R.id.linearLayout2);
+        spotGarbageButton = (LinearLayout)findViewById(R.id.linearLayout3);
+        registerVolunteerButton = (LinearLayout)findViewById(R.id.linearLayout4);
+        knowSegregationButton = (LinearLayout) findViewById(R.id.linearLayout5);
+        checkmyPointsButton = (LinearLayout)findViewById(R.id.linearLayout6);
+        registerComplaintButton = (LinearLayout) findViewById(R.id.linearLayout7);
+        donateUsedItemsButton = (LinearLayout)findViewById(R.id.linearLayout9);
+        referFriendButton = (LinearLayout)findViewById(R.id.linearLayout11);
+        suggestionsButton = (LinearLayout) findViewById(R.id.linearLayout12);
 
         hhGarbageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,47 +109,146 @@ public class HomeActivity extends AppCompatActivity {
         registerVolunteerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                RequestTask task = null;
-                String volunteerSubsciptionUrl = "http://" + Helper.Server  + "/ManagementService/api/volunteer/rvs%7C" + Helper.Key;
-                task = (RequestTask) new RequestTask().execute(volunteerSubsciptionUrl);
-                String topic = "";
-
-                try
-                {
-                    topic = task.get().replace('"',' ').trim();
-
-                    if(!topic.equals(""))
-                    {
-                        Intent intent = new Intent(HomeActivity.this, VolunteerHomeActivity.class);
-                        startActivity(intent);
+                new Thread(new Runnable() {
+                    public void run() {
+                RegisterVolunteer();
                     }
-                    else
-                    {
-                        Intent intent = new Intent(HomeActivity.this, VolunteerConfirmationActivity.class);
-                        startActivity(intent);
-                    }
-                }
-                catch (InterruptedException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                catch (ExecutionException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                }).start();
             }
         });
 
         checkmyPointsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, PointActivity.class);
-                startActivity(intent);
+                new Thread(new Runnable() {
+                    public void run() {
+                        CheckMyPoints();
+                    }
+                    }).start();
             }
         });
+
+        knowSegregationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    public void run() {
+                        KnowWasteSegregation();
+                    }
+                }).start();
+            }
+        });
+        registerComplaintButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    public void run() {
+                        Complain();
+                    }
+                }).start();
+            }
+        });
+        suggestionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    public void run() {
+                        Suggest();
+                    }
+                }).start();
+            }
+        });
+        bulkGarbageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "This feature is not available!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        donateUsedItemsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "This feature is not available!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        referFriendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReferFriend();
+            }
+        });
+    }
+
+    public void RegisterVolunteer()
+    {
+        RequestTask task = null;
+        String volunteerSubsciptionUrl = "http://" + Helper.Server + "/ManagementService/api/volunteer/rvs%7C" + Helper.Key;
+        task = (RequestTask) new RequestTask().execute(volunteerSubsciptionUrl);
+        String topic = "";
+
+        try {
+            topic = task.get().replace('"', ' ').trim();
+
+            if (!topic.equals("")) {
+                Intent intent = new Intent(HomeActivity.this, VolunteerHomeActivity.class);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(HomeActivity.this, VolunteerConfirmationActivity.class);
+                startActivity(intent);
+            }
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void CheckMyPoints()
+    {
+        Intent intent = new Intent(HomeActivity.this, PointActivity.class);
+        startActivity(intent);
+    }
+
+    public void KnowWasteSegregation()
+    {
+        Intent intent = new Intent(HomeActivity.this, KWSActivity.class);
+        startActivity(intent);
+    }
+
+    public void Complain()
+    {
+        Intent intent = new Intent(HomeActivity.this, ComplaintActivity.class);
+        startActivity(intent);
+    }
+
+    public void Suggest()
+    {
+        Intent intent = new Intent(HomeActivity.this, SuggestionActivity.class);
+        startActivity(intent);
+    }
+
+    public void ReferFriend()
+    {
+        RequestTask task = null;
+        String referFriendUrl = "http://" + Helper.Server  + "/ManagementService/api/login/rr%7C" + Helper.Key;
+        task = (RequestTask) new RequestTask().execute(referFriendUrl);
+
+        String referCode = "";
+
+        try {
+            referCode = task.get();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Download ClearTrash and use my Refer Code " + referCode.toString() + " to earn more Liquids!");
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
     public void InsertAddress()
@@ -197,16 +321,26 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.home, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up buttonhhgarbage, so long
+        // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -218,8 +352,38 @@ public class HomeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_vp)
+        {
+            new Thread(new Runnable() {
+                public void run() {
+            RegisterVolunteer();
+                }
+            }).start();
+        }
+        else if (id == R.id.nav_kms) {
+            new Thread(new Runnable() {
+                public void run() {
+                    KnowWasteSegregation();
+                }
+            }).start();
+        } else if (id == R.id.nav_mp) {
+            new Thread(new Runnable() {
+                public void run() {
+            CheckMyPoints();
+                }
+            }).start();
+        } else if (id == R.id.nav_pws) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

@@ -3,3 +3,4 @@ C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Soluti
 C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.CollectorServiceProvider\bin\Debug\IWMS.Solutions.Server.CollectorServiceProvider.pdb
 C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.CollectorServiceProvider\obj\Debug\IWMS.Solutions.Server.CollectorServiceProvider.dll
 C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.CollectorServiceProvider\obj\Debug\IWMS.Solutions.Server.CollectorServiceProvider.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.CollectorServiceProvider\obj\Debug\IWMS.Solutions.Server.CollectorServiceProvider.csprojResolveAssemblyReference.cache

@@ -46,3 +46,5 @@ C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Soluti
 C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\IWMSService\bin\IWMS.Solutions.Server.PointServiceProvider.pdb
 C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\IWMSService\bin\IWMS.Solutions.Server.RecyclerServiceProvider.dll
 C:\Users\nairs6\Documents\Visual Studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\IWMSService\bin\IWMS.Solutions.Server.RecyclerServiceProvider.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\IWMSService\bin\IWMS.Solutions.Server.SuggestionServiceProvider.dll
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.ManagementService\IWMSService\bin\IWMS.Solutions.Server.SuggestionServiceProvider.pdb

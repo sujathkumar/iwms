@@ -1,6 +1,5 @@
 package com.iwms.cleartrash;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -52,7 +51,7 @@ public class HHGAcceptanceDecisionActivity extends AppCompatActivity {
                 try {
                     statusCode = task.get();
                     if (statusCode.contains("210")) {
-                        Intent intent = new Intent(HHGAcceptanceDecisionActivity.this, ClearTrashHomeActivity.class);
+                        Intent intent = new Intent(HHGAcceptanceDecisionActivity.this, HomeActivity.class);
                         startActivity(intent);
                     }
                 }

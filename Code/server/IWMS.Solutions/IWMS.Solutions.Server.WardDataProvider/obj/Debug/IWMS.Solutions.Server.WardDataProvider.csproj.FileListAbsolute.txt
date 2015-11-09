@@ -7,3 +7,4 @@ C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Soluti
 C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.WardDataProvider\bin\Debug\IWMS.Solutions.Server.WardDataProvider.pdb
 C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.WardDataProvider\obj\Debug\IWMS.Solutions.Server.WardDataProvider.dll
 C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.WardDataProvider\obj\Debug\IWMS.Solutions.Server.WardDataProvider.pdb
+C:\Users\nairs6\documents\visual studio 2013\Projects\IWMS.Solutions\IWMS.Solutions.Server.WardDataProvider\obj\Debug\IWMS.Solutions.Server.WardDataProvider.csprojResolveAssemblyReference.cache

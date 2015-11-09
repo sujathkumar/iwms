@@ -74,7 +74,7 @@ public class VolunteerEventActivity extends Activity {
                 try {
                     code = task.get().replace('"',' ').trim();
                     if(code.equals("216")) {
-                        Intent intent = new Intent(VolunteerEventActivity.this, ClearTrashHomeActivity.class);
+                        Intent intent = new Intent(VolunteerEventActivity.this, HomeActivity.class);
                         startActivity(intent);
                     }
                     else

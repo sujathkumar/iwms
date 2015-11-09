@@ -34,7 +34,7 @@ public class SplashActivity extends Activity {
                     Intent intent = null;
                     if (statusCode.contains("201")) {
                         Helper.Key = key.replace('"',' ').trim();
-                        intent = new Intent(SplashActivity.this, ClearTrashHomeActivity.class);
+                        intent = new Intent(SplashActivity.this, HomeActivity.class);
                     } else {
                         intent = new Intent(SplashActivity.this, LoginActivity.class);
                     }

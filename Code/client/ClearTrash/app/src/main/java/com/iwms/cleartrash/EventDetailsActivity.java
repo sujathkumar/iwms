@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
 
-public class EventDetailsActivity extends Activity {
+public class EventDetailsActivity extends AppCompatActivity {
 
     ImageView image;
     TextView eventTextView;

@@ -30,6 +30,17 @@ namespace IWMS.Solutions.Server.AuthProvider
             return cityList;
         }
 
+        /// <summary>
+        /// RetrieveReferCode
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public string RetrieveReferCode(string key)
+        {
+             DataAccessDataContext ctx = new DataAccessDataContext();
+             return ctx.Auths.Where(@w => @w.Key == key).Select(@s => @s.REFCODE).First();
+        }
+
         public int AuthenticateUser(string key)
         {
             DataAccessDataContext ctx = new DataAccessDataContext();

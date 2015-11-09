@@ -83,6 +83,11 @@ namespace ManagementService.Controllers
                 {
                     //return provider.DeleteAllUsers().ToString();
                 }
+                else if (method == "rr")
+                {
+                    string data = values[1];
+                    return provider.RetrieveReferCode(data).ToString();
+                }
             }
             else
             {

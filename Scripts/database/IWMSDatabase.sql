@@ -1,7 +1,11 @@
 USE [master]
 GO
 
-/****** Object:  Database [IWMS]    Script Date: 10/3/2015 10:35:00 AM ******/
+/****** Object:  Database [IWMS]    Script Date: 11/9/2015 5:02:57 PM ******/
+DROP DATABASE [IWMS]
+GO
+
+/****** Object:  Database [IWMS]    Script Date: 11/9/2015 5:02:57 PM ******/
 CREATE DATABASE [IWMS]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -108,4 +112,5 @@ GO
 
 ALTER DATABASE [IWMS] SET  READ_WRITE 
 GO
+
 

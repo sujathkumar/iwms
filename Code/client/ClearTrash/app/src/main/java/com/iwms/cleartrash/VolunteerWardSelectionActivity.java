@@ -1,6 +1,5 @@
 package com.iwms.cleartrash;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -138,7 +137,7 @@ public class VolunteerWardSelectionActivity extends AppCompatActivity {
                     }
 
                     // Show location settings when the user acknowledges the alert dialog
-                    Intent intent = new Intent(VolunteerWardSelectionActivity.this, ClearTrashHomeActivity.class);
+                    Intent intent = new Intent(VolunteerWardSelectionActivity.this, HomeActivity.class);
                     startActivity(intent);
                 }
             });

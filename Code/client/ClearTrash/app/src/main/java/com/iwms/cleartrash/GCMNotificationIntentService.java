@@ -53,7 +53,7 @@ public class GCMNotificationIntentService extends IntentService {
 
         Intent intent = null;
         if(action.equals("UR")) {
-            intent = new Intent(this, ClearTrashHomeActivity.class);
+            intent = new Intent(this, HomeActivity.class);
         }
         else if(action.equals("UN")) {
             intent = new Intent(this, UserNotificationActivity.class);

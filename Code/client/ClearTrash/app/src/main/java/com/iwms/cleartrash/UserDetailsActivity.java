@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
 
-public class UserDetailsActivity extends Activity {
+public class UserDetailsActivity extends AppCompatActivity {
 
     TextView userTextView;
 

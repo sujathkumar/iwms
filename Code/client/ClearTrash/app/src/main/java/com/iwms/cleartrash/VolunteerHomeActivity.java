@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class VolunteerHomeActivity extends Activity {
+public class VolunteerHomeActivity extends AppCompatActivity {
 
     ListView listViewEvent, listviewNCUser;
     List<String> eventIds = null;

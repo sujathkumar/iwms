@@ -98,7 +98,7 @@ public class SpotImageActivity extends Activity {
 
                 progressBarStatus = 100;
 
-                Intent intent = new Intent(SpotImageActivity.this, ClearTrashHomeActivity.class);
+                Intent intent = new Intent(SpotImageActivity.this, HomeActivity.class);
                 startActivity(intent);
 
                 progressBarHandler.post(new Runnable() {
