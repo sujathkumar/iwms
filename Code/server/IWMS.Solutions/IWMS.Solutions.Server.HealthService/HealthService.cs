@@ -38,7 +38,7 @@ namespace IWMS.Solutions.Server.HealthService
 
             // Set up a timer to trigger every week.
             System.Timers.Timer timerWeek = new System.Timers.Timer();
-            timerWeek.Interval = 60000 * 60 * 24 * 7; //One hour
+            timerWeek.Interval = 1000 * 60 * 60 * 24 * 7; //One hour
             timerWeek.Elapsed += new System.Timers.ElapsedEventHandler(this.WeeklyTimer);
             timerWeek.Start();
         }

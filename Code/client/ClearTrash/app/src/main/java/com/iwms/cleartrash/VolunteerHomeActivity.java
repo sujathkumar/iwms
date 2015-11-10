@@ -46,8 +46,10 @@ public class VolunteerHomeActivity extends AppCompatActivity {
 
             for(int i=0;i<evs.length;i++)
             {
-                eventIds.add(evs[i].substring(0, evs[i].indexOf('_')));
-                events.add(evs[i].substring(evs[i].indexOf('_') + 1));
+                if(!evs[i].equals("")) {
+                    eventIds.add(evs[i].substring(0, evs[i].indexOf('_')));
+                    events.add(evs[i].substring(evs[i].indexOf('_') + 1));
+                }
             }
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
@@ -86,8 +88,10 @@ public class VolunteerHomeActivity extends AppCompatActivity {
 
             for(int i=0;i<uss.length;i++)
             {
-                userIds.add(uss[i].substring(0, uss[i].indexOf('_')));
-                users.add(uss[i].substring(uss[i].indexOf('_') + 1));
+                if(!uss[i].equals("")) {
+                    userIds.add(uss[i].substring(0, uss[i].indexOf('_')));
+                    users.add(uss[i].substring(uss[i].indexOf('_') + 1));
+                }
             }
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block

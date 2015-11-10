@@ -2,13 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_vp" android:icon="@android:drawable/ic_menu_view"
+        <item android:id="@+id/nav_hhg" android:icon="@android:drawable/ic_menu_manage"
+            android:title="House Hold Garbage" />
+        <item android:id="@+id/nav_sg" android:icon="@android:drawable/ic_menu_camera"
+            android:title="Spot A Garbage" />
+        <item android:id="@+id/nav_vp" android:icon="@android:drawable/ic_menu_share"
             android:title="Volunteers Point" />
-        <item android:id="@+id/nav_kms" android:icon="@android:drawable/ic_menu_info_details"
+        <item android:id="@+id/nav_kms" android:icon="@android:drawable/ic_menu_directions"
             android:title="Waste Segregation Tutorials" />
-        <item android:id="@+id/nav_mp" android:icon="@android:drawable/ic_menu_manage"
+        <item android:id="@+id/nav_mp" android:icon="@android:drawable/ic_menu_view"
             android:title="My Liquids" />
-        <item android:id="@+id/nav_pws" android:icon="@android:drawable/ic_menu_help"
+        <item android:id="@+id/nav_pws" android:icon="@android:drawable/ic_menu_info_details"
             android:title="Practise Waste Segregation" />
+        <item android:id="@+id/nav_rf" android:icon="@android:drawable/ic_menu_add"
+            android:title="Refer a Friend"/>
+        <item android:id="@+id/nav_signout" android:icon="@android:drawable/ic_lock_idle_lock"
+            android:title="Signout" />
     </group>
 </menu>

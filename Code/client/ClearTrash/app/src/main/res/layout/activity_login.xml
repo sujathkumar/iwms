@@ -14,7 +14,7 @@
         android:id="@+id/editText"
         android:text="        ClearTrash"
         android:background="@android:color/transparent"
-        android:textColor="#b9000000"
+        android:textColor="#5A96D4"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_gravity="center_horizontal"
@@ -28,7 +28,7 @@
         android:inputType="textPersonName"
         android:hint="Name"
         android:focusable="true"
-        android:textColorHint="#000000"
+        android:textColorHint="#5A96D4"
         android:layout_marginTop="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -47,17 +47,18 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/userNameEditText"
         android:layout_alignEnd="@+id/userNameEditText"
-        android:textColorHint="#000000"
+        android:textColorHint="#5A96D4"
         android:hint="Mobile Number" />
 
     <Spinner
         android:id="@+id/citySpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:textColorHint="#000000"
         android:layout_below="@+id/mobileNumberEditText"
-        android:spinnerMode="dialog" />
+        android:spinnerMode="dialog"
+        android:background="@drawable/edittextstyle"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -66,7 +67,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:id="@+id/refferalCodeEditText"
-        android:textColorHint="#b9000000"
+        android:textColorHint="#5A96D4"
         android:hint="REFERRAL CODE"
         android:layout_below="@+id/citySpinner"
         android:layout_alignParentStart="true" />
@@ -92,5 +93,21 @@
         android:layout_alignTop="@+id/signinButton"
         android:layout_alignEnd="@+id/citySpinner"
         android:background="@drawable/roundedstylebutton"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText1"
+        android:text="Nothing is waste until wasted!"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="440dp"
+        android:paddingTop="30dp"
+        android:paddingLeft="30dp"
+        android:textColor="#5A96D4"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

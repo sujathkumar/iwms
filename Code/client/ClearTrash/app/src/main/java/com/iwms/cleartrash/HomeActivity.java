@@ -19,7 +19,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import java.util.concurrent.ExecutionException;
@@ -31,7 +30,6 @@ public class HomeActivity extends AppCompatActivity
             knowSegregationButton, registerComplaintButton, suggestionsButton,bulkGarbageButton,
             donateUsedItemsButton, referFriendButton;
     LinearLayout linearLayout1;
-    ScrollView scrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,44 +63,14 @@ public class HomeActivity extends AppCompatActivity
         hhGarbageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String signInUrl = "http://" + Helper.Server  + "/ManagementService/api/household/authenticate%7C" + Helper.Key;
-                RequestTask task = (RequestTask) new RequestTask().execute(signInUrl);
-                String statusCode = "";
-
-                try {
-                    statusCode = task.get();
-                    if (statusCode.contains("205") || statusCode.contains("206")) {
-                        InsertAddress();
-                    }
-                    else if (statusCode.contains("207") || statusCode.contains("208"))
-                    {
-                        Intent intent = new Intent(HomeActivity.this, HHGDisplayAddressActivity.class);
-                        startActivity(intent);
-                    }
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(), "Error, Please Try Again!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                catch (InterruptedException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                catch (ExecutionException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                HouseHoldGarbage();
             }
         });
 
         spotGarbageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, SpotImageActivity.class);
-                startActivity(intent);
+                SpotGarbage();
             }
         });
 
@@ -176,6 +144,45 @@ public class HomeActivity extends AppCompatActivity
                 ReferFriend();
             }
         });
+    }
+
+    public void HouseHoldGarbage()
+    {
+        String signInUrl = "http://" + Helper.Server  + "/ManagementService/api/household/authenticate%7C" + Helper.Key;
+        RequestTask task = (RequestTask) new RequestTask().execute(signInUrl);
+        String statusCode = "";
+
+        try {
+            statusCode = task.get();
+            if (statusCode.contains("205") || statusCode.contains("206")) {
+                InsertAddress();
+            }
+            else if (statusCode.contains("207") || statusCode.contains("208"))
+            {
+                Intent intent = new Intent(HomeActivity.this, HHGDisplayAddressActivity.class);
+                startActivity(intent);
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Error, Please Try Again!", Toast.LENGTH_SHORT).show();
+            }
+        }
+        catch (InterruptedException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        catch (ExecutionException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void SpotGarbage()
+    {
+        Intent intent = new Intent(HomeActivity.this, SpotImageActivity.class);
+        startActivity(intent);
     }
 
     public void RegisterVolunteer()
@@ -345,7 +352,9 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.signout) {
+            this.finish();
+            android.os.Process.killProcess(android.os.Process.myPid());
             return true;
         }
 
@@ -358,11 +367,27 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_vp)
+        if (id == R.id.nav_hhg)
         {
             new Thread(new Runnable() {
                 public void run() {
-            RegisterVolunteer();
+            HouseHoldGarbage();
+                }
+            }).start();
+        }
+        else if (id == R.id.nav_sg)
+        {
+            new Thread(new Runnable() {
+                public void run() {
+                    SpotGarbage();
+                }
+            }).start();
+        }
+        else if (id == R.id.nav_vp)
+        {
+            new Thread(new Runnable() {
+                public void run() {
+                    RegisterVolunteer();
                 }
             }).start();
         }
@@ -380,6 +405,13 @@ public class HomeActivity extends AppCompatActivity
             }).start();
         } else if (id == R.id.nav_pws) {
 
+        }
+        else if (id == R.id.nav_rf) {
+            ReferFriend();
+        }
+        else if (id == R.id.nav_signout) {
+            this.finish();
+            android.os.Process.killProcess(android.os.Process.myPid());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

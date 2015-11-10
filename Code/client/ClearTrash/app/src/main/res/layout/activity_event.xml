@@ -13,10 +13,9 @@
         android:layout_width="wrap_content"
         android:id="@+id/eventTextView"
         android:padding="20dip"
-        android:gravity="bottom"
+        android:gravity="top"
         android:background="@drawable/edittextstyle"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
