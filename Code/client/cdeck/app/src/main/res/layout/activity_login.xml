@@ -7,23 +7,15 @@
     android:background="@drawable/collectors_home"
     tools:context=".LoginActivity">
 
-    <TextView android:text="Login" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textview"
-        android:textSize="35dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textView" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CDECK"
         android:id="@+id/textView"
-        android:textColor="#ff7aff24"
+        android:textColor="#5A96D4"
         android:textSize="35dp"
-        android:layout_below="@+id/textview"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="91dp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -31,12 +23,10 @@
         android:id="@+id/editText"
         android:hint="Mobile Number"
         android:focusable="true"
-        android:layout_marginTop="46dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
         android:phoneNumber="true"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_above="@+id/editText2"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_alignEnd="@+id/btnCancel" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -44,25 +34,29 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
-        android:hint="Password" />
+        android:hint="Password"
+        android:layout_above="@+id/btnLogin"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/roundedstylebutton"
         android:text="LOGIN"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:id="@+id/btnLogin"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/textview" />
+        android:layout_alignTop="@+id/btnCancel"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_toStartOf="@+id/btnCancel" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/roundedstylebutton"
         android:text="CANCEL"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:id="@+id/btnCancel"
         android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/editText2" />

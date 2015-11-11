@@ -7,21 +7,13 @@
     android:background="@drawable/recyclers_home"
     tools:context=".LoginActivity">
 
-    <TextView android:text="Login" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textview"
-        android:textSize="35dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RDECK"
         android:id="@+id/textView"
-        android:textColor="#ff7aff24"
+        android:textColor="#5A96D4"
         android:textSize="35dp"
-        android:layout_below="@+id/textview"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -29,13 +21,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/editText"
         android:hint="Mobile Number"
-        android:textColor="#FFFFFF"
         android:focusable="true"
-        android:layout_marginTop="95dp"
         android:phoneNumber="true"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/editText2"
+        android:layout_alignStart="@+id/editText2"
+        android:layout_alignEnd="@+id/editText2" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -44,28 +34,29 @@
         android:ems="10"
         android:id="@+id/editText2"
         android:hint="Password"
-        android:textColor="#FFFFFF"
-        android:layout_below="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/btnLogin"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/roundedstylebutton"
         android:text="LOGIN"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:id="@+id/btnLogin"
-        android:layout_marginTop="48dp"
-        android:layout_below="@+id/editText2"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/textview" />
+        android:layout_alignTop="@+id/btnCancel"
+        android:layout_alignStart="@+id/editText2" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/roundedstylebutton"
         android:text="CANCEL"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:id="@+id/btnCancel"
-        android:layout_alignTop="@+id/btnLogin"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textview" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/editText2" />
 
 </RelativeLayout>

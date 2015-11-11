@@ -3,6 +3,7 @@ package com.iwms.cdeck;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,7 +11,7 @@ import android.widget.ListView;
 
 import java.util.concurrent.ExecutionException;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     ListView listView ;
 

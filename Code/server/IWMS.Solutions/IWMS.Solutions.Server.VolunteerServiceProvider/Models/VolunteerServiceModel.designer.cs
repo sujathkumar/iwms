@@ -69,7 +69,7 @@ namespace IWMS.Solutions.Server.VolunteerServiceProvider.Models
     #endregion
 		
 		public VolunteerServiceModelDataContext() : 
-				base(global::IWMS.Solutions.Server.VolunteerServiceProvider.Properties.Settings.Default.IWMSConnectionString1, mappingSource)
+				base(global::IWMS.Solutions.Server.VolunteerServiceProvider.Properties.Settings.Default.IWMSConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

@@ -274,8 +274,8 @@ namespace IWMS.Solutions.Server.BinServiceProvider
                 context.Garbages.InsertOnSubmit(garbage);
                 SubmitData();
 
-                InsertOrder(tag, "WET");
-                InsertOrder(tag, "DRY");
+                InsertOrder(tag, "WET", true, true, 0);
+                InsertOrder(tag, "DRY", true, true, 0);
 
                 return 211;
             }
@@ -288,8 +288,59 @@ namespace IWMS.Solutions.Server.BinServiceProvider
         /// <summary>
         /// InsertOrder
         /// </summary>
+        /// <param name="key"></param>
+        /// <param name="wetOrder"></param>
+        /// <param name="dryOrder"></param>
+        /// <returns></returns>
+        public int InsertOrder(string key, int wetOrder, int dryOrder, int points)
+        {
+            try
+            {
+                var user = context.Auths.Where(@w => @w.Key == key).First();
+                var bin = context.Bins.Where(@w => @w.UserId == user.UserId).First();
+                var garbage = context.Garbages.Where(@w => @w.BinId == bin.Id).First();
+
+                if (wetOrder != 0)
+                {
+                    InsertOrder(garbage.Tag, "WET", false, true, wetOrder);
+                }
+
+                if (dryOrder != 0)
+                {
+                    InsertOrder(garbage.Tag, "DRY", false, true, dryOrder);
+                }
+
+                if (wetOrder != 0 || dryOrder != 0)
+                {
+                    Point point = new Point
+                    {
+                        Id = Guid.NewGuid(),
+                        Point1 = points * -1,
+                        UserId = user.UserId
+                    };
+
+                    context.Points.InsertOnSubmit(point);
+                    SubmitData();
+                }
+
+                return 219;
+            }
+            catch (Exception ex)
+            {
+                using (StreamWriter sw = File.AppendText(@"C:\IWMSLog.txt"))
+                {
+                    Log(ex.Message, sw);
+                }
+
+                return 100;
+            }
+        }
+
+        /// <summary>
+        /// InsertOrder
+        /// </summary>
         /// <param name="binId"></param>
-        public int InsertOrder(string tag, string type)
+        public int InsertOrder(string tag, string type, bool promotion, bool qrCodeRequired, int quantity)
         {
             try
             {
@@ -302,8 +353,9 @@ namespace IWMS.Solutions.Server.BinServiceProvider
                     DateOrdered = DateTime.Now,
                     GarbageId = garbage.Id,
                     GarbageTypeId = garbageType.Id,
-                    Promotion = false,
-                    QRCodeRequired = true,
+                    Promotion = promotion,
+                    QRCodeRequired = qrCodeRequired,
+                    Quantity = quantity
                 };
 
                 context.Orders.InsertOnSubmit(order);

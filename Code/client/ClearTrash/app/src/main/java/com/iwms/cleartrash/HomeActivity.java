@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity
 
     LinearLayout hhGarbageButton, spotGarbageButton, registerVolunteerButton, checkmyPointsButton,
             knowSegregationButton, registerComplaintButton, suggestionsButton,bulkGarbageButton,
-            donateUsedItemsButton, referFriendButton;
+            donateUsedItemsButton, referFriendButton, promotionsButton, practiseWasteSegregationButton;
     LinearLayout linearLayout1;
 
     @Override
@@ -56,7 +56,9 @@ public class HomeActivity extends AppCompatActivity
         knowSegregationButton = (LinearLayout) findViewById(R.id.linearLayout5);
         checkmyPointsButton = (LinearLayout)findViewById(R.id.linearLayout6);
         registerComplaintButton = (LinearLayout) findViewById(R.id.linearLayout7);
+        promotionsButton = (LinearLayout) findViewById(R.id.linearLayout8);
         donateUsedItemsButton = (LinearLayout)findViewById(R.id.linearLayout9);
+        practiseWasteSegregationButton = (LinearLayout) findViewById(R.id.linearLayout10);
         referFriendButton = (LinearLayout)findViewById(R.id.linearLayout11);
         suggestionsButton = (LinearLayout) findViewById(R.id.linearLayout12);
 
@@ -142,6 +144,19 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 ReferFriend();
+            }
+        });
+        promotionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PromoteClearTrash();
+            }
+        });
+        practiseWasteSegregationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getApplicationContext(), "This feature is not available!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -256,6 +271,12 @@ public class HomeActivity extends AppCompatActivity
         sendIntent.putExtra(Intent.EXTRA_TEXT, "Download ClearTrash and use my Refer Code " + referCode.toString() + " to earn more Liquids!");
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
+    }
+
+    public void PromoteClearTrash()
+    {
+        Intent intent = new Intent(HomeActivity.this, PromotionsActivity.class);
+        startActivity(intent);
     }
 
     public void InsertAddress()

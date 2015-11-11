@@ -119,7 +119,7 @@ namespace IWMS.Solutions.Server.QRCodeGenerator
                 BitMatrix matrix = qrCodeGraphicControl.GetQrMatrix();
                 using (FileStream stream = new FileStream(fileName, FileMode.Create))
                 {
-                    gRender.WriteToStream(matrix, ImageFormat.Png, stream, new Point(600, 600));
+                    gRender.WriteToStream(matrix, ImageFormat.Png, stream, new System.Drawing.Point(600, 600));
                 }
             }
         }

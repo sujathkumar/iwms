@@ -28,7 +28,7 @@ namespace ManagementService.Controllers
                 else if (method == "ia")
                 {
                     string data = values[1];
-                    string address = values[2].Replace("s_pace"," ").Replace("c_omma",",");
+                    string address = values[2].Replace("s_pace", " ").Replace("c_omma", ",");
                     string[] seperator = new string[] { "___" };
                     return provider.InsertAddress(data, address.Split(seperator, StringSplitOptions.RemoveEmptyEntries)[0].ToString(),
                         address.Split(seperator, StringSplitOptions.RemoveEmptyEntries)[1].ToString(),
@@ -59,6 +59,14 @@ namespace ManagementService.Controllers
                 {
                     string userId = values[1];
                     return provider.RetrieveUserAddress(userId).ToString();
+                }
+                else if (method == "io")
+                {
+                    string data = values[1];
+                    string wetOrder = values[2];
+                    string dryOrder = values[3];
+                    string points = values[4];
+                    return provider.InsertOrder(data, Convert.ToInt32(wetOrder), Convert.ToInt32(dryOrder), Convert.ToInt32(points)).ToString();
                 }
                 else
                 {

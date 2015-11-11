@@ -96,14 +96,17 @@
 
         <service android:name=".GCMNotificationIntentService" />
 
-        <activity android:name=".HHGCurrentLocationActivity"
-            android:label="Use Current Location">
+        <activity
+            android:name=".HHGCurrentLocationActivity"
+            android:label="Use Current Location" >
         </activity>
-        <activity android:name=".HHGDisplayAddressActivity"
-            android:label="House Hold Garbage">
+        <activity
+            android:name=".HHGDisplayAddressActivity"
+            android:label="House Hold Garbage" >
         </activity>
-        <activity android:name=".HHGManualLocationActivity"
-            android:label="Enter Manually">
+        <activity
+            android:name=".HHGManualLocationActivity"
+            android:label="Enter Manually" >
         </activity>
         <activity android:name=".HHGAcceptanceDecisionActivity" >
         </activity>
@@ -119,9 +122,12 @@
         </activity>
         <activity android:name=".OrderDryBagsActivity" >
         </activity>
-        <activity android:name=".OrderWasteBagsActivity" >
+        <activity android:name=".OrderWasteBagsActivity"
+            android:label="My Orders">
         </activity>
-        <activity android:name=".PromotionsActivity" >
+        <activity
+            android:name=".PromotionsActivity"
+            android:label="Promotions" >
         </activity>
         <activity android:name=".SpotImageActivity" >
         </activity>
@@ -129,12 +135,13 @@
         </activity>
         <activity android:name=".VolunteerWardSelectionActivity" >
         </activity>
-        <activity android:name=".PointActivity"
-            android:label="My Liquids">
+        <activity
+            android:name=".PointActivity"
+            android:label="My Liquids" >
         </activity>
         <activity
             android:name=".UserNotificationActivity"
-            android:label="Non Complaint Users List">
+            android:label="Non Complaint Users List" >
         </activity>
         <activity android:name=".VolunteerEventActivity" >
         </activity>
@@ -142,14 +149,17 @@
         </activity>
         <activity android:name=".VolunteerGeneralNotificationActivity" >
         </activity>
-        <activity android:name=".VolunteerHomeActivity"
-            android:label="Volunteers Point">
+        <activity
+            android:name=".VolunteerHomeActivity"
+            android:label="Volunteers Point" >
         </activity>
-        <activity android:name=".EventDetailsActivity"
-            android:label="Event Details">
+        <activity
+            android:name=".EventDetailsActivity"
+            android:label="Event Details" >
         </activity>
-        <activity android:name=".UserDetailsActivity"
-            android:label="User Details">
+        <activity
+            android:name=".UserDetailsActivity"
+            android:label="User Details" >
         </activity>
         <activity
             android:name=".HomeActivity"
@@ -161,11 +171,15 @@
             android:label="Waste Segregation Tutorials"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".ComplaintActivity"
-            android:label="Complaint Box">
+        <activity
+            android:name=".ComplaintActivity"
+            android:label="Complaint Box" >
         </activity>
-        <activity android:name=".SuggestionActivity"
-            android:label="Suggestions">
+        <activity
+            android:name=".SuggestionActivity"
+            android:label="Suggestions" >
+        </activity>
+        <activity android:name=".OrderActivity" >
         </activity>
     </application>
 

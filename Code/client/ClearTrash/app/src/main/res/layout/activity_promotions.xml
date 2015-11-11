@@ -8,4 +8,185 @@
     android:background="@drawable/background"
     tools:context="com.iwms.cleartrash.PromotionsActivity">
 
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/wetImageView"
+        android:src="@drawable/wet"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:text="WET Bags"
+        android:id="@+id/wetTextView"
+        android:layout_above="@+id/dryImageView"
+        android:layout_toEndOf="@+id/wetImageView" />
+
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittextstyle"
+        android:gravity="center"
+        android:layout_alignTop="@+id/wetTextView"
+        android:layout_alignBottom="@+id/wetRedeemButton"
+        android:layout_toStartOf="@+id/wetRedeemButton"
+        android:id="@+id/wetEditText" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:id="@+id/wetRedeemButton"
+        android:width="10dp"
+        android:text="ADD"
+        android:background="@drawable/roundedstylebutton"
+        android:textColor="#FFFFFF"
+        android:layout_width="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_column="5"
+        android:layout_alignTop="@+id/wetTextView"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/dryImageView"
+        android:src="@drawable/dry"
+        android:layout_below="@+id/wetImageView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:text="DRY Bags"
+        android:id="@+id/dryTextView"
+        android:layout_alignBottom="@+id/dryImageView"
+        android:layout_alignStart="@+id/wetTextView" />
+
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittextstyle"
+        android:gravity="center"
+        android:layout_alignTop="@+id/dryTextView"
+        android:layout_alignBottom="@+id/dryRedeemButton"
+        android:layout_toStartOf="@+id/dryRedeemButton"
+        android:id="@+id/dryEditText" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:id="@+id/dryRedeemButton"
+        android:width="10dp"
+        android:text="ADD"
+        android:background="@drawable/roundedstylebutton"
+        android:textColor="#FFFFFF"
+        android:layout_width="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_column="5"
+        android:layout_alignTop="@+id/dryTextView"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/ewasteImageView"
+        android:src="@drawable/ewaste"
+        android:layout_below="@+id/dryImageView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:text="E-Waste Bags"
+        android:id="@+id/ewasteTextView"
+        android:layout_alignBottom="@+id/ewasteImageView"
+        android:layout_toEndOf="@+id/ewasteImageView" />
+
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittextstyle"
+        android:gravity="center"
+        android:layout_alignTop="@+id/ewasteTextView"
+        android:layout_alignBottom="@+id/ewasteRedeemButton"
+        android:layout_toStartOf="@+id/ewasteRedeemButton"
+        android:id="@+id/ewasteEditText" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:id="@+id/ewasteRedeemButton"
+        android:width="10dp"
+        android:text="ADD"
+        android:background="@drawable/roundedstylebutton"
+        android:textColor="#FFFFFF"
+        android:layout_width="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_column="5"
+        android:layout_alignTop="@+id/ewasteTextView"
+        android:layout_alignParentEnd="true"
+        android:enabled="false"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/binImageView"
+        android:src="@drawable/bin"
+        android:layout_below="@+id/ewasteRedeemButton"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        android:padding="10dp"
+        android:text="Bin"
+        android:id="@+id/binTextView"
+        android:layout_alignTop="@+id/binRedeemButton"
+        android:layout_alignStart="@+id/ewasteTextView"
+        android:layout_alignEnd="@+id/ewasteTextView" />
+
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittextstyle"
+        android:gravity="center"
+        android:layout_alignTop="@+id/binTextView"
+        android:layout_alignBottom="@+id/binRedeemButton"
+        android:layout_toStartOf="@+id/binRedeemButton"
+        android:id="@+id/binEditText" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:id="@+id/binRedeemButton"
+        android:width="10dp"
+        android:text="ADD"
+        android:background="@drawable/roundedstylebutton"
+        android:textColor="#FFFFFF"
+        android:layout_width="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_column="5"
+        android:layout_alignBottom="@+id/binImageView"
+        android:layout_alignParentEnd="true"
+        android:enabled="false"/>
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/orderButton"
+        android:text="ORDER"
+        android:background="@drawable/roundedstylebutton"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
