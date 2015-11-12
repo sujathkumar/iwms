@@ -119,7 +119,17 @@ namespace IWMS.Solutions.Server.BinServiceProvider
                     string userAddress = user.Name + ", " + address.HouseNo + ", " + address.HouseName + ", " +
                     address.ApartmentName + ", " + address.Street + ", " + address.Locality + ", " + address.PINCODE;
 
-                    garbageList.Add(new GarbagePoint { Name = user.Name, Address = userAddress, Tag = garbage.Tag, GarbageType = garbageType.Type, GeneratedDate = garbage.CreateDateTime });
+                    if (order.Promotion == true) 
+                    {
+                        if (garbageType.Type.Trim() == "WET")
+                        {
+                            garbageList.Add(new GarbagePoint { Name = user.Name, Address = userAddress, Tag = garbage.Tag, GarbageType = "NEWKIT", Promotion = order.Promotion, Quantity = 40, GeneratedDate = garbage.CreateDateTime });
+                        }
+                    }
+                    else
+                    {
+                        garbageList.Add(new GarbagePoint { Name = user.Name, Address = userAddress, Tag = garbage.Tag, GarbageType = garbageType.Type, Promotion = order.Promotion, Quantity = order.Quantity, GeneratedDate = garbage.CreateDateTime });
+                    }
                 }
 
                 return garbageList;
@@ -388,7 +398,15 @@ namespace IWMS.Solutions.Server.BinServiceProvider
 
                 order.DatePrinted = DateTime.Now;
                 order.Printed = true;
-                order.Quantity = 30;
+
+                if (type.Trim() == "WET")
+                {
+                    order.Quantity = 30;
+                }
+                else if(type.Trim() == "DRY")
+                {
+                    order.Quantity = 10;
+                }
 
                 return order;
             }

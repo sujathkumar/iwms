@@ -138,6 +138,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Logo.png" />
+    <None Include="Resources\splash_screen.jpg" />
+    <None Include="Resources\blur_screen.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IWMS.Solutions.Server.CollectorServiceProvider\IWMS.Solutions.Server.CollectorServiceProvider.csproj">

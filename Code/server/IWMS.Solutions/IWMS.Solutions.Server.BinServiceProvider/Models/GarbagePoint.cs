@@ -16,6 +16,10 @@ namespace IWMS.Solutions.Server.BinServiceProvider.Models
 
         public string GarbageType { get; set; }
 
+        public bool? Promotion { get; set; }
+
+        public int? Quantity { get; set; }
+
         public DateTime GeneratedDate { get; set; }
     }
 }

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Collectors");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Recyclers");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Spot Images");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Events");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Collectors");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Recyclers");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Spot Images");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Events");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shell));
             this.panelControlCenter = new DevExpress.XtraEditors.PanelControl();
             this.tabControlMain = new DevExpress.XtraTab.XtraTabControl();
@@ -199,7 +199,7 @@
             // 
             this.lblHeader.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.lblHeader.Appearance.Font = new System.Drawing.Font("Maiandra GD", 60F);
-            this.lblHeader.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lblHeader.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblHeader.Location = new System.Drawing.Point(409, 9);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(377, 96);
@@ -223,19 +223,19 @@
             this.treeViewMain.ForeColor = System.Drawing.Color.White;
             this.treeViewMain.Location = new System.Drawing.Point(6, 30);
             this.treeViewMain.Name = "treeViewMain";
-            treeNode1.Name = "nodeCollectors";
-            treeNode1.Text = "Collectors";
-            treeNode2.Name = "nodeRecyclers";
-            treeNode2.Text = "Recyclers";
-            treeNode3.Name = "nodeSpotImages";
-            treeNode3.Text = "Spot Images";
-            treeNode4.Name = "nodeEvents";
-            treeNode4.Text = "Events";
+            treeNode25.Name = "nodeCollectors";
+            treeNode25.Text = "Collectors";
+            treeNode26.Name = "nodeRecyclers";
+            treeNode26.Text = "Recyclers";
+            treeNode27.Name = "nodeSpotImages";
+            treeNode27.Text = "Spot Images";
+            treeNode28.Name = "nodeEvents";
+            treeNode28.Text = "Events";
             this.treeViewMain.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
+            treeNode25,
+            treeNode26,
+            treeNode27,
+            treeNode28});
             this.treeViewMain.Size = new System.Drawing.Size(189, 572);
             this.treeViewMain.TabIndex = 0;
             this.treeViewMain.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewMain_AfterSelect);
@@ -323,14 +323,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1507, 729);
+            this.BackgroundImage = global::IWMS.Solutions.Server.Dashboard.Properties.Resources.splash_screen;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1507, 733);
             this.Controls.Add(this.pictureLogo);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.panelControlRHS);
             this.Controls.Add(this.panelControlCenter);
             this.Controls.Add(this.panelControlLHS);
-            this.MaximizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(1523, 767);
             this.MinimumSize = new System.Drawing.Size(1523, 767);
             this.Name = "Shell";

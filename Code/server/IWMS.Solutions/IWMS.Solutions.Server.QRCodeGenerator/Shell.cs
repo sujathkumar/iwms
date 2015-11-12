@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Forms;
 using Gma.QrCodeNet.Encoding;
@@ -14,6 +15,7 @@ namespace IWMS.Solutions.Server.QRCodeGenerator
     public partial class Shell : Form
     {
         BinService.Provider provider;
+        string fileName = ":";
 
         public Shell()
         {
@@ -30,12 +32,6 @@ namespace IWMS.Solutions.Server.QRCodeGenerator
             {
                 var garbage = (GarbagePoint)gridViewGarbage.GetRow(row);
 
-                if(garbage.GarbageType.Trim() != dropDownGarbageType.SelectedItem.ToString())
-                {
-                    MessageBox.Show("Garbage Type not matching!");
-                    return;
-                }
-
                 string data = garbage.Tag;
                 string folderName = garbage.GeneratedDate.ToString().Substring(0, garbage.GeneratedDate.ToString().IndexOf(" ")).Replace("/", "");
                 string fileFolderName = folderName + "\\" + Path.GetFileName(GetFileNameProposal(data));
@@ -45,13 +41,30 @@ namespace IWMS.Solutions.Server.QRCodeGenerator
                     Directory.CreateDirectory(fileFolderName);
                 }
 
-                GenerateAddress(fileFolderName, data, garbage.Address);
+                //GenerateAddress(fileFolderName, data, garbage.Address);
 
-                Order order = GenerateOrder(garbage.Tag);
-                orders.Add(order);
+                if (garbage.GarbageType == "NEWKIT")
+                {
+                    Order orderWet = GenerateOrder(garbage.Tag, "WET");
+                    orders.Add(orderWet);
 
-                qrCodeGraphicControl.Text = data;
-                SaveQRCode(fileFolderName, data);
+                    Order orderDry = GenerateOrder(garbage.Tag, "DRY");
+                    orders.Add(orderDry);
+
+                    qrCodeGraphicControl.Text = data;
+                    SaveQRCode(fileFolderName, data, "NEWKIT", garbage.Quantity);
+
+                    PrintQRCode printQRCode = new PrintQRCode();
+                    printQRCode.ShowDialog();
+                }
+                else
+                {
+                    Order order = GenerateOrder(garbage.Tag, garbage.GarbageType);
+                    orders.Add(order);
+
+                    qrCodeGraphicControl.Text = data;
+                    SaveQRCode(fileFolderName, data, "TOPUP", garbage.Quantity);
+                }
             }
 
             provider.InsertOrders(orders);
@@ -60,9 +73,9 @@ namespace IWMS.Solutions.Server.QRCodeGenerator
             MessageBox.Show("Garbage Tag and Address generated successfully!");
         }
 
-        private Order GenerateOrder(string tag)
+        private Order GenerateOrder(string tag, string garbageType)
         {
-            return provider.GenerateOrder(tag, dropDownGarbageType.SelectedItem.ToString());
+            return provider.GenerateOrder(tag, garbageType);
         }
 
         private void GenerateAddress(string fileName, string data, string address)
@@ -71,7 +84,7 @@ namespace IWMS.Solutions.Server.QRCodeGenerator
             File.WriteAllText(file, address);
         }
 
-        private void SaveQRCode(string folderName, string data)
+        private void SaveQRCode(string folderName, string data, string orderType, int? quantity)
         {
             //SaveFileDialog saveFileDialog = new SaveFileDialog();
             //saveFileDialog.Filter = @"PNG (*.png)|*.png|Bitmap (*.bmp)|*.bmp|Encapsuled PostScript (*.eps)|*.eps|SVG (*.svg)|*.svg";
@@ -83,7 +96,7 @@ namespace IWMS.Solutions.Server.QRCodeGenerator
             //    return;
             //}
 
-            string fileName = folderName + "\\" + Path.GetFileName(GetFileNameProposal(data)) + ".png";
+            fileName = folderName + "\\" + Path.GetFileName(GetFileNameProposal(data)) + ".png";
 
             if (fileName.EndsWith("eps"))
             {
@@ -115,11 +128,11 @@ namespace IWMS.Solutions.Server.QRCodeGenerator
             }
             else
             {
-                GraphicsRenderer gRender = new GraphicsRenderer(new FixedModuleSize(30, QuietZoneModules.Four));
+                GraphicsRenderer gRender = new GraphicsRenderer(new FixedModuleSize(4, QuietZoneModules.Four));
                 BitMatrix matrix = qrCodeGraphicControl.GetQrMatrix();
                 using (FileStream stream = new FileStream(fileName, FileMode.Create))
                 {
-                    gRender.WriteToStream(matrix, ImageFormat.Png, stream, new System.Drawing.Point(600, 600));
+                    gRender.WriteToStream(matrix, ImageFormat.Png, stream, new System.Drawing.Point(100, 100));
                 }
             }
         }
@@ -131,7 +144,6 @@ namespace IWMS.Solutions.Server.QRCodeGenerator
 
         private void Shell_Load(object sender, EventArgs e)
         {
-            dropDownGarbageType.SelectedIndex = 0;
             LoadOrders();
         }
 
