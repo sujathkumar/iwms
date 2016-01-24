@@ -36,14 +36,14 @@
             this.qrReportViewer.Location = new System.Drawing.Point(13, 13);
             this.qrReportViewer.Name = "qrReportViewer";
             this.qrReportViewer.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Remote;
-            this.qrReportViewer.Size = new System.Drawing.Size(670, 661);
+            this.qrReportViewer.Size = new System.Drawing.Size(870, 661);
             this.qrReportViewer.TabIndex = 0;
             // 
             // PrintQRCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 686);
+            this.ClientSize = new System.Drawing.Size(899, 686);
             this.Controls.Add(this.qrReportViewer);
             this.Name = "PrintQRCode";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

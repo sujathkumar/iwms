@@ -40,9 +40,9 @@
             // buttonSave
             // 
             this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.Location = new System.Drawing.Point(1363, 12);
+            this.buttonSave.Location = new System.Drawing.Point(1392, 2);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(106, 38);
+            this.buttonSave.Size = new System.Drawing.Size(86, 26);
             this.buttonSave.TabIndex = 2;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -61,10 +61,11 @@
             // 
             // gridControlGarbage
             // 
-            this.gridControlGarbage.Location = new System.Drawing.Point(12, 56);
+            this.gridControlGarbage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlGarbage.Location = new System.Drawing.Point(0, 0);
             this.gridControlGarbage.MainView = this.gridViewGarbage;
             this.gridControlGarbage.Name = "gridControlGarbage";
-            this.gridControlGarbage.Size = new System.Drawing.Size(1454, 689);
+            this.gridControlGarbage.Size = new System.Drawing.Size(1481, 757);
             this.gridControlGarbage.TabIndex = 6;
             this.gridControlGarbage.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGarbage});
@@ -80,14 +81,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1481, 757);
-            this.Controls.Add(this.gridControlGarbage);
             this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.gridControlGarbage);
             this.Controls.Add(this.qrCodeGraphicControl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Shell";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QR Code Generator Tool";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Shell_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControlGarbage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGarbage)).EndInit();

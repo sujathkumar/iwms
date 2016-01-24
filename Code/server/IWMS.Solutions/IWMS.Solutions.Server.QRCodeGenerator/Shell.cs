@@ -67,10 +67,10 @@ namespace IWMS.Solutions.Server.QRCodeGenerator
                 }
             }
 
-            provider.InsertOrders(orders);
+            //provider.InsertOrders(orders);
             LoadOrders();
 
-            MessageBox.Show("Garbage Tag and Address generated successfully!");
+            //MessageBox.Show("Garbage Tag and Address generated successfully!");
         }
 
         private Order GenerateOrder(string tag, string garbageType)
